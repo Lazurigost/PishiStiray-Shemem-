@@ -1,4 +1,5 @@
 ﻿using PishiStirayNET.Models;
+using PishiStirayNET.Models.DbEntities;
 
 namespace PishiStirayNET.Infrastructure
 {

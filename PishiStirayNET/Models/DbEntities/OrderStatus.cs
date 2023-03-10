@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using PishiStirayNET.Models.DbEntities;
+using System.Collections.Generic;
 
 namespace PishiStirayNET;
 
@@ -8,5 +9,5 @@ public partial class OrderStatus
 
     public string Name { get; set; } = null!;
 
-    public virtual ICollection<Order1> Order1s { get; } = new List<Order1>();
+    public virtual ICollection<Orderuser> Orderusers { get; } = new List<Orderuser>();
 }

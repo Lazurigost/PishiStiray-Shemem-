@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using PishiStirayNET.Models.DbEntities;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace PishiStirayNET;
@@ -16,5 +17,5 @@ public partial class Issuepoint
 
     public int? PunktDom { get; set; }
 
-    public virtual ICollection<Order1> Order1s { get; } = new List<Order1>();
+    public virtual ICollection<Orderuser> Orderusers { get; } = new List<Orderuser>();
 }

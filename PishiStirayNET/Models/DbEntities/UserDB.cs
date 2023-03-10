@@ -1,4 +1,7 @@
-﻿namespace PishiStirayNET;
+﻿using System;
+using System.Collections.Generic;
+
+namespace PishiStirayNET.Models.DbEntities;
 
 public partial class UserDB
 {

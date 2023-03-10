@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
-namespace PishiStirayNET;
+namespace PishiStirayNET.Models.DbEntities;
 
 public partial class Unit
 {
-    public int IdUnit { get; set; }
+    public int IdproductDeliveries { get; set; }
 
-    public string Name { get; set; } = null!;
+    public string? DeliveryName { get; set; }
 
     public virtual ICollection<ProductDB> Products { get; } = new List<ProductDB>();
 }

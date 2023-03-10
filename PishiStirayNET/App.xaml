@@ -13,43 +13,113 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
+            <Color x:Key="PrimaryColor">#ffffff</Color>
             <Color x:Key="secondaryGreen" >#FF76E383</Color>
             <Color x:Key="accentGreen">#FF498C51</Color>
 
-            <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="Blue"/>
+            <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="{StaticResource PrimaryColor}"/>
             <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="{StaticResource Primary200Foreground}"/>
-            <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="{StaticResource secondaryGreen}"/>
+            <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="{StaticResource accentGreen}"/>
             <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="{StaticResource Primary500Foreground}"/>
-            <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="Red"/>
+            <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="{StaticResource secondaryGreen}"/>
             <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="{StaticResource Primary700Foreground}"/>
 
 
             <local:DI x:Key="DI"/>
-
+            
             <SolidColorBrush x:Key="accentColor" Color="{StaticResource accentGreen}"/>
             <SolidColorBrush x:Key="additionalColor" Color="{StaticResource secondaryGreen}"/>
 
-            <Style TargetType="{x:Type TextBlock}">
-                <Setter Property="FontFamily" 
-                    Value="Comic Sans MS"
-                    />
+            <FontFamily x:Key="mainFont">Comic Sans MS</FontFamily>
+
+            <Style x:Key="ButtonToText"
+                   TargetType="{x:Type Button}">
                 <Setter Property="Foreground"
-                    Value="{StaticResource accentColor}"/>
-               
+                        Value="White"/>
+                <Setter Property="Padding"
+                        Value="0"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border x:Name="Border"
+                                    BorderThickness="0"
+                                    Background="Transparent">
+                                <ContentPresenter Margin="2"
+                                                      HorizontalAlignment="Center"
+                                                      VerticalAlignment="Top"
+                                                      RecognizesAccessKey="True"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsPressed"
+                                         Value="True">
+                                    <Setter Property="Opacity"
+                                            Value="0.7"/>
+                                </Trigger>
+                                         
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
             </Style>
 
-            <Style TargetType="{x:Type TextBox}">
-                <Setter Property="materialDesign:HintAssist.FontFamily" Value="Comic Sans MS"/>
-                <Setter Property="BorderBrush" Value="{StaticResource additionalColor}"/>
-                
+            <Style x:Key="mainTextBox"
+                   TargetType="{x:Type TextBox}"
+                   BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
+                <Setter Property="Margin"
+                        Value="0 20 0 0"/>
+                <Setter Property="Foreground"
+                        Value="Black"/>
+                <Setter Property="FontFamily"
+                        Value="{StaticResource mainFont}"/>
+                <Setter Property="BorderBrush"
+                        Value="{StaticResource accentColor}"/>
             </Style>
 
-            <Style TargetType="{x:Type TextBlock}" x:Key="textBlockStyle">
-                <Setter Property="FontFamily" 
-                    Value="Comic Sans MS"
-                    />
+            <Style x:Key="mainComboBox"
+                   TargetType="ComboBox"
+                   BasedOn="{StaticResource MaterialDesignFloatingHintComboBox}">
                 <Setter Property="Foreground"
-                    Value="{StaticResource accentColor}"/>
+                        Value="Black"/>
+                <Setter Property="FontFamily"
+                        Value="{StaticResource mainFont}"/>
+                <Setter Property="BorderBrush"
+                        Value="{StaticResource accentColor}"/>
+            </Style>
+
+            <Style x:Key="mainPasswordBox"
+                   TargetType="{x:Type PasswordBox}"
+                   BasedOn="{StaticResource MaterialDesignFloatingHintPasswordBox}">
+                <Setter Property="Margin"
+                        Value="0 20 0 0"/>
+                <Setter Property="FontFamily"
+                        Value="{StaticResource mainFont}"/>
+                <Setter Property="BorderBrush"
+                        Value="{StaticResource accentColor}"/>
+                <Setter Property="Foreground"
+                        Value="Black"/>
+            </Style>
+
+            <Style x:Key="mainErrorTextBlock"
+                   TargetType="{x:Type TextBlock}">
+                <Setter Property="Foreground"
+                        Value="#75151e"/>
+                <Setter Property="HorizontalAlignment"
+                        Value="Left"/>
+                <Setter Property="Margin"
+                        Value="0 2 0 0"/>
+                <Setter Property="FontFamily"
+                        Value="{StaticResource mainFont}"/>
+            </Style>
+
+            <Style x:Key="mainButton"
+                   TargetType="{x:Type Button}"
+                   BasedOn="{StaticResource MaterialDesignFlatMidBgButton}">
+                <Setter Property="Foreground"
+                        Value="Black"/>
+                <Setter Property="Margin"
+                        Value="0 10 0 0"/>
+                <Setter Property="FontFamily"
+                        Value="{StaticResource mainFont}"/>
             </Style>
         </ResourceDictionary>
 

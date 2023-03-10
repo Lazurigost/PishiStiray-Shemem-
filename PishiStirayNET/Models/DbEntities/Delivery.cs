@@ -1,12 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using PishiStirayNET.Models.DbEntities;
 
 namespace PishiStirayNET;
 
 public partial class Delivery
 {
-    public int IdProvider { get; set; }
+    public int IdpickupPoint { get; set; }
 
-    public string Name { get; set; } = null!;
+    public int PickupPoint { get; set; }
 
-    public virtual ICollection<ProductDB> Products { get; } = new List<ProductDB>();
+    public string? City { get; set; }
+
+    public string? Street { get; set; }
+
+    public int? House { get; set; }
+
+    public virtual ICollection<Orderuser> Orderusers { get; } = new List<Orderuser>();
 }

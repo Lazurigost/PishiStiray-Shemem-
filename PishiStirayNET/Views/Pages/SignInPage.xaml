@@ -14,9 +14,9 @@
     <Grid>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="1"
@@ -29,49 +29,62 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Авторизация"
-                       HorizontalAlignment="Left"
-                       FontSize="36"
-                       Grid.Row="0" Grid.ColumnSpan="2" Margin="22,0,0,0"/>
-
-            <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                     Grid.Row="1"
-                     Margin="0,20"
-                     materialDesign:HintAssist.Hint="Логин"
-                     Text="{Binding Login,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                     BorderBrush="{StaticResource additionalColor}"
-                     />
-
-            <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                     Grid.Row="2"
-                     Margin="0,20"
-                     Text="{Binding Password,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                     materialDesign:HintAssist.Hint="Пароль"
-                     BorderBrush="{StaticResource additionalColor}"/>
-
-            <TextBlock Foreground="Red"
-                       Text="{Binding ErrorMessage}"
-                       Grid.Row="3"
-                       TextAlignment="Center"
-                       FontFamily="Comic Sans MS"/>
-
-            <Button Grid.Row="4"
-                    Margin="30,10"
-                    Content="Войти"
-                    Background="{StaticResource additionalColor}"
-                    Foreground="White"
-                    Command="{Binding SignInCommand, IsAsync=True}"/>
-
+            <Image Grid.Row="0"
+                   Source="\Resources\Icons\logo.png"
+                   Height="75"/>
+            <TextBlock Grid.Row="1"
+                       Text="Войдите в свою учётную запись!"
+                       HorizontalAlignment="Center"
+                       FontFamily="{StaticResource mainFont}"
+                       Foreground="Black"/>
+            <TextBox Grid.Row="2"
+                     Text="{Binding Login, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                     Style="{StaticResource mainTextBox}"
+                     materialDesign:HintAssist.Hint="Логин"/>
+            <PasswordBox Grid.Row="3"
+                         materialDesign:PasswordBoxAssist.Password="{Binding Password,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Style="{StaticResource mainPasswordBox}"
+                         materialDesign:HintAssist.Hint="Пароль"/>
+            <TextBlock Grid.Row="4"
+                       Style="{StaticResource mainErrorTextBlock}"
+                       Text="{Binding ErrorMessage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <Button Grid.Row="5"
-                    Background="White"
-                    Margin="30,5"
-                    Content="Войти как гость"
-                    Command="{Binding GoToProductsPageCommand}" Cursor="Hand"/>
+                    Style="{StaticResource mainButton}"
+                    Command="{Binding SignInCommand, IsAsync=True}"
+                    Content="Войти"/>
+            <TextBlock Grid.Row="6"
+                       Foreground="Black"
+                       HorizontalAlignment="Center"
+                       Text="У вас нет учётной записи?"
+                       FontFamily="{StaticResource mainFont}"
+                       Margin="0 10 0 0"/>
+            <StackPanel Grid.Row="7"
+                        Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+
+                <Button Foreground="Black"
+                                Style="{StaticResource ButtonToText}"
+                                FontFamily="{StaticResource mainFont}"
+                                Cursor="Hand">
+                    <Underline>Зарегистрироваться</Underline>
+                </Button>
+                <TextBlock Foreground="Black"
+                           FontFamily="{StaticResource mainFont}"
+                           VerticalAlignment="Center"
+                           Text="или"/>
+                <Button Foreground="Black"
+                        Style="{StaticResource ButtonToText}"
+                        Command="{Binding GoToProductsPageCommand}"
+                        FontFamily="{StaticResource mainFont}"
+                        Cursor="Hand">
+                    <Underline>Войти как гость</Underline>
+                </Button>
+            </StackPanel>
         </Grid>
-
-
-
     </Grid>
 </Page>

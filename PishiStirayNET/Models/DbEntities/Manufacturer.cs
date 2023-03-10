@@ -1,14 +1,13 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
 
-namespace PishiStirayNET;
+namespace PishiStirayNET.Models.DbEntities;
 
 public partial class Manufacturer
 {
-    [Key]
-    public int IdManafacturer { get; set; }
+    public int IdproductManufacturers { get; set; }
 
-    public string Name { get; set; } = null!;
+    public string? ManufacturerName { get; set; }
 
     public virtual ICollection<ProductDB> Products { get; } = new List<ProductDB>();
 }

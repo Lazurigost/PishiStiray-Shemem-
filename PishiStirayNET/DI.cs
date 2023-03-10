@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using PishiStirayNET.Data;
 using PishiStirayNET.Services;
 using PishiStirayNET.VeiwModels;
 using System.Configuration;

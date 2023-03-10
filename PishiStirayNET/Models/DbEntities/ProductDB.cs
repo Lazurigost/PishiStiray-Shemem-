@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using PishiStirayNET.Models.DbEntities;
 
 namespace PishiStirayNET;
 
 public partial class ProductDB
 {
-    [Key]
     public string ProductArticleNumber { get; set; } = null!;
 
     public string ProductName { get; set; } = null!;
@@ -20,23 +20,21 @@ public partial class ProductDB
 
     public decimal ProductCost { get; set; }
 
-    public sbyte? CurrentDiscount { get; set; }
+    public sbyte? ProductDiscountAmount { get; set; }
 
     public int ProductQuantityInStock { get; set; }
 
-    public int UnitOfMeasurement { get; set; }
+    public string ProductStatus { get; set; } = null!;
 
-    public int Delivery { get; set; }
+    public int? ProductCurrentDiscount { get; set; }
 
-    public int? ProductDiscountAmount { get; set; }
-
-    public virtual Delivery DeliveryNavigation { get; set; } = null!;
+    public int? ProductDelivery { get; set; }
 
     public virtual ICollection<Orderproduct> Orderproducts { get; } = new List<Orderproduct>();
 
     public virtual ProductCategory ProductCategoryNavigation { get; set; } = null!;
 
-    public virtual Manufacturer ProductManufacturerNavigation { get; set; } = null!;
+    public virtual Unit? ProductDeliveryNavigation { get; set; }
 
-    public virtual Unit UnitOfMeasurementNavigation { get; set; } = null!;
+    public virtual Manufacturer ProductManufacturerNavigation { get; set; } = null!;
 }

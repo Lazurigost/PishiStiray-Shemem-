@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace PishiStirayNET;
 
 public partial class ProductCategory
 {
-    public int IdCategory { get; set; }
+    public int IdproductCategory { get; set; }
 
-    public string NameCategory { get; set; } = null!;
+    public string? CategoryName { get; set; }
 
     public virtual ICollection<ProductDB> Products { get; } = new List<ProductDB>();
 }

@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PishiStirayNET.Data;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -20,7 +19,7 @@ namespace PishiStirayNET.Services
         {
             List<Models.Product> products = new();
             List<ProductDB> productDBs = await _context.Products.ToListAsync();
-            await _context.Manufacturers.ToListAsync();
+            await _context.ProductManufacturers.ToListAsync();
 
 
             await Task.Run(() =>
@@ -31,11 +30,11 @@ namespace PishiStirayNET.Services
                     products.Add(new Models.Product
                     {
                         Article = product.ProductArticleNumber,
-                        CurrentDiscount = product.CurrentDiscount,
+                        CurrentDiscount = product.ProductDiscountAmount,
                         Description = product.ProductDescription,
                         Image = product.ProductPhoto,
                         Price = ((float)product.ProductCost),
-                        Manufacturer = product.ProductManufacturerNavigation.Name,
+                        Manufacturer = product.ProductManufacturerNavigation.ManufacturerName,
                         Title = product.ProductName
                     });
                 }

@@ -1,4 +1,8 @@
-﻿namespace PishiStirayNET;
+﻿using System;
+using System.Collections.Generic;
+using PishiStirayNET.Models.DbEntities;
+
+namespace PishiStirayNET;
 
 public partial class Orderproduct
 {
@@ -6,9 +10,9 @@ public partial class Orderproduct
 
     public string ProductArticleNumber { get; set; } = null!;
 
-    public int Count { get; set; }
+    public int? ProductAmount { get; set; }
 
-    public virtual Order1 Order { get; set; } = null!;
+    public virtual Orderuser Order { get; set; } = null!;
 
     public virtual ProductDB ProductArticleNumberNavigation { get; set; } = null!;
 }
