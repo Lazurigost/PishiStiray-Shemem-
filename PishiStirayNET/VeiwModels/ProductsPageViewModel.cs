@@ -70,9 +70,6 @@ namespace PishiStirayNET.VeiwModels
         {
             _productService = productService;
             _pageService = pageService;
-
-            Debug.WriteLine("ProductsPageViewMode created");
-
             SelectedFilter = filtersList[0];
         }
 
@@ -153,13 +150,14 @@ namespace PishiStirayNET.VeiwModels
                     {
                         Article = SelectedProduct.Article
                     });
+                    Debug.WriteLine("Продукт добавлен");
                 }
                 else
                 {
                     cartItem.Count++;
-                    Debug.WriteLine(Cart.CartProductList.IndexOf(cartItem));
+                    Debug.WriteLine("Продукт не добавлен");
                 }
-
+                Debug.WriteLine("Продукт не добавлен");
             }
         }
 
