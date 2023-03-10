@@ -1,10 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-using PishiStirayNET.Services;
-using PishiStirayNET.Views.Pages;
+using PishiStiray.Services;
+using PishiStiray.Views.Pages;
 using System.Windows.Controls;
 
-namespace PishiStirayNET.VeiwModels
+namespace PishiStiray.VeiwModels
 {
     public partial class MainWindowViewModel : ObservableObject
     {

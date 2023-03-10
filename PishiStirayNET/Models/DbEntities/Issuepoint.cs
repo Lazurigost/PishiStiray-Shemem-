@@ -1,8 +1,8 @@
-﻿using PishiStirayNET.Models.DbEntities;
+﻿using PishiStiray.Models.DbEntities;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace PishiStirayNET;
+namespace PishiStiray;
 
 public partial class Issuepoint
 {

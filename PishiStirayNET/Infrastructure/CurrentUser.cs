@@ -1,7 +1,7 @@
-﻿using PishiStirayNET.Models;
-using PishiStirayNET.Models.DbEntities;
+﻿using PishiStiray.Models;
+using PishiStiray.Models.DbEntities;
 
-namespace PishiStirayNET.Infrastructure
+namespace PishiStiray.Infrastructure
 {
     internal static class CurrentUser
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-namespace PishiStirayNET.Services
+namespace PishiStiray.Services
 {
     public class ProductService
     {

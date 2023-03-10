@@ -8,7 +8,7 @@ using System.Windows.Data;
 using System.Windows.Markup;
 using System.Windows.Media;
 
-namespace PishiStirayNET.Infrastructure.Converters
+namespace PishiStiray.Infrastructure.Converters
 {
     public class IntToBrushConverter :  MarkupExtension,IValueConverter
     {

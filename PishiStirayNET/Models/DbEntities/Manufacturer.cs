@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PishiStirayNET.Models.DbEntities;
+namespace PishiStiray.Models.DbEntities;
 
 public partial class Manufacturer
 {

@@ -1,11 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using PishiStirayNET.Infrastructure;
-using PishiStirayNET.Models;
+using PishiStiray.Infrastructure;
+using PishiStiray.Models;
 using System.Collections.Generic;
 using System.Windows.Input;
 
-namespace PishiStirayNET.VeiwModels
+namespace PishiStiray.VeiwModels
 {
     public partial class CartPageViewModel : ObservableObject
     {

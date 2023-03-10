@@ -1,8 +1,8 @@
-﻿namespace PishiStirayNET.Models
+﻿namespace PishiStiray.Models
 {
     public class CartItem
     {
-        public string? Article { get; set; }
+        public Product? product{ get; set; }
         public int Count { get; set; }
     }
 }

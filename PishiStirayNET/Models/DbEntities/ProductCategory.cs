@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PishiStirayNET;
+namespace PishiStiray;
 
 public partial class ProductCategory
 {

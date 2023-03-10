@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using PishiStirayNET.Models.DbEntities;
+using PishiStiray.Models.DbEntities;
 
-namespace PishiStirayNET;
+namespace PishiStiray;
 
 public partial class ProductDB
 {

@@ -1,7 +1,7 @@
-﻿using PishiStirayNET.Models;
+﻿using PishiStiray.Models;
 using System.Collections.Generic;
 
-namespace PishiStirayNET.Infrastructure
+namespace PishiStiray.Infrastructure
 {
     public static class Cart
     {

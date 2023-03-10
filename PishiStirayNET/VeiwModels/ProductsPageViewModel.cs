@@ -1,14 +1,14 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using PishiStirayNET.Infrastructure;
-using PishiStirayNET.Models;
-using PishiStirayNET.Services;
-using PishiStirayNET.Views.Pages;
+using PishiStiray.Infrastructure;
+using PishiStiray.Models;
+using PishiStiray.Services;
+using PishiStiray.Views.Pages;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-namespace PishiStirayNET.VeiwModels
+namespace PishiStiray.VeiwModels
 {
     public partial class ProductsPageViewModel : ObservableObject
     {
@@ -143,12 +143,12 @@ namespace PishiStirayNET.VeiwModels
         {
             if (SelectedProduct != null)
             {
-                CartItem? cartItem = Cart.CartProductList.SingleOrDefault(p => p.Article == SelectedProduct.Article);
+                CartItem? cartItem = Cart.CartProductList.SingleOrDefault(p => p.product == SelectedProduct);
                 if (cartItem == null)
                 {
                     Cart.CartProductList.Add(new CartItem
                     {
-                        Article = SelectedProduct.Article
+                        product = SelectedProduct
                     });
                     Debug.WriteLine("Продукт добавлен");
                 }

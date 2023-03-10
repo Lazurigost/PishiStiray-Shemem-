@@ -1,10 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using PishiStirayNET.Infrastructure;
-using PishiStirayNET.Services;
-using PishiStirayNET.Views.Pages;
+using PishiStiray.Infrastructure;
+using PishiStiray.Services;
+using PishiStiray.Views.Pages;
 
-namespace PishiStirayNET.VeiwModels
+namespace PishiStiray.VeiwModels
 {
     public partial class AuthorizedUserUserControlViewModel : ObservableObject
     {
@@ -36,8 +36,13 @@ namespace PishiStirayNET.VeiwModels
             }
 
         }
-
-
+        [RelayCommand]
+        private void TestMethod()
+        {
+            CurrentUser.User = null;
+            IsAuthorized = false;
+            _pageService.ChangePage(new SignInPage());
+        }
         [RelayCommand]
         private void LogOut()
         {

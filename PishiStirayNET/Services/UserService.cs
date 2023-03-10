@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PishiStirayNET.Infrastructure;
-using PishiStirayNET.Models.DbEntities;
+using PishiStiray.Infrastructure;
+using PishiStiray.Models.DbEntities;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PishiStirayNET.Services
+namespace PishiStiray.Services
 {
     internal class UserService
     {

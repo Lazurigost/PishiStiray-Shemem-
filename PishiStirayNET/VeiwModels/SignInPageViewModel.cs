@@ -1,13 +1,13 @@
 ﻿
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using PishiStirayNET.Services;
-using PishiStirayNET.Views.Pages;
+using PishiStiray.Services;
+using PishiStiray.Views.Pages;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace PishiStirayNET.VeiwModels
+namespace PishiStiray.VeiwModels
 {
     partial class SignInPageViewModel : ObservableObject
     {

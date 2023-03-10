@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using PishiStirayNET.Services;
-using PishiStirayNET.VeiwModels;
+using PishiStiray.Services;
+using PishiStiray.VeiwModels;
 using System.Configuration;
 
-namespace PishiStirayNET
+namespace PishiStiray
 {
     internal class DI
     {

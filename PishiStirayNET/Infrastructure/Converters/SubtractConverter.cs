@@ -2,7 +2,7 @@
 using System.Windows.Data;
 using System.Windows.Markup;
 
-namespace PishiStirayNET.Infrastructure.Converters
+namespace PishiStiray.Infrastructure.Converters
 {
     public class SubtractConverter : MarkupExtension, IValueConverter
     {
@@ -11,7 +11,6 @@ namespace PishiStirayNET.Infrastructure.Converters
         public object Convert(object baseValue, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             double val = System.Convert.ToDouble(baseValue);
-            // Change here if you want other operations
             return val - Value;
         }
 

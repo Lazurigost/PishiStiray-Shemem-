@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Windows.Media;
 
-namespace PishiStirayNET.Models
+namespace PishiStiray.Models
 {
     public class Product
     {

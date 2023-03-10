@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PishiStirayNET.Views.Pages
+namespace PishiStiray.Views.Pages
 {
     /// <summary>
     /// Логика взаимодействия для CartPage.xaml

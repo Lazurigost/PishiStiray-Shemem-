@@ -1,4 +1,4 @@
-﻿namespace PishiStirayNET.Models
+﻿namespace PishiStiray.Models
 {
     public class User
     {

@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Windows.Controls;
 
-namespace PishiStirayNET.Services
+namespace PishiStiray.Services
 {
     public class PageService
     {

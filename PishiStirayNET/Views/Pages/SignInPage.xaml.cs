@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace PishiStirayNET.Views.Pages
+namespace PishiStiray.Views.Pages
 {
     /// <summary>
     /// Логика взаимодействия для SignInPage.xaml

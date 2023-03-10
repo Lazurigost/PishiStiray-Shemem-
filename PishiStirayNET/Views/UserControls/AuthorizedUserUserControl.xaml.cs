@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace PishiStirayNET.Views.UserControls
+namespace PishiStiray.Views.UserControls
 {
     /// <summary>
     /// Логика взаимодействия для AuthorizedUserUserCintrol.xaml

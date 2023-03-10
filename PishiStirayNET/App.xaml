@@ -1,7 +1,7 @@
-﻿<Application x:Class="PishiStirayNET.App"
+﻿<Application x:Class="PishiStiray.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:PishiStirayNET"
+             xmlns:local="clr-namespace:PishiStiray"
              StartupUri="Views/Windows/MainWindow.xaml"
               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
     <Application.Resources>

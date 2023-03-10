@@ -1,7 +1,7 @@
-﻿using PishiStirayNET.Models.DbEntities;
+﻿using PishiStiray.Models.DbEntities;
 using System.Collections.Generic;
 
-namespace PishiStirayNET;
+namespace PishiStiray;
 
 public partial class OrderStatus
 {

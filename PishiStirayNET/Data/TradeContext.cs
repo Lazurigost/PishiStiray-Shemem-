@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using PishiStirayNET.Models.DbEntities;
+using PishiStiray.Models.DbEntities;
 
-namespace PishiStirayNET;
+namespace PishiStiray;
 
 public partial class TradeContext : DbContext
 {
