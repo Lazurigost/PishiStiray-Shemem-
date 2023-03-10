@@ -126,7 +126,7 @@
                   HorizontalContentAlignment="Center"
                   SelectedItem="{Binding SelectedProduct}"
                   ItemsSource="{Binding ProductsList}"
-                  Height="{Binding ActualHeight, ElementName=ProductPage, Mode=OneWay}">
+                  Height="{Binding ActualHeight, ElementName=ProductPage, Mode=OneWay, Converter={converters:SubtractConverter Value=100}}">
 
 
 
@@ -261,7 +261,7 @@
                Background="{StaticResource additionalColor}"
                 HorizontalAlignment="Right"
                 Command="{Binding GoToCartCommand}"
-                VerticalAlignment="Bottom" Margin="0,0,20,60" Cursor="">
+                VerticalAlignment="Bottom" Margin="0,0,20,20" Cursor="">
             <Button.Content >
                 <Image Source="/Resources/Icons/order2.png"
                        Margin="13"/>

@@ -46,28 +46,5 @@ namespace PishiStiray.Services
             Debug.Write(products.Count);
             return products;
         }
-
-
-
-        //public async Task<List<Product>> GetProductFromCartAsync()
-        //{
-        //    List<Product> cartProducts = new();
-        //    List<Product> products = await GetProductsAsync();
-
-        //    await Task.Run(() =>
-        //    {
-        //        foreach (Product product in products)
-        //        {
-        //            CartItem? cartItem = Cart.CartProductList.Where(i => i.Article == product.Article).FirstOrDefault();
-
-        //            if(cartItem != null)
-        //            {
-
-        //            }
-        //        }
-        //    });
-
-        //    return cartProducts;
-        //}
     }
 }
