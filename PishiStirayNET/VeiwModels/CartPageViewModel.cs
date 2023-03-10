@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using PishiStiray.Infrastructure;
 using PishiStiray.Models;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace PishiStiray.VeiwModels
@@ -11,7 +12,7 @@ namespace PishiStiray.VeiwModels
     {
 
         [ObservableProperty]
-        private List<CartItem> cartProductsList;
+        private ObservableCollection<CartItem> cartProductsList;
         [ObservableProperty]
         private CartItem selectedCartItem;
 
