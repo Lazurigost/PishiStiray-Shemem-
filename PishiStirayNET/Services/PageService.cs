@@ -10,7 +10,6 @@ namespace PishiStiray.Services
 
         public void ChangePage(Page page)
         {
-            Debug.WriteLine("Page changed");
             OnPageChanged?.Invoke(page);
         }
 

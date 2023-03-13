@@ -8,9 +8,9 @@
         mc:Ignorable="d"
         Height="450" 
         Title="Write-Erase"
-        DataContext="{Binding MainWindowViewModel, Source={StaticResource DI}}"
+        DataContext="{Binding MainWindowViewModel, Source={StaticResource ViewModelLocator}}"
         Width="800" Icon="/Views/Windows/logo.png">
 
     <Frame Content="{Binding PageSource}"
-           NavigationUIVisibility="Visible"/>
+           NavigationUIVisibility="Hidden"/>
 </Window>

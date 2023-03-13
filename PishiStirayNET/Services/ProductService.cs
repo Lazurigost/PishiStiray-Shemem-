@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PishiStiray.Models;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
@@ -14,13 +16,11 @@ namespace PishiStiray.Services
             _context = context;
         }
 
-
         public async Task<List<Models.Product>> GetProductsAsync(string? searchQuery = null, string? orderValue = null, string? filterValue = null)
         {
             List<Models.Product> products = new();
             List<ProductDB> productDBs = await _context.Products.ToListAsync();
             await _context.ProductManufacturers.ToListAsync();
-
 
             await Task.Run(() =>
             {
@@ -38,13 +38,9 @@ namespace PishiStiray.Services
                         Title = product.ProductName
                     });
                 }
-
             });
 
-
-
-            Debug.Write(products.Count);
             return products;
-        }
+        }              
     }
 }

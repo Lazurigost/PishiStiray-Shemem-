@@ -12,13 +12,13 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProductsPage"
       Name="ProductPage"
-      DataContext="{Binding ProductsPageViewModel, Source={StaticResource DI}}">
+      DataContext="{Binding ProductsPageViewModel, Source={StaticResource ViewModelLocator}}">
 
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <Grid Margin="30,0,0,0">
@@ -125,9 +125,7 @@
                   Margin="0,10,0,0"
                   HorizontalContentAlignment="Center"
                   SelectedItem="{Binding SelectedProduct}"
-                  ItemsSource="{Binding ProductsList}"
-                  Height="{Binding ActualHeight, ElementName=ProductPage, Mode=OneWay, Converter={converters:SubtractConverter Value=100}}">
-
+                  ItemsSource="{Binding ProductsList}"> 
 
 
             <ListView.ItemsPanel>
@@ -261,12 +259,10 @@
                Background="{StaticResource additionalColor}"
                 HorizontalAlignment="Right"
                 Command="{Binding GoToCartCommand}"
-                VerticalAlignment="Bottom" Margin="0,0,20,20" Cursor="">
-            <Button.Content >
-                <Image Source="/Resources/Icons/order2.png"
-                       Margin="13"/>
-            </Button.Content>
-        </Button>
+                VerticalAlignment="Bottom" Margin="0,0,20,20" Cursor=""
+                Content="Корзина"
+                FontFamily="{StaticResource mainFont}"/>
+        
 
     </Grid>
 </Page>

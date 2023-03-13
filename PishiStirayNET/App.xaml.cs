@@ -10,7 +10,7 @@ namespace PishiStiray
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            DI.Init();
+            ViewModelLocator.Init();
         }
     }
 }

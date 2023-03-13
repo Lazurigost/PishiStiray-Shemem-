@@ -25,7 +25,7 @@
             <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="{StaticResource Primary700Foreground}"/>
 
 
-            <local:DI x:Key="DI"/>
+            <local:ViewModelLocator x:Key="ViewModelLocator"/>
             
             <SolidColorBrush x:Key="accentColor" Color="{StaticResource accentGreen}"/>
             <SolidColorBrush x:Key="additionalColor" Color="{StaticResource secondaryGreen}"/>

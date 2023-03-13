@@ -8,7 +8,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Name="CartPage1"
-      DataContext="{Binding CartPageViewModel, Source = {StaticResource DI}}">
+      DataContext="{Binding CartPageViewModel, Source = {StaticResource ViewModelLocator}}">
 
     <Grid>
         <ListView Grid.Row="1"
@@ -19,8 +19,7 @@
                   Margin="0,10,0,0"
                   HorizontalContentAlignment="Center"
                   SelectedItem="{Binding SelectedCartItem}"
-                  ItemsSource="{Binding CartProductsList}"
-                  Height="{Binding ActualHeight, ElementName=CartPage1, Mode=OneWay, Converter={converters:SubtractConverter Value=100}}">
+                  ItemsSource="{Binding CartProductsList}">
 
 
 

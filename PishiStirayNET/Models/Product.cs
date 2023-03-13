@@ -15,7 +15,7 @@ namespace PishiStiray.Models
 
         private string _image;
 
-        public string Image
+        public string Image 
         {
             get
             {
@@ -40,8 +40,6 @@ namespace PishiStiray.Models
                 return Path.GetFullPath(@$"Resources\{Image}");
             }
         }
-
-
         public float? NewPrice
         {
             get
@@ -53,7 +51,6 @@ namespace PishiStiray.Models
                 return 0;
             }
         }
-
         public bool HaveDiscount
         {
             get

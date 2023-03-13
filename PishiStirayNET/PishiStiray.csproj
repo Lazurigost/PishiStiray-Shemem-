@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Infrastructure\Enums\**" />
+    <EmbeddedResource Remove="Infrastructure\Enums\**" />
+    <None Remove="Infrastructure\Enums\**" />
+    <Page Remove="Infrastructure\Enums\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Resources\A346R4.jpg" />
     <None Remove="Resources\A543T6.jpg" />
     <None Remove="Resources\B730E2.jpg" />
@@ -46,10 +53,6 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Infrastructure\Enums\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -6,7 +6,7 @@ using System.Configuration;
 
 namespace PishiStiray
 {
-    internal class DI
+    internal class ViewModelLocator
     {
         public static ServiceProvider? _provider;
 

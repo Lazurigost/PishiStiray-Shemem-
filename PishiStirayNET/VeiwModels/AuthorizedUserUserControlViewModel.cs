@@ -9,6 +9,12 @@ namespace PishiStiray.VeiwModels
     public partial class AuthorizedUserUserControlViewModel : ObservableObject
     {
         [ObservableProperty]
+        private string? gridForRow;
+
+        [ObservableProperty]
+        private string? exit;
+
+        [ObservableProperty]
         private string? fullname;
 
         [ObservableProperty]
@@ -29,19 +35,16 @@ namespace PishiStiray.VeiwModels
                 Fullname = $"{CurrentUser.User.UserSurname} {CurrentUser.User.UserName} {CurrentUser.User.UserPatronymic}";
                 Role = CurrentUser.User.UserRole;
                 IsAuthorized = true;
+                exit = "Выйти";
+                gridForRow = "1";
             }
             else
             {
+                exit = "Вернуться";
                 IsAuthorized = false;
+                gridForRow = "0";
             }
 
-        }
-        [RelayCommand]
-        private void TestMethod()
-        {
-            CurrentUser.User = null;
-            IsAuthorized = false;
-            _pageService.ChangePage(new SignInPage());
         }
         [RelayCommand]
         private void LogOut()

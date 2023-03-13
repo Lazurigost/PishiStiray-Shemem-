@@ -49,13 +49,11 @@ namespace PishiStiray.VeiwModels
             {
                 if (await _userService.Authorization(login, password) == true)
                 {
-                    Debug.WriteLine("Произошел вход в аккаунт");
                     ErrorMessage = string.Empty;
                     await Application.Current.Dispatcher.InvokeAsync(async () => _pageService.ChangePage(new ProductsPage()));
                 }
                 else
                 {
-                    Debug.WriteLine("Неверные входные данные");
                     ErrorMessage = "Неверный логин или пароль";
                 }
             });
