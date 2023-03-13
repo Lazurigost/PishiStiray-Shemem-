@@ -39,11 +39,6 @@ namespace PishiStiray
                 string connectionString = ConfigurationManager.ConnectionStrings["TradeDatabase"].ConnectionString;
                 options.UseLazyLoadingProxies().UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
             }, ServiceLifetime.Singleton);
-
-
-
-
-
             #endregion
 
             _provider = services.BuildServiceProvider();

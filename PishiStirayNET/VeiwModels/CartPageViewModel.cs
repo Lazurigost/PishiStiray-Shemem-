@@ -21,6 +21,9 @@ namespace PishiStiray.VeiwModels
         public CartPageViewModel(ProductService productService)
         {
             productService_ = productService;
+            cartProductsList = Cart.CartProductList;
+
+            UpdateCart();
         }
         public async void UpdateCart()
         {
