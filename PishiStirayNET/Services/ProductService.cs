@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using PishiStiray.Models.DbEntities;
 
 namespace PishiStiray.Services
 {
@@ -41,6 +42,25 @@ namespace PishiStiray.Services
             });
 
             return products;
-        }              
+        }
+        
+        public async Task<ObservableCollection<Product>> GetCartItemsAsync(ObservableCollection<CartItem> cartItems)
+        {
+            ObservableCollection<Product> cartProducts = new();
+
+            foreach (CartItem cartItem in cartItems)
+            {
+                cartProducts.Add(cartItem.product);
+            }
+
+            return cartProducts;
+        }
+
+        //public async Task<List<Delivery>> GetPointsAsync()
+        //{
+        //    List<Delivery> deliveries = await _context.Deliveries.ToListAsync();
+
+        //    return deliveries;
+        //}
     }
 }

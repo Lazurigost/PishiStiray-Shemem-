@@ -27,11 +27,13 @@
             <TextBlock Text="{Binding Fullname}"
                        TextWrapping="Wrap"
                        FontSize="14"
-                       Margin="0,2"/>
+                       Margin="0,2"
+                       FontFamily="{StaticResource mainFont}"/>
            
             <TextBlock Text="{Binding Role}"
                        Margin="0,2"
-                      FontWeight="Bold"/>
+                      FontWeight="Bold"
+                       FontFamily="{StaticResource mainFont}"/>
         </StackPanel>
 
         <Button Grid.Row="0"
@@ -40,6 +42,7 @@
                 Content="{Binding Exit}"
                 Margin="10,0,10,0"
                 MaxWidth="100"
+                FontFamily="{StaticResource mainFont}"
                 Command="{Binding LogOutCommand}" Cursor="Hand"/>
     </Grid>
 </UserControl>

@@ -51,8 +51,9 @@
 
                 <StackPanel Orientation="Horizontal">
                     <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
-                      materialDesign:HintAssist.Hint="Сорртировка по цене"
+                          materialDesign:HintAssist.Hint="Сортировка по цене"
                           MinWidth="200"
+                          FontFamily="{StaticResource mainFont}"
                           HorizontalAlignment="Left"
                           Grid.Column="0"
                           SelectedItem="{Binding SelectedOrder}"
@@ -66,8 +67,9 @@
                           MinWidth="200"
                           SelectedItem="{Binding SelectedFilter}"
                           ItemsSource="{Binding FiltersList}"
+                          FontFamily="{StaticResource mainFont}"
                           Grid.Column="0"
-                      materialDesign:HintAssist.Hint="Фильтрация по скидке">
+                          materialDesign:HintAssist.Hint="Фильтрация по скидке">
 
                     </ComboBox>
                 </StackPanel>
@@ -79,8 +81,9 @@
                     >
                     <TextBlock Grid.Row="1"
                    Grid.Column="2"
-                   Text="Количество товаров"
+                   Text="Кол-во товаров"
                    FontSize="13"
+                   FontFamily="{StaticResource mainFont}"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Top"
                    Margin="0,0,0,0"/>
