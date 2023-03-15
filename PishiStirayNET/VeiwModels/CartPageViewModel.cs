@@ -55,6 +55,7 @@ namespace PishiStiray.VeiwModels
                 }
                 cartItemsList.Remove(SelectedCartItem);
             }
+
         }
         [RelayCommand]
         private void BackFromCart() 
