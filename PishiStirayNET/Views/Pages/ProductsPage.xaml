@@ -77,8 +77,7 @@
 
                 <StackPanel Orientation="Vertical"
                    Grid.Column="2"
-                    HorizontalAlignment="Right"
-                    >
+                    HorizontalAlignment="Right">
                     <TextBlock Grid.Row="1"
                    Grid.Column="2"
                    Text="Кол-во товаров"

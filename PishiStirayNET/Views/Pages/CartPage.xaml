@@ -19,6 +19,12 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
         <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
                           MinWidth="200"
                           materialDesign:HintAssist.Hint="Пункты выдачи"
@@ -40,11 +46,34 @@
             </DataTemplate>-->
         </ComboBox>
 
+        <StackPanel Orientation="Horizontal"
+                    Grid.Column="1" 
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center">
+            <TextBlock Text="Цена без скидки:"
+                   FontFamily="{StaticResource mainFont}"
+                  />
+            <TextBlock Text="{Binding TotalPrice, StringFormat=' {0}₽ '}"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal"
+                    Grid.Column="2" 
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center">
+            <TextBlock Text="Цена со скидкой:"
+                   FontFamily="{StaticResource mainFont}"
+                  />
+            <TextBlock Text="{Binding FinalPrice, StringFormat=' {0}₽ '}"/>
+        </StackPanel>
+
+
+
+
         <ListView Grid.Row="1"
                   Grid.Column="0"
                   VerticalAlignment="Top"
                   x:Name="mainListView"
-                  Grid.ColumnSpan="2"
+                  Grid.ColumnSpan="3"
                   Margin="0,10,0,0"
                   HorizontalContentAlignment="Center"
                   SelectedItem="{Binding SelectedCartItem}"
@@ -177,7 +206,7 @@
         </ListView>
         <Button Style="{StaticResource MaterialDesignFloatingActionSecondaryButton}"
                 Grid.Row="1"
-                
+                    Grid.Column="2"
                 BorderBrush="{StaticResource additionalColor}"
                Background="{StaticResource additionalColor}"
                 HorizontalAlignment="Right"
