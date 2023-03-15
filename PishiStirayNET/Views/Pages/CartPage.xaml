@@ -31,10 +31,10 @@
                           VerticalAlignment="Top"
                           FontFamily="{StaticResource mainFont}"
                           HorizontalAlignment="Left"
-                          Grid.Column="0"
+                          Grid.Column="0" 
                           SelectedItem="{Binding SelectedPoint}"
                           ItemsSource="{Binding PickupPoints}"
-                          Margin="0,0,20,0">
+                          Margin="10,20,20,0">
             <!--<DataTemplate>
                 <TextBlock>
                     <TextBlock.Text>
