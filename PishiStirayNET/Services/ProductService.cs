@@ -57,11 +57,6 @@ namespace PishiStiray.Services
         }
 
 
-        public async Task<List<Delivery>> GetPointsAsync()
-        {
-            List<Delivery> deliveries = await _context.Deliveries.ToListAsync();
-
-            return deliveries;
-        }
+        public async Task<List<Delivery>> GetPointsAsync() => await _context.Deliveries.AsNoTracking().ToListAsync();
     }
 }

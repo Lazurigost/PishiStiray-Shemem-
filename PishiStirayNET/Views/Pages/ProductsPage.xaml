@@ -35,11 +35,11 @@
             <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
                  BorderBrush="{StaticResource additionalColor}"
                  Grid.Column="0"
-                     Grid.Row="0"
+                 Grid.Row="0"
                  Text="{Binding SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  Margin="0,5,0,5" TextChanged="TextBox_TextChanged"/>
             <usercontrols:AuthorizedUserUserControl Grid.Column="1"
-                                                Margin="5,10,5,5"
+                                                    Margin="5,10,5,5"
                                                     Grid.RowSpan="2"/>
 
 

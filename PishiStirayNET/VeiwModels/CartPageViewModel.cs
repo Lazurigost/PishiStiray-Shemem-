@@ -5,9 +5,7 @@ using PishiStiray.Models;
 using PishiStiray.Services;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
 using PishiStiray.Views.Pages;
-using System.Linq;
 
 namespace PishiStiray.VeiwModels
 {
@@ -23,6 +21,10 @@ namespace PishiStiray.VeiwModels
         private Product selectedCartItem;
         [ObservableProperty]
         private CartItem selectedCart;
+        [ObservableProperty]
+        private string totalPrice;
+
+        private float? TP = 0;
 
         private readonly ProductService productService_;
         private readonly PageService pageService_;
@@ -36,6 +38,12 @@ namespace PishiStiray.VeiwModels
         }
         public async void UpdateCart()
         {
+            //TP = 0;
+            //foreach (CartItem CItem in cartProductsList)
+            //{
+            //    TP += CItem.product.Price;
+            //}
+            //totalPrice = TP.ToString();
             cartItemsList = await productService_.GetCartItemsAsync(cartProductsList);
             //pickupPoints = await productService_.GetPointsAsync();
         }
@@ -55,7 +63,7 @@ namespace PishiStiray.VeiwModels
                 }
                 cartItemsList.Remove(SelectedCartItem);
             }
-
+            //UpdateCart();
         }
         [RelayCommand]
         private void BackFromCart() 
