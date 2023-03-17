@@ -17,7 +17,7 @@ namespace PishiStiray.Services
             _context = context;
         }
 
-        public async Task<List<Models.Product>> GetProductsAsync(string? searchQuery = null, string? orderValue = null, string? filterValue = null)
+        public async Task<List<Models.Product>> GetProductsAsync()
         {
             List<Models.Product> products = new();
             List<ProductDB> productDBs = await _context.Products.ToListAsync();

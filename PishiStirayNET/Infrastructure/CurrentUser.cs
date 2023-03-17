@@ -5,6 +5,6 @@ namespace PishiStiray.Infrastructure
 {
     internal static class CurrentUser
     {
-        public static User User { get; set; }
+        public static UserDB User { get; set; }
     }
 }

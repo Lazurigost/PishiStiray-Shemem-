@@ -24,14 +24,14 @@ namespace PishiStiray.Services
                 if (user != null)
                 {
 
-                    CurrentUser.User = new Models.User
+                    CurrentUser.User = new UserDB
                     {
-                        UserID = user.UserId,
+                        UserId = user.UserId,
                         UserName = user.UserName,
                         UserLogin = user.UserLogin,
                         UserPassword = user.UserPassword,
                         UserPatronymic = user.UserPatronymic,
-                        UserRole = user.UserRoleNavigation.RoleName,
+                        UserRole = user.UserRole,
                         UserSurname = user.UserSurname
                     };
 
