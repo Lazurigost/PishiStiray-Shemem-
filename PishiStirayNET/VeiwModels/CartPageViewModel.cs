@@ -6,22 +6,35 @@ using PishiStiray.Services;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using PishiStiray.Views.Pages;
+using System.Security.Policy;
 
 namespace PishiStiray.VeiwModels
 {
     public partial class CartPageViewModel : ObservableObject
     {
+        #region Свойства
+
         [ObservableProperty]
         private ObservableCollection<Product> cartItemsList;
+
         [ObservableProperty]
         private ObservableCollection<CartItem> cartProductsList;
+
         [ObservableProperty]
         private List<Delivery> pickupPoints;
+
         [ObservableProperty]
         private Product selectedCartItem;
+
         [ObservableProperty]
         private CartItem selectedCart;
-        
+
+        [ObservableProperty]
+        private float? totalPrice = 0;
+
+        [ObservableProperty]
+        private float? finalPrice = 0;
+        #endregion
 
         private readonly ProductService productService_;
         private readonly PageService pageService_;
@@ -36,6 +49,16 @@ namespace PishiStiray.VeiwModels
         public async void UpdateCart()
         {
             cartItemsList = await productService_.GetCartItemsAsync(cartProductsList);
+
+            totalPrice = 0;
+            finalPrice = 0;
+
+            foreach (var cartItem in cartProductsList) 
+            {
+                totalPrice += cartItem.product.Price;
+                finalPrice += cartItem.product.NewPrice;
+            }
+
             //pickupPoints = await productService_.GetPointsAsync();
         }
         [RelayCommand]
@@ -49,9 +72,12 @@ namespace PishiStiray.VeiwModels
                     if (SelectedCartItem == CItem.product)
                     {
                         cartProductsList.Remove(CItem);
+                        
                         break;
                     }
                 }
+                totalPrice -= selectedCartItem.Price;
+                finalPrice -= selectedCartItem.NewPrice;
                 cartItemsList.Remove(SelectedCartItem);
             }
         }

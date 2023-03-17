@@ -56,7 +56,6 @@ namespace PishiStiray.Services
             return cartProducts;
         }
 
-
         public async Task<List<Delivery>> GetPointsAsync() => await _context.Deliveries.AsNoTracking().ToListAsync();
     }
 }

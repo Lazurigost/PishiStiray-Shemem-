@@ -55,7 +55,8 @@
             <Button Grid.Row="5"
                     Style="{StaticResource mainButton}"
                     Command="{Binding SignInCommand, IsAsync=True}"
-                    Content="Войти"/>
+                    Content="Войти"
+                    IsDefault="True"/>
             <TextBlock Grid.Row="6"
                        Foreground="Black"
                        HorizontalAlignment="Center"

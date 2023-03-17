@@ -35,15 +35,7 @@
                           SelectedItem="{Binding SelectedPoint}"
                           ItemsSource="{Binding PickupPoints}"
                           Margin="10,20,20,0">
-            <!--<DataTemplate>
-                <TextBlock>
-                    <TextBlock.Text>
-                        <Multibinding>
-                            
-                        </Multibinding>
-                    </TextBlock.Text>
-                </TextBlock>
-            </DataTemplate>-->
+            
         </ComboBox>
 
         <StackPanel Orientation="Horizontal"
@@ -206,14 +198,15 @@
         </ListView>
         <Button Style="{StaticResource MaterialDesignFloatingActionSecondaryButton}"
                 Grid.Row="1"
-                    Grid.Column="2"
+                Grid.Column="2"
                 BorderBrush="{StaticResource additionalColor}"
-               Background="{StaticResource additionalColor}"
+                Background="{StaticResource additionalColor}"
                 HorizontalAlignment="Right"
                 Command="{Binding BackFromCartCommand}"
-                VerticalAlignment="Bottom" Margin="0,0,20,20" Cursor=""
+                VerticalAlignment="Bottom" Margin="0,0,20,20"
                 Content="Вернуться"
                 FontSize="10"
-                FontFamily="{StaticResource mainFont}"/>
+                FontFamily="{StaticResource mainFont}"
+                IsCancel="True"/>
     </Grid>
 </Page>

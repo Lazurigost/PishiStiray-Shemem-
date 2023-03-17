@@ -51,6 +51,7 @@ namespace PishiStiray.VeiwModels
         {
             CurrentUser.User = null;
             IsAuthorized = false;
+            Cart.CartProductList.Clear();
             _pageService.ChangePage(new SignInPage());
         }
 

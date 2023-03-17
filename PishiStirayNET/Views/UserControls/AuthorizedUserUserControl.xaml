@@ -43,6 +43,8 @@
                 Margin="10,0,10,0"
                 MaxWidth="100"
                 FontFamily="{StaticResource mainFont}"
-                Command="{Binding LogOutCommand}" Cursor="Hand"/>
+                Command="{Binding LogOutCommand}" 
+                Cursor="Hand"
+                IsCancel="True"/>
     </Grid>
 </UserControl>

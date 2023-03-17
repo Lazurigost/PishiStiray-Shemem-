@@ -43,7 +43,8 @@ namespace PishiStiray.VeiwModels
 
         [ObservableProperty]
         private Product selectedProduct;
-
+        
+        #endregion
 
         #region Changed методы
         partial void OnSearchQueryChanged(string? value)
@@ -60,7 +61,7 @@ namespace PishiStiray.VeiwModels
         {
             UpdateProductsList();
         }
-        #endregion
+        
 
         #endregion
 
