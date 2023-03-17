@@ -39,7 +39,7 @@ namespace PishiStiray.VeiwModels
         private int totalProductsCount;
 
         [ObservableProperty]
-        private List<Product> productsList;
+        private List<ProductDB> productsList;
 
         [ObservableProperty]
         private Product selectedProduct;
@@ -76,13 +76,11 @@ namespace PishiStiray.VeiwModels
 
         public async void UpdateProductsList()
         {
-            List<Product> products = await _productService.GetProductsAsync();
+            List<ProductDB> products = await _productService.GetProductsAsync();
             TotalProductsCount = products.Count;
-
-
             if (SearchQuery != null)
             {
-                products = products.Where(p => p.Title.ToLower().Trim().Contains(SearchQuery.ToLower().Trim())).ToList();
+                products = products.Where(p => p.ProductName.ToLower().Trim().Contains(SearchQuery.ToLower().Trim())).ToList();
             }
 
             switch (SelectedFilter)
@@ -94,15 +92,15 @@ namespace PishiStiray.VeiwModels
                     break;
 
                 case "0 - 9,99%":
-                    products = products.Where(p => p.CurrentDiscount >= 0 && p.CurrentDiscount <= 9.99 || p.CurrentDiscount == null).ToList();
+                    products = products.Where(p => p.ProductDiscountAmount >= 0 && p.ProductDiscountAmount <= 9.99 || p.ProductDiscountAmount == null).ToList();
                     break;
 
                 case "10 - 14,99%":
-                    products = products.Where(p => p.CurrentDiscount >= 10 && p.CurrentDiscount <= 14.99).ToList();
+                    products = products.Where(p => p.ProductDiscountAmount >= 10 && p.ProductDiscountAmount <= 14.99).ToList();
                     break;
 
                 case "15% и более":
-                    products = products.Where(p => p.CurrentDiscount >= 15).ToList();
+                    products = products.Where(p => p.ProductDiscountAmount >= 15).ToList();
                     break;
             }
 

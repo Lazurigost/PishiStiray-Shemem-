@@ -17,9 +17,9 @@ namespace PishiStiray.Services
             _context = context;
         }
 
-        public async Task<List<Models.Product>> GetProductsAsync()
+        public async Task<List<ProductDB>> GetProductsAsync()
         {
-            List<Models.Product> products = new();
+            List<ProductDB> products = new();
             List<ProductDB> productDBs = await _context.Products.ToListAsync();
             await _context.ProductManufacturers.ToListAsync();
 
@@ -28,15 +28,15 @@ namespace PishiStiray.Services
                 Debug.WriteLine(productDBs.Count);
                 foreach (ProductDB product in productDBs)
                 {
-                    products.Add(new Models.Product
+                    products.Add(new ProductDB
                     {
-                        Article = product.ProductArticleNumber,
-                        CurrentDiscount = product.ProductDiscountAmount,
-                        Description = product.ProductDescription,
-                        Image = product.ProductPhoto,
-                        Price = ((float)product.ProductCost),
-                        Manufacturer = product.ProductManufacturerNavigation.ManufacturerName,
-                        Title = product.ProductName
+                        ProductArticleNumber = product.ProductArticleNumber,
+                        ProductDiscountAmount = product.ProductDiscountAmount,
+                        ProductDescription = product.ProductDescription,
+                        ProductPhoto = product.ProductPhoto,
+                        ProductCost = (product.ProductCost),
+                        ProductManufacturer = product.ProductManufacturer,
+                        ProductName = product.ProductName
                     });
                 }
             });

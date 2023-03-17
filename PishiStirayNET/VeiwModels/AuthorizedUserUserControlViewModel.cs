@@ -36,13 +36,13 @@ namespace PishiStiray.VeiwModels
                 switch (CurrentUser.User.UserRole)
                 {
                     case 1:
-                        Role = "Клиент";
+                        Role = "Администратор";
                         break;
                     case 2:
-                        Role = "Менеджер";
+                        Role = "Клиент";
                         break;
                     case 3:
-                        Role = "Администратор";
+                        Role = "Менеджер";
                         break;
 
                 }
