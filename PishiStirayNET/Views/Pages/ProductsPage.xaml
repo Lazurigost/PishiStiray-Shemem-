@@ -145,7 +145,7 @@
                             MaxWidth="590"
                             MinWidth="570"
                             Width="610"
-                            Background="{Binding CurrentDiscount, Converter = {converters:IntToBrushConverter}}"
+                            Background="{Binding ProductDiscountAmount}"
                             BorderBrush="{StaticResource additionalColor}">
                         <Grid Height="auto"
                                 VerticalAlignment="Center"
@@ -157,11 +157,10 @@
                             </Grid.ColumnDefinitions>
 
                             <Image 
-                               Width="130" 
+                               Width="130"
                             Height="130"
-                            Source= "{Binding ImageUrl}"
+                            Source= "{Binding ProductPhoto}"
                             Grid.Column="0"
-                         
                             HorizontalAlignment="Left"/>
 
                             <StackPanel
@@ -170,14 +169,13 @@
                          >
                                 <TextBlock FontWeight="Bold"
                                        Margin="2,3"
-                                       Text="{Binding Title}"/>
+                                       Text="{Binding ProductName}"/>
 
-                                <TextBlock Text="{Binding Description}"
+                                <TextBlock Text="{Binding ProductDescription}"
                                        TextWrapping="Wrap"
-                                         
                                        Margin="2,3,4,3"/>
 
-                                <TextBlock Text="{Binding Manufacturer, 
+                                <TextBlock Text="{Binding ProductManufacturer, 
                                 StringFormat='Производитель - {0}'}"
                                             Margin="0,7"/>
 
@@ -187,7 +185,7 @@
 
                                     <TextBlock Text="Цена - "/>
 
-                                    <TextBlock Text="{Binding Price}"
+                                    <TextBlock Text="{Binding ProductCost}"
                                           >
                                         <TextBlock.Style>
                                             <Style TargetType="{x:Type TextBlock}">
@@ -215,7 +213,7 @@
                               
                             </StackPanel>
 
-                            <TextBlock Text="{Binding CurrentDiscount,
+                            <TextBlock Text="{Binding ProductDiscountAmount,
                             StringFormat= 'Cкидка - {0}%'}"
                                    Grid.Column="2"
                                        VerticalAlignment="Center">

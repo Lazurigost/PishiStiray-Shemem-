@@ -18,7 +18,7 @@ public partial class ProductDB
 
     public int ProductManufacturer { get; set; }
 
-    public decimal ProductCost { get; set; }
+    public decimal? ProductCost { get; set; }
 
     public sbyte? ProductDiscountAmount { get; set; }
 

@@ -104,32 +104,32 @@ namespace PishiStiray.VeiwModels
                     break;
             }
 
-            switch (SelectedOrder)
-            {
-                case "По возрастанию":
+            //switch (SelectedOrder)
+            //{
+            //    case "По возрастанию":
 
-                    products = products.OrderBy(p =>
-                    {
-                        if (p.NewPrice != null)
-                        {
-                            return p.NewPrice;
-                        }
-                        return p.Price;
-                    }).ToList();
+            //        products = products.OrderBy(p =>
+            //        {
+            //            if (p.NewPrice != null)
+            //            {
+            //                return p.NewPrice;
+            //            }
+            //            return p.Price;
+            //        }).ToList();
 
-                    break;
+            //        break;
 
-                case "По убыванию":
-                    products = products.OrderByDescending(p =>
-                    {
-                        if (p.NewPrice != null)
-                        {
-                            return p.NewPrice;
-                        }
-                        return p.Price;
-                    }).ToList();
-                    break;
-            }
+            //    case "По убыванию":
+            //        products = products.OrderByDescending(p =>
+            //        {
+            //            if (p.NewPrice != null)
+            //            {
+            //                return p.NewPrice;
+            //            }
+            //            return p.Price;
+            //        }).ToList();
+            //        break;
+            //}
 
             ProductsList = products;
 

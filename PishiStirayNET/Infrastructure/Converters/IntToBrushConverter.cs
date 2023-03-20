@@ -10,13 +10,13 @@ using System.Windows.Media;
 
 namespace PishiStiray.Infrastructure.Converters
 {
-    public class IntToBrushConverter :  MarkupExtension,IValueConverter
+    public class IntToBrushConverter : MarkupExtension, IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            float? number = (float?)value;
+            decimal? number = (decimal?)value;
 
-            if(number == null || number <= 15)
+            if (number == null || number <= 15)
             {
                 return new SolidColorBrush(Colors.White);
             }

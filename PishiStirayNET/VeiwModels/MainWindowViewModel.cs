@@ -28,7 +28,6 @@ namespace PishiStiray.VeiwModels
         public MainWindowViewModel(PageService pageService)
         {
             _pageService = pageService;
-
             _pageService.OnPageChanged += (page) => PageSource = page;
             _pageService.ChangePage(new SignInPage());
         }
