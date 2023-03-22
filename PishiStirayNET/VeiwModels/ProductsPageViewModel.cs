@@ -42,7 +42,7 @@ namespace PishiStiray.VeiwModels
         private List<ProductDB> productsList;
 
         [ObservableProperty]
-        private Product selectedProduct;
+        private ProductDB selectedProduct;
         
         #endregion
 
@@ -77,6 +77,13 @@ namespace PishiStiray.VeiwModels
         public async void UpdateProductsList()
         {
             List<ProductDB> products = await _productService.GetProductsAsync();
+            foreach (var product in products)
+            {
+                if (product.ProductPhoto == "C:\\Users\\МОиБД\\source\\repos\\PishiStiray-Shemem-\\PishiStirayNET\\bin\\Debug\\net7.0-windows\\Resources\\")
+                {
+                    product.ProductPhoto = "C:\\Users\\МОиБД\\source\\repos\\PishiStiray-Shemem-\\PishiStirayNET\\bin\\Debug\\net7.0-windows\\Resources\\picture.png";
+                }
+            }
             TotalProductsCount = products.Count;
             if (SearchQuery != null)
             {

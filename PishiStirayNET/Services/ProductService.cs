@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using PishiStiray.Models.DbEntities;
+using System.IO;
 
 namespace PishiStiray.Services
 {
@@ -33,20 +34,19 @@ namespace PishiStiray.Services
                         ProductArticleNumber = product.ProductArticleNumber,
                         ProductDiscountAmount = product.ProductDiscountAmount,
                         ProductDescription = product.ProductDescription,
-                        ProductPhoto = product.ProductPhoto,
-                        ProductCost = (product.ProductCost),
+                        ProductPhoto = Path.GetFullPath(@$"Resources\{product.ProductPhoto}"),
+                        ProductCost = product.ProductCost,
                         ProductManufacturer = product.ProductManufacturer,
                         ProductName = product.ProductName
                     });
                 }
             });
-
             return products;
         }
         
-        public async Task<ObservableCollection<Product>> GetCartItemsAsync(ObservableCollection<CartItem> cartItems)
+        public async Task<ObservableCollection<ProductDB>> GetCartItemsAsync(ObservableCollection<CartItem> cartItems)
         {
-            ObservableCollection<Product> cartProducts = new();
+            ObservableCollection<ProductDB> cartProducts = new();
 
             foreach (CartItem cartItem in cartItems)
             {

@@ -15,7 +15,7 @@ namespace PishiStiray.VeiwModels
         #region Свойства
 
         [ObservableProperty]
-        private ObservableCollection<Product> cartItemsList;
+        private ObservableCollection<ProductDB> cartItemsList;
 
         [ObservableProperty]
         private ObservableCollection<CartItem> cartProductsList;
@@ -24,13 +24,13 @@ namespace PishiStiray.VeiwModels
         private List<Delivery> pickupPoints;
 
         [ObservableProperty]
-        private Product selectedCartItem;
+        private ProductDB selectedCartItem;
 
         [ObservableProperty]
         private CartItem selectedCart;
 
         [ObservableProperty]
-        private float? totalPrice = 0;
+        private decimal? totalPrice = 0;
 
         [ObservableProperty]
         private float? finalPrice = 0;
@@ -46,6 +46,8 @@ namespace PishiStiray.VeiwModels
             cartProductsList = Cart.CartProductList;
             UpdateCart();
         }
+
+        //Обновление корзины
         public async void UpdateCart()
         {
             cartItemsList = await productService_.GetCartItemsAsync(cartProductsList);
@@ -55,12 +57,15 @@ namespace PishiStiray.VeiwModels
 
             foreach (var cartItem in cartProductsList) 
             {
-                totalPrice += cartItem.product.Price;
-                finalPrice += cartItem.product.NewPrice;
+                totalPrice += cartItem.product.ProductCost;
+                //finalPrice += cartItem.product.NewPrice;
             }
 
             //pickupPoints = await productService_.GetPointsAsync();
         }
+        #region Команды
+
+        //Удаление из корзины
         [RelayCommand]
         private void RemoveFromCart()
         {
@@ -76,15 +81,17 @@ namespace PishiStiray.VeiwModels
                         break;
                     }
                 }
-                totalPrice -= selectedCartItem.Price;
-                finalPrice -= selectedCartItem.NewPrice;
+                totalPrice -= selectedCartItem.ProductCost;
+                //finalPrice -= selectedCartItem.NewPrice;
                 cartItemsList.Remove(SelectedCartItem);
             }
         }
+        //Возвращение по кнопке
         [RelayCommand]
         private void BackFromCart() 
         {
             pageService_.ChangePage(new ProductsPage());
         }
+        #endregion
     }
 }
