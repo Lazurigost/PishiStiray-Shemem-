@@ -44,7 +44,7 @@ namespace PishiStiray.VeiwModels
         [ObservableProperty]
         private ProductDB selectedProduct;
         [ObservableProperty]
-        private float newPrice;
+        private string? newPrice;
         
         #endregion
 
@@ -85,6 +85,7 @@ namespace PishiStiray.VeiwModels
                 {
                     product.ProductPhoto = "C:\\Users\\МОиБД\\source\\repos\\PishiStiray-Shemem-\\PishiStirayNET\\bin\\Debug\\net7.0-windows\\Resources\\picture.png";
                 }
+                newPrice = (product.ProductCost - (product.ProductCost * (product.ProductCurrentDiscount / 100))).ToString();
             }
             TotalProductsCount = products.Count;
             if (SearchQuery != null)
