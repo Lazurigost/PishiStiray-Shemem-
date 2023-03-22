@@ -12,7 +12,5 @@ namespace PishiStiray.Services
         {
             OnPageChanged?.Invoke(page);
         }
-
-
     }
 }

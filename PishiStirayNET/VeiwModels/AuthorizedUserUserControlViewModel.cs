@@ -8,6 +8,7 @@ namespace PishiStiray.VeiwModels
 {
     public partial class AuthorizedUserUserControlViewModel : ObservableObject
     {
+        #region Свойства
         [ObservableProperty]
         private string? gridForRow;
 
@@ -22,7 +23,7 @@ namespace PishiStiray.VeiwModels
 
         [ObservableProperty]
         private bool isAuthorized;
-
+        #endregion
 
         private readonly PageService _pageService;
 

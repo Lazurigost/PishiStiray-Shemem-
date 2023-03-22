@@ -43,6 +43,8 @@ namespace PishiStiray.VeiwModels
 
         [ObservableProperty]
         private ProductDB selectedProduct;
+        [ObservableProperty]
+        private float newPrice;
         
         #endregion
 
