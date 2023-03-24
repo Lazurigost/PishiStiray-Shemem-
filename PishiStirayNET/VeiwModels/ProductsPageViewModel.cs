@@ -181,5 +181,11 @@ namespace PishiStiray.VeiwModels
         {
             _pageService.ChangePage(new CartPage());
         }
+        //Переход на страницу изменения продукта
+        [RelayCommand]
+        private void EditProductProceed()
+        {
+            _pageService.ChangePage(new EditProductPage());
+        }
     }
 }
