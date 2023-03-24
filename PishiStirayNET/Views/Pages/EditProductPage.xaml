@@ -6,9 +6,69 @@
       xmlns:local="clr-namespace:PishiStiray.Views.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="EditProductPage">
+      Title="EditProductPage"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      DataContext="{Binding EditProductPageViewModel, Source={StaticResource ViewModelLocator}}"
+      >
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions> 
+
+        <Image Source="{Binding ProductImage}"
+               />
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="1">
+            <TextBlock Text="Артикул:"
+                       FontFamily="{StaticResource mainFont}"
+                       VerticalAlignment="Center"/>
+            <TextBox materialDesign:HintAssist.Hint="Введите артикул"
+                     VerticalAlignment="Center"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     FontFamily="{StaticResource mainFont}"
+                     Text="{Binding ProductArticleNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="2">
+            <TextBlock Text="Название:"
+                       FontFamily="{StaticResource mainFont}"
+                       VerticalAlignment="Center"/>
+            <TextBox materialDesign:HintAssist.Hint="Введите название"
+                     VerticalAlignment="Center"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     FontFamily="{StaticResource mainFont}"
+                     Text="{Binding ProductName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="3">
+            <TextBlock Text="Описание:"
+                       FontFamily="{StaticResource mainFont}"
+                       VerticalAlignment="Center"/>
+            <TextBox materialDesign:HintAssist.Hint="Введите описание"
+                     VerticalAlignment="Center"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     FontFamily="{StaticResource mainFont}"
+                     Text="{Binding ProductDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="4">
+            <TextBlock Text="Категория:"
+                       FontFamily="{StaticResource mainFont}"
+                       VerticalAlignment="Center"/>
+            <ComboBox materialDesign:HintAssist.Hint="Введите название"
+                     VerticalAlignment="Center"
+                     FontFamily="{StaticResource mainFont}"
+                     Text="{Binding ProductCategory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
     </Grid>
 </Page>
