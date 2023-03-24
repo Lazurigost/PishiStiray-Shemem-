@@ -93,12 +93,12 @@ namespace PishiStiray.VeiwModels
                 products = products.Where(p => p.ProductName.ToLower().Trim().Contains(SearchQuery.ToLower().Trim())).ToList();
             }
 
+            //Фильтрация
             switch (SelectedFilter)
             {
                 case "Все диапазоны":
 
                     products = products.ToList();
-
                     break;
 
                 case "0 - 9,99%":
