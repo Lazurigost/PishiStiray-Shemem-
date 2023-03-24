@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using PishiStiray.Views.Pages;
 using System.Security.Policy;
+using System.Windows.Controls;
+using System.Linq;
 
 namespace PishiStiray.VeiwModels
 {
@@ -28,10 +30,11 @@ namespace PishiStiray.VeiwModels
 
         [ObservableProperty]
         private CartItem selectedCart;
-
+        
         [ObservableProperty]
         private decimal? totalPrice = 0;
 
+        [NotifyPropertyChangedFor(nameof(TotalPrice))]
         [ObservableProperty]
         private float? finalPrice = 0;
         #endregion
@@ -55,7 +58,7 @@ namespace PishiStiray.VeiwModels
             totalPrice = 0;
             finalPrice = 0;
 
-            foreach (var cartItem in cartProductsList) 
+            foreach (var cartItem in cartProductsList)
             {
                 totalPrice += cartItem.product.ProductCost;
                 //finalPrice += cartItem.product.NewPrice;
@@ -77,13 +80,13 @@ namespace PishiStiray.VeiwModels
                     if (SelectedCartItem == CItem.product)
                     {
                         cartProductsList.Remove(CItem);
-                        
                         break;
                     }
                 }
                 totalPrice -= selectedCartItem.ProductCost;
                 //finalPrice -= selectedCartItem.NewPrice;
                 cartItemsList.Remove(SelectedCartItem);
+                UpdateCart();
             }
         }
         //Возвращение по кнопке

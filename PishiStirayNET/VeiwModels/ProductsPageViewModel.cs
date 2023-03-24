@@ -43,6 +43,7 @@ namespace PishiStiray.VeiwModels
 
         [ObservableProperty]
         private ProductDB selectedProduct;
+        
         [ObservableProperty]
         private string? newPrice;
         
@@ -78,6 +79,7 @@ namespace PishiStiray.VeiwModels
 
         public async void UpdateProductsList()
         {
+            //Получение списка
             List<ProductDB> products = await _productService.GetProductsAsync();
             foreach (var product in products)
             {
@@ -88,6 +90,8 @@ namespace PishiStiray.VeiwModels
                 newPrice = (product.ProductCost - (product.ProductCost * (product.ProductCurrentDiscount / 100))).ToString();
             }
             TotalProductsCount = products.Count;
+
+            //Поиск
             if (SearchQuery != null)
             {
                 products = products.Where(p => p.ProductName.ToLower().Trim().Contains(SearchQuery.ToLower().Trim())).ToList();
@@ -114,6 +118,7 @@ namespace PishiStiray.VeiwModels
                     break;
             }
 
+            //Соритировка
             //switch (SelectedOrder)
             //{
             //    case "По возрастанию":
@@ -146,7 +151,7 @@ namespace PishiStiray.VeiwModels
             CurrentProductsCount = products.Count;
         }
 
-
+        //Добавление в корзину
         [RelayCommand]
         private void AddProductToCart()
         {
@@ -170,7 +175,7 @@ namespace PishiStiray.VeiwModels
             }
         }
 
-
+        //Переход в корзину
         [RelayCommand]
         private void GoToCart()
         {

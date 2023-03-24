@@ -246,6 +246,9 @@
                     <MenuItem Header="Добавить в корзину"
                               FontSize="12"
                               Command="{Binding AddProductToCartCommand}"/>
+                    <MenuItem Header="Изменить товар"
+                              FontSize="12"
+                              Command="{Binding EditProductProceedCommand}"/>
                 </ContextMenu>
             </ListView.ContextMenu>
             

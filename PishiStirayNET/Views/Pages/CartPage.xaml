@@ -39,22 +39,20 @@
         </ComboBox>
 
         <StackPanel Orientation="Horizontal"
-                    Grid.Column="1" 
-                    VerticalAlignment="Center" 
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
                     HorizontalAlignment="Center">
             <TextBlock Text="Цена без скидки:"
-                   FontFamily="{StaticResource mainFont}"
-                  />
-            <TextBlock Text="{Binding TotalPrice, StringFormat=' {0}₽ '}"/>
+                   FontFamily="{StaticResource mainFont}"/>
+            <TextBlock Text="{Binding TotalPrice, StringFormat=' {0}₽ ',Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal"
-                    Grid.Column="2" 
-                    VerticalAlignment="Center" 
+                    Grid.Column="2"
+                    VerticalAlignment="Center"
                     HorizontalAlignment="Center">
             <TextBlock Text="Цена со скидкой:"
-                   FontFamily="{StaticResource mainFont}"
-                  />
+                   FontFamily="{StaticResource mainFont}"/>
             <TextBlock Text="{Binding FinalPrice, StringFormat=' {0}₽ '}"/>
         </StackPanel>
 

@@ -29,6 +29,7 @@ namespace PishiStiray
             services.AddTransient<ProductsPageViewModel>();
             services.AddTransient<AuthorizedUserUserControlViewModel>();
             services.AddTransient<CartPageViewModel>();
+            services.AddTransient<EditProductPageViewModel>();
 
             #endregion
 
@@ -54,5 +55,6 @@ namespace PishiStiray
         public ProductsPageViewModel ProductsPageViewModel => _provider.GetRequiredService<ProductsPageViewModel>();
         public AuthorizedUserUserControlViewModel AuthorizedUserUserControlViewModel => _provider.GetRequiredService<AuthorizedUserUserControlViewModel>();
         public CartPageViewModel CartPageViewModel => _provider?.GetRequiredService<CartPageViewModel>();
+        public EditProductPageViewModel EditProductPageViewModel => _provider.GetRequiredService<EditProductPageViewModel>();
     }
 }
