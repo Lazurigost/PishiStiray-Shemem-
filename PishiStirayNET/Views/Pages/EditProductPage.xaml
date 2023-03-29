@@ -34,7 +34,6 @@
                        VerticalAlignment="Center"/>
             <TextBox materialDesign:HintAssist.Hint="Введите артикул"
                      VerticalAlignment="Center"
-                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      FontFamily="{StaticResource mainFont}"
                      Text="{Binding ProductArticleNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Margin="20,0,0,0"/>
@@ -46,7 +45,6 @@
                        VerticalAlignment="Center"/>
             <TextBox materialDesign:HintAssist.Hint="Введите название"
                      VerticalAlignment="Center"
-                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      FontFamily="{StaticResource mainFont}"
                      Text="{Binding ProductName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Margin="20,0,0,0"/>
@@ -80,7 +78,6 @@
                        VerticalAlignment="Center"/>
             <TextBox materialDesign:HintAssist.Hint="Введите описание"
                      VerticalAlignment="Center"
-                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      FontFamily="{StaticResource mainFont}"
                      Text="{Binding ProductDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Margin="20,0,0,0"/>
