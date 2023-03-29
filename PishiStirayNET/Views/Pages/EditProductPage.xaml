@@ -36,7 +36,8 @@
                      VerticalAlignment="Center"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      FontFamily="{StaticResource mainFont}"
-                     Text="{Binding ProductArticleNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                     Text="{Binding ProductArticleNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="20,0,0,0"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal"
                     Grid.Row="2">
@@ -47,7 +48,8 @@
                      VerticalAlignment="Center"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      FontFamily="{StaticResource mainFont}"
-                     Text="{Binding ProductName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                     Text="{Binding ProductName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="20,0,0,0"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal"
                     Grid.Row="3">
@@ -68,7 +70,67 @@
             <ComboBox materialDesign:HintAssist.Hint="Введите название"
                      VerticalAlignment="Center"
                      FontFamily="{StaticResource mainFont}"
-                     Text="{Binding ProductCategory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                     Text="{Binding ProductCategory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="20,0,0,0"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="3">
+            <TextBlock Text="Описание:"
+                       FontFamily="{StaticResource mainFont}"
+                       VerticalAlignment="Center"/>
+            <TextBox materialDesign:HintAssist.Hint="Введите описание"
+                     VerticalAlignment="Center"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     FontFamily="{StaticResource mainFont}"
+                     Text="{Binding ProductDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="20,0,0,0"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="5">
+            <TextBlock Text="Цена:"
+                       FontFamily="{StaticResource mainFont}"
+                       VerticalAlignment="Center"/>
+            <TextBox materialDesign:HintAssist.Hint="Введите цену"
+                     VerticalAlignment="Center"
+                     FontFamily="{StaticResource mainFont}"
+                     Text="{Binding ProductCategory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="20,0,0,0"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="0"
+                    Grid.Column="1">
+            <TextBlock Text="Производитель:"
+                       FontFamily="{StaticResource mainFont}"
+                       VerticalAlignment="Center"/>
+            <ComboBox materialDesign:HintAssist.Hint="Введите название"
+                     VerticalAlignment="Center"
+                     FontFamily="{StaticResource mainFont}"
+                     Text="{Binding ProductCategory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="20,0,0,0"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="1"
+                    Grid.Column="1">
+            <TextBlock Text="Размер скидки:"
+                       FontFamily="{StaticResource mainFont}"
+                       VerticalAlignment="Center"/>
+            <TextBox materialDesign:HintAssist.Hint="Введите скидку"
+                     VerticalAlignment="Center"
+                     FontFamily="{StaticResource mainFont}"
+                     Text="{Binding ProductCategory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="20,0,0,0"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="2"
+                    Grid.Column="1">
+            <TextBlock Text="Кол-во товара на складе:"
+                       FontFamily="{StaticResource mainFont}"
+                       VerticalAlignment="Center"/>
+            <TextBox materialDesign:HintAssist.Hint="Введите кол-во"
+                     VerticalAlignment="Center"
+                     FontFamily="{StaticResource mainFont}"
+                     Text="{Binding ProductCategory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="20,0,0,0"/>
         </StackPanel>
     </Grid>
 </Page>

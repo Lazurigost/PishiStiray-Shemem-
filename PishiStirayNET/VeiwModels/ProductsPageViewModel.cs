@@ -45,7 +45,7 @@ namespace PishiStiray.VeiwModels
         private ProductDB selectedProduct;
         
         [ObservableProperty]
-        private string? newPrice;
+        private float? newPrice;
         
         #endregion
 
@@ -82,12 +82,13 @@ namespace PishiStiray.VeiwModels
             //Получение списка
             List<ProductDB> products = await _productService.GetProductsAsync();
             foreach (var product in products)
-            {
+            {               
                 if (product.ProductPhoto == "C:\\Users\\МОиБД\\source\\repos\\PishiStiray-Shemem-\\PishiStirayNET\\bin\\Debug\\net7.0-windows\\Resources\\")
                 {
                     product.ProductPhoto = "C:\\Users\\МОиБД\\source\\repos\\PishiStiray-Shemem-\\PishiStirayNET\\bin\\Debug\\net7.0-windows\\Resources\\picture.png";
                 }
-                newPrice = (product.ProductCost - (product.ProductCost * (product.ProductCurrentDiscount / 100))).ToString();
+                newPrice = (float?)(product.ProductCost - (product.ProductCost * (product.ProductCurrentDiscount / 100)));
+               
             }
             TotalProductsCount = products.Count;
 
