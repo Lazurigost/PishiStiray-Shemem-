@@ -44,8 +44,6 @@ namespace PishiStiray.VeiwModels
         [ObservableProperty]
         private ProductDB selectedProduct;
         
-        [ObservableProperty]
-        private float? newPrice;
         
         #endregion
 
@@ -87,7 +85,6 @@ namespace PishiStiray.VeiwModels
                 {
                     product.ProductPhoto = "C:\\Users\\МОиБД\\source\\repos\\PishiStiray-Shemem-\\PishiStirayNET\\bin\\Debug\\net7.0-windows\\Resources\\picture.png";
                 }
-                newPrice = (float?)(product.ProductCost - (product.ProductCost * (product.ProductCurrentDiscount / 100)));
                
             }
             TotalProductsCount = products.Count;
@@ -120,32 +117,18 @@ namespace PishiStiray.VeiwModels
             }
 
             //Соритировка
-            //switch (SelectedOrder)
-            //{
-            //    case "По возрастанию":
+            switch (SelectedOrder)
+            {
+                case "По возрастанию":
 
-            //        products = products.OrderBy(p =>
-            //        {
-            //            if (p.NewPrice != null)
-            //            {
-            //                return p.NewPrice;
-            //            }
-            //            return p.Price;
-            //        }).ToList();
+                    products = products.OrderBy( p => p.NewPrice).ToList();
 
-            //        break;
+                    break;
 
-            //    case "По убыванию":
-            //        products = products.OrderByDescending(p =>
-            //        {
-            //            if (p.NewPrice != null)
-            //            {
-            //                return p.NewPrice;
-            //            }
-            //            return p.Price;
-            //        }).ToList();
-            //        break;
-            //}
+                case "По убыванию":
+                    products = products.OrderByDescending(p => p.NewPrice).ToList();
+                    break;
+            }
 
             ProductsList = products;
 

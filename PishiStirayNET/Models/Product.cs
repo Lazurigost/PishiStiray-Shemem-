@@ -23,7 +23,6 @@ namespace PishiStiray.Models
             }
             set
             {
-
                 if (value == null || string.IsNullOrWhiteSpace(value))
                 {
                     _image = "picture.png";

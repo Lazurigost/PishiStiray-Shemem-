@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using PishiStiray.Models.DbEntities;
 
 namespace PishiStiray;
@@ -37,4 +38,22 @@ public partial class ProductDB
     public virtual Unit? ProductDeliveryNavigation { get; set; }
 
     public virtual Manufacturer ProductManufacturerNavigation { get; set; } = null!;
+    public decimal? NewPrice
+    {
+        get
+        {
+            if (ProductDiscountAmount != 0)
+            {
+                return ((ProductCost - (ProductCost * (ProductDiscountAmount / 100))));
+            }
+            return 0;
+        }
+    }
+    public bool HaveDiscount
+    {
+        get
+        {
+            return NewPrice != null;
+        }
+    }
 }
