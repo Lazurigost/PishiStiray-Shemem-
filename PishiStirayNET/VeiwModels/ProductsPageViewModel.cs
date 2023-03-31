@@ -85,7 +85,6 @@ namespace PishiStiray.VeiwModels
                 {
                     product.ProductPhoto = "C:\\Users\\МОиБД\\source\\repos\\PishiStiray-Shemem-\\PishiStirayNET\\bin\\Debug\\net7.0-windows\\Resources\\picture.png";
                 }
-               
             }
             TotalProductsCount = products.Count;
 
@@ -169,7 +168,12 @@ namespace PishiStiray.VeiwModels
         [RelayCommand]
         private void EditProductProceed()
         {
-            _pageService.ChangePage(new EditProductPage());
+            if (SelectedProduct != null)
+            {
+                EditableProduct.editedProduct = SelectedProduct;
+                _pageService.ChangePage(new EditProductPage());
+            }
+           
         }
     }
 }

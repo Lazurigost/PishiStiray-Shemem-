@@ -3,7 +3,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using PishiStiray.Services;
 using PishiStiray.Views.Pages;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -41,7 +40,7 @@ namespace PishiStiray.VeiwModels
 
 
         #region Команды
-
+        //Авторизация
         [RelayCommand(CanExecute = nameof(CanSignIn))]
         private async void SignIn()
         {
@@ -60,7 +59,7 @@ namespace PishiStiray.VeiwModels
 
 
         }
-
+        //Валидация
         private bool CanSignIn()
         {
             if (string.IsNullOrWhiteSpace(login) == true || string.IsNullOrEmpty(password) == true)
@@ -70,7 +69,7 @@ namespace PishiStiray.VeiwModels
             return true;
         }
 
-
+        //Переход на страницу продуктов
         [RelayCommand]
         private void GoToProductsPage() => _pageService.ChangePage(new ProductsPage());
 

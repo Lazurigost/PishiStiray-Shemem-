@@ -207,7 +207,8 @@
                                     <TextBlock 
                                         x:Name="newPriceTextBlock"
                                         Text="{Binding NewPrice}"
-                                           Margin="5,0"/>
+                                        FontFamily="{StaticResource mainFont}"
+                                        Margin="5,0"/>
 
                                 </StackPanel>
                               

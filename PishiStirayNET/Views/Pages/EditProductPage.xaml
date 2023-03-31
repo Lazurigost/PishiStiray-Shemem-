@@ -36,6 +36,7 @@
                      VerticalAlignment="Center"
                      FontFamily="{StaticResource mainFont}"
                      Text="{Binding ProductArticleNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     
                      Margin="20,0,0,0"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal"
