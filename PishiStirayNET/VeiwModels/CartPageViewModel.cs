@@ -34,7 +34,6 @@ namespace PishiStiray.VeiwModels
         [ObservableProperty]
         private decimal? totalPrice = 0;
 
-        [NotifyPropertyChangedFor(nameof(TotalPrice))]
         [ObservableProperty]
         private decimal? finalPrice = 0;
         #endregion
@@ -57,11 +56,13 @@ namespace PishiStiray.VeiwModels
 
             totalPrice = 0;
             finalPrice = 0;
+            OnPropertyChanged();
 
             foreach (var cartItem in cartProductsList)
             {
                 totalPrice += cartItem.product.ProductCost;
                 finalPrice += cartItem.product.NewPrice;
+                OnPropertyChanged();
             }
 
             //pickupPoints = await productService_.GetPointsAsync();
@@ -87,6 +88,7 @@ namespace PishiStiray.VeiwModels
                 finalPrice -= selectedCartItem.NewPrice;
                 cartItemsList.Remove(SelectedCartItem);
                 UpdateCart();
+                OnPropertyChanged();
             }
         }
         //Возвращение по кнопке

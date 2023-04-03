@@ -79,6 +79,8 @@ namespace PishiStiray.VeiwModels
         {
             //Получение списка
             List<ProductDB> products = await _productService.GetProductsAsync();
+            
+            //Присваивание продукту фотографии
             foreach (var product in products)
             {               
                 if (product.ProductPhoto == "C:\\Users\\МОиБД\\source\\repos\\PishiStiray-Shemem-\\PishiStirayNET\\bin\\Debug\\net7.0-windows\\Resources\\")

@@ -44,7 +44,7 @@ public partial class ProductDB
         {
             if (ProductDiscountAmount != 0)
             {
-                return ((ProductCost - (ProductCost * (ProductDiscountAmount / 100))));
+                return ProductCost - (ProductCost * ((decimal?)Convert.ToSingle(ProductDiscountAmount) / 100));
             }
             return 0;
         }

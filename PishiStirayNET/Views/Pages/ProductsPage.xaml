@@ -127,7 +127,8 @@
                   Margin="0,10,0,0"
                   HorizontalContentAlignment="Center"
                   SelectedItem="{Binding SelectedProduct}"
-                  ItemsSource="{Binding ProductsList}"> 
+                  ItemsSource="{Binding ProductsList}"
+                  SelectionMode="Single"> 
 
 
             <ListView.ItemsPanel>
