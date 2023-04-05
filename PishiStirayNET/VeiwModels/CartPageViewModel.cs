@@ -54,13 +54,13 @@ namespace PishiStiray.VeiwModels
         {
             cartItemsList = await productService_.GetCartItemsAsync(cartProductsList);
 
-            totalPrice = 0;
-            finalPrice = 0;
+            TotalPrice = 0;
+            FinalPrice = 0;
 
             foreach (var cartItem in cartProductsList)
             {
-                totalPrice += cartItem.product.ProductCost;
-                finalPrice += cartItem.product.NewPrice;
+                TotalPrice += cartItem.product.ProductCost;
+                FinalPrice += cartItem.product.NewPrice;
             }
 
             //pickupPoints = await productService_.GetPointsAsync();
@@ -82,12 +82,12 @@ namespace PishiStiray.VeiwModels
                         break;
                     }
                 }
-                totalPrice -= selectedCartItem.ProductCost;
-                finalPrice -= selectedCartItem.NewPrice;
+                
                 cartItemsList.Remove(SelectedCartItem);
                 UpdateCart();
             }
         }
+
         //Возвращение по кнопке
         [RelayCommand]
         private void BackFromCart() 

@@ -48,12 +48,15 @@ namespace PishiStiray.Services
         public async Task<ObservableCollection<ProductDB>> GetCartItemsAsync(ObservableCollection<CartItem> cartItems)
         {
             ObservableCollection<ProductDB> cartProducts = new();
-
-            foreach (CartItem cartItem in cartItems)
+            await Task.Run(() =>
             {
-                cartProducts.Add(cartItem.product);
-            }
+                foreach (CartItem cartItem in cartItems)
+                {
+                    cartProducts.Add(cartItem.product);
+                }
 
+                
+            });
             return cartProducts;
         }
 
