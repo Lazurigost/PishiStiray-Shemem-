@@ -19,7 +19,7 @@ namespace PishiStiray.Services
             _context = context;
         }
 
-        public async Task<List<ProductDB>> GetProductsAsync()
+        public async Task<List<ProductDB>> GetProductsAsync(string bruh)
         {
             List<ProductDB> products = new();
             List<ProductDB> productDBs = await _context.Products.ToListAsync();
@@ -44,6 +44,7 @@ namespace PishiStiray.Services
                 }
             });
             return products;
+            
         }
         
         public async Task<ObservableCollection<ProductDB>> GetCartItemsAsync(ObservableCollection<CartItem> cartItems)
