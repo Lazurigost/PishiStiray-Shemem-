@@ -52,7 +52,7 @@ namespace PishiStiray.VeiwModels
         //Обновление корзины
         public async void UpdateCart()
         {
-            cartItemsList = await productService_.GetCartItemsAsync(cartProductsList);
+            CartItemsList = await productService_.GetCartItemsAsync(cartProductsList);
 
             TotalPrice = 0;
             FinalPrice = 0;
