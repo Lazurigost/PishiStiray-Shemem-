@@ -24,6 +24,7 @@ namespace PishiStiray.Services
             List<ProductDB> products = new();
             List<ProductDB> productDBs = await _context.Products.ToListAsync();
             await _context.ProductManufacturers.ToListAsync();
+            await _context.Deliveries.AsNoTracking().ToListAsync();
 
             await Task.Run(() =>
             {

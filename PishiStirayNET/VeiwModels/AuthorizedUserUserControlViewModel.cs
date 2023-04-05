@@ -34,20 +34,20 @@ namespace PishiStiray.VeiwModels
             if (CurrentUser.User != null)
             {
                 Fullname = $"{CurrentUser.User.UserSurname} {CurrentUser.User.UserName} {CurrentUser.User.UserPatronymic}";
-                Role = CurrentUser.User.UserRoleNavigation.RoleName.ToString();
-                //switch (CurrentUser.User.UserRole)
-                //{
-                //    case 1:
-                //        Role = "Администратор";
-                //        break;
-                //    case 2:
-                //        Role = "Клиент";
-                //        break;
-                //    case 3:
-                //        Role = "Менеджер";
-                //        break;
+                //Role = CurrentUser.User.UserRoleNavigation.RoleName.ToString();
+                switch (CurrentUser.User.UserRole)
+                {
+                    case 1:
+                        Role = "Администратор";
+                        break;
+                    case 2:
+                        Role = "Клиент";
+                        break;
+                    case 3:
+                        Role = "Менеджер";
+                        break;
 
-                //}
+                }
                 IsAuthorized = true;
                 exit = "Выйти";
                 gridForRow = "1";
