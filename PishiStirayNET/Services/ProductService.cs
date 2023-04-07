@@ -19,7 +19,7 @@ namespace PishiStiray.Services
             _context = context;
         }
 
-        public async Task<List<ProductDB>> GetProductsAsync(string bruh)
+        public async Task<List<ProductDB>> GetProductsAsync()
         {
             List<ProductDB> products = new();
             List<ProductDB> productDBs = await _context.Products.ToListAsync();
