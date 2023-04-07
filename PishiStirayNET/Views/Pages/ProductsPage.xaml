@@ -250,6 +250,7 @@
                               Command="{Binding AddProductToCartCommand}"/>
                     <MenuItem Header="Изменить товар"
                               FontSize="12"
+                              Visibility="{Binding IsAdmin}"
                               Command="{Binding EditProductProceedCommand}"/>
                 </ContextMenu>
             </ListView.ContextMenu>

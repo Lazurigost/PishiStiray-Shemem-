@@ -7,6 +7,7 @@ using PishiStiray.Views.Pages;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Windows;
 
 namespace PishiStiray.VeiwModels
 {
@@ -43,6 +44,8 @@ namespace PishiStiray.VeiwModels
 
         [ObservableProperty]
         private ProductDB selectedProduct;
+        [ObservableProperty]
+        private Visibility isAdmin;
         
         
         #endregion
@@ -77,6 +80,22 @@ namespace PishiStiray.VeiwModels
 
         public async void UpdateProductsList()
         {
+            if (CurrentUser.User != null)
+            {
+                if (CurrentUser.User.UserRole != 1)
+                {
+                    IsAdmin = Visibility.Hidden;
+                }
+                else
+                {
+                    IsAdmin = Visibility.Visible;
+                }
+
+            }
+            else
+            {
+                IsAdmin = Visibility.Hidden;
+            }
             //Получение списка
             List<ProductDB> products = await _productService.GetProductsAsync();
             
