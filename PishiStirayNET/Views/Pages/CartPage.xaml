@@ -40,7 +40,8 @@
                     <TextBlock>
                         <TextBlock.Text>
                             <MultiBinding>
-                                <Binding Path="{Binding City}"/>
+                                <Binding Source="{Binding City}"/>
+                                <Binding Source="{Binding Street}"/>
                             </MultiBinding>
                         </TextBlock.Text>
                     </TextBlock>
