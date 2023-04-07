@@ -14,7 +14,7 @@ namespace PishiStiray.Infrastructure.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            decimal? number = (decimal?)value;
+            float? number = (float?)value;
 
             if (number == null || number <= 15)
             {

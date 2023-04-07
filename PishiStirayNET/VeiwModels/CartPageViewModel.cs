@@ -9,6 +9,7 @@ using PishiStiray.Views.Pages;
 using System.Security.Policy;
 using System.Windows.Controls;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace PishiStiray.VeiwModels
 {
@@ -62,8 +63,8 @@ namespace PishiStiray.VeiwModels
                 TotalPrice += cartItem.product.ProductCost;
                 FinalPrice += cartItem.product.NewPrice;
             }
-
-            //pickupPoints = await productService_.GetPointsAsync();
+            await Task.Delay(200);
+            PickupPoints = await productService_.GetPointsAsync();
         }
         #region Команды
 

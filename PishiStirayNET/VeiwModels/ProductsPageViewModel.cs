@@ -80,22 +80,22 @@ namespace PishiStiray.VeiwModels
 
         public async void UpdateProductsList()
         {
-            if (CurrentUser.User != null)
-            {
-                if (CurrentUser.User.UserRole != 1)
-                {
-                    IsAdmin = Visibility.Hidden;
-                }
-                else
-                {
-                    IsAdmin = Visibility.Visible;
-                }
+            //if (CurrentUser.User != null)
+            //{
+            //    if (CurrentUser.User.UserRole != 1)
+            //    {
+            //        IsAdmin = Visibility.Hidden;
+            //    }
+            //    else
+            //    {
+            //        IsAdmin = Visibility.Visible;
+            //    }
 
-            }
-            else
-            {
-                IsAdmin = Visibility.Hidden;
-            }
+            //}
+            //else
+            //{
+            //    IsAdmin = Visibility.Hidden;
+            //}
             //Получение списка
             List<ProductDB> products = await _productService.GetProductsAsync();
             

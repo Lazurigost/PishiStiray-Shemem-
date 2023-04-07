@@ -21,8 +21,8 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions> 
 
         <Image Source="{Binding ProductImage}"
@@ -35,7 +35,7 @@
             <TextBox materialDesign:HintAssist.Hint="Введите артикул"
                      VerticalAlignment="Center"
                      FontFamily="{StaticResource mainFont}"
-                     Text="{Binding ProductArticleNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Text="{Binding Article, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      
                      Margin="20,0,0,0"/>
         </StackPanel>
@@ -47,7 +47,7 @@
             <TextBox materialDesign:HintAssist.Hint="Введите название"
                      VerticalAlignment="Center"
                      FontFamily="{StaticResource mainFont}"
-                     Text="{Binding ProductName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Margin="20,0,0,0"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal"
@@ -80,7 +80,9 @@
             <TextBox materialDesign:HintAssist.Hint="Введите описание"
                      VerticalAlignment="Center"
                      FontFamily="{StaticResource mainFont}"
-                     Text="{Binding ProductDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     TextWrapping="Wrap"
+                     
                      Margin="20,0,0,0"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal"
@@ -91,7 +93,7 @@
             <TextBox materialDesign:HintAssist.Hint="Введите цену"
                      VerticalAlignment="Center"
                      FontFamily="{StaticResource mainFont}"
-                     Text="{Binding ProductCategory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Text="{Binding Cost, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Margin="20,0,0,0"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal"
@@ -115,7 +117,7 @@
             <TextBox materialDesign:HintAssist.Hint="Введите скидку"
                      VerticalAlignment="Center"
                      FontFamily="{StaticResource mainFont}"
-                     Text="{Binding ProductCategory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Text="{Binding Discount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Margin="20,0,0,0"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal"
@@ -127,7 +129,7 @@
             <TextBox materialDesign:HintAssist.Hint="Введите кол-во"
                      VerticalAlignment="Center"
                      FontFamily="{StaticResource mainFont}"
-                     Text="{Binding ProductCategory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Text="{Binding Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Margin="20,0,0,0"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal"

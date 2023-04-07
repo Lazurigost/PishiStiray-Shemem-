@@ -35,7 +35,17 @@
                           SelectedItem="{Binding SelectedPoint}"
                           ItemsSource="{Binding PickupPoints}"
                           Margin="10,20,20,0">
-            
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding>
+                                <Binding Path="{Binding City}"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
         </ComboBox>
 
         <StackPanel Orientation="Horizontal"
