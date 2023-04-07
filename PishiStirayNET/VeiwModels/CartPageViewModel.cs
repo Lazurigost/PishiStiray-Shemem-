@@ -57,7 +57,7 @@ namespace PishiStiray.VeiwModels
             TotalPrice = 0;
             FinalPrice = 0;
 
-            foreach (var cartItem in cartProductsList)
+            foreach (var cartItem in CartProductsList)
             {
                 TotalPrice += cartItem.product.ProductCost;
                 FinalPrice += cartItem.product.NewPrice;
@@ -74,16 +74,16 @@ namespace PishiStiray.VeiwModels
             if (SelectedCartItem != null) 
             {
                 
-                foreach (CartItem CItem in cartProductsList)
+                foreach (CartItem CItem in CartProductsList)
                 {
                     if (SelectedCartItem == CItem.product)
                     {
-                        cartProductsList.Remove(CItem);
+                        CartProductsList.Remove(CItem);
                         break;
                     }
                 }
                 
-                cartItemsList.Remove(SelectedCartItem);
+                CartItemsList.Remove(SelectedCartItem);
                 UpdateCart();
             }
         }
