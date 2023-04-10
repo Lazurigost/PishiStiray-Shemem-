@@ -60,6 +60,8 @@ namespace PishiStiray.VeiwModels
         [RelayCommand]
         private void EditProduct()
         {
+            EditableProduct.editedProduct.ProductName = Title;
+
             productService_.ChangeProduct(EditableProduct.editedProduct);
         }
     }
