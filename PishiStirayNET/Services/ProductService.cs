@@ -85,5 +85,6 @@ namespace PishiStiray.Services
                 _context.SaveChanges();
             }
         }
+        public async Task<List<ProductCategory>> GetCategoriesAsync() => await _context.ProductCategories.AsNoTracking().ToListAsync();
     }
 }

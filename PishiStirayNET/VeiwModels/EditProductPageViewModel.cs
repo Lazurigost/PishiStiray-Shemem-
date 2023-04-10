@@ -53,14 +53,13 @@ namespace PishiStiray.VeiwModels
                 
             }
             catch(Exception ex)
-            {
-
-            }
+            {}
         }
         [RelayCommand]
         private void EditProduct()
         {
             EditableProduct.editedProduct.ProductName = Title;
+            
 
             productService_.ChangeProduct(EditableProduct.editedProduct);
         }
