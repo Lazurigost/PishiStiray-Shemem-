@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using PishiStiray.Infrastructure;
 using PishiStiray.Services;
 using System;
@@ -55,6 +56,11 @@ namespace PishiStiray.VeiwModels
             {
 
             }
+        }
+        [RelayCommand]
+        private void EditProduct()
+        {
+            productService_.ChangeProduct(EditableProduct.editedProduct);
         }
     }
 }

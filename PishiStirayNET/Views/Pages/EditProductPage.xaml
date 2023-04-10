@@ -147,7 +147,7 @@
 
 
         <StackPanel Orientation="Horizontal"
-                    Grid.Row="5"
+                    Grid.Row="4"
                     Grid.Column="1">
             <TextBlock Text="Поставщик:"
                        FontFamily="{StaticResource mainFont}"
@@ -158,5 +158,10 @@
                      Text="{Binding ProductCategory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Margin="20,0,0,0"/>
         </StackPanel>
+        <Button Grid.Row="5"
+                Grid.Column="1"
+                Content="Сохранить изменения"
+                Command="{Binding EditProductCommand
+            }"/>
     </Grid>
 </Page>

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using PishiStiray.Models.DbEntities;
 using System.IO;
 using System;
+using System.Linq;
 
 namespace PishiStiray.Services
 {
@@ -63,5 +64,26 @@ namespace PishiStiray.Services
         }
 
         public async Task<List<Delivery>> GetPointsAsync() => await _context.Deliveries.AsNoTracking().ToListAsync();
+
+        public async void ChangeProduct(ProductDB productDB)
+        {
+            ProductDB? product = await _context.Products.Where(p => p.ProductArticleNumber == productDB.ProductArticleNumber).SingleOrDefaultAsync();
+
+            if (product != null) 
+            {
+                product.ProductManufacturer = productDB.ProductManufacturer;
+                product.ProductPhoto = productDB.ProductPhoto;
+                product.ProductDiscountAmount = productDB.ProductDiscountAmount;
+                product.ProductDelivery = productDB.ProductDelivery;
+                product.ProductCategory = productDB.ProductCategory;
+                product.ProductDescription = productDB.ProductDescription;
+                product.ProductName = productDB.ProductName;
+                product.ProductStatus = productDB.ProductStatus;
+                product.ProductCost = productDB.ProductCost;
+                product.ProductQuantityInStock = productDB.ProductQuantityInStock;
+
+                _context.SaveChanges();
+            }
+        }
     }
 }
