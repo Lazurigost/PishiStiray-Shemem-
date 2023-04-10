@@ -162,6 +162,6 @@
                 Grid.Column="1"
                 Content="Сохранить изменения"
                 Command="{Binding EditProductCommand
-            }"/>
+            }" Cursor="Hand"/>
     </Grid>
 </Page>
