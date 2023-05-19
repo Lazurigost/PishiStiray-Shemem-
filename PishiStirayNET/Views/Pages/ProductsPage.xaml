@@ -176,7 +176,7 @@
                                        TextWrapping="Wrap"
                                        Margin="2,3,4,3"/>
 
-                                <TextBlock Text="{Binding ProductManufacturer, 
+                                <TextBlock Text="{Binding ProductManufacturerNavigation.ManufacturerName, 
                                 StringFormat='Производитель - {0}'}"
                                             Margin="0,7"/>
 
