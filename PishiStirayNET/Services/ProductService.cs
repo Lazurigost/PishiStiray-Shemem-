@@ -63,8 +63,6 @@ namespace PishiStiray.Services
             return cartProducts;
         }
 
-        public async Task<List<Delivery>> GetPointsAsync() => await _context.Deliveries.AsNoTracking().ToListAsync();
-
         public async void ChangeProduct(ProductDB productDB)
         {
             ProductDB? product = await _context.Products.Where(p => p.ProductArticleNumber == productDB.ProductArticleNumber).SingleOrDefaultAsync();

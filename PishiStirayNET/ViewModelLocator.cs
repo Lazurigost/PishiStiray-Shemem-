@@ -18,6 +18,7 @@ namespace PishiStiray
 
             services.AddSingleton<UserService>();
             services.AddSingleton<PageService>();
+            services.AddTransient<DeliveryService>();
             services.AddTransient<ProductService>();
             #endregion
 

@@ -30,6 +30,9 @@ namespace PishiStiray.VeiwModels
         private ProductDB selectedCartItem;
 
         [ObservableProperty]
+        private Delivery selectedPoint;
+
+        [ObservableProperty]
         private CartItem selectedCart;
         
         [ObservableProperty]
@@ -41,12 +44,20 @@ namespace PishiStiray.VeiwModels
 
         private readonly ProductService productService_;
         private readonly PageService pageService_;
+        private readonly DeliveryService deliveryService_;
 
-        public CartPageViewModel(ProductService productService, PageService pageService)
+        public CartPageViewModel(DeliveryService deliveryService,ProductService productService, PageService pageService)
         {
             pageService_ = pageService;
             productService_ = productService;
+            deliveryService_ = deliveryService;
             cartProductsList = Cart.CartProductList;
+
+            Task.Run(async () =>
+            {
+                pickupPoints = await deliveryService_.GetDeliveriesAsync();
+            });
+
             UpdateCart();
         }
 
@@ -63,8 +74,6 @@ namespace PishiStiray.VeiwModels
                 TotalPrice += cartItem.product.ProductCost;
                 FinalPrice += cartItem.product.NewPrice;
             }
-            await Task.Delay(200);
-            PickupPoints = await productService_.GetPointsAsync();
         }
         #region Команды
 
@@ -74,7 +83,6 @@ namespace PishiStiray.VeiwModels
         {
             if (SelectedCartItem != null) 
             {
-                
                 foreach (CartItem CItem in CartProductsList)
                 {
                     if (SelectedCartItem == CItem.product)
@@ -83,7 +91,6 @@ namespace PishiStiray.VeiwModels
                         break;
                     }
                 }
-                
                 CartItemsList.Remove(SelectedCartItem);
                 UpdateCart();
             }

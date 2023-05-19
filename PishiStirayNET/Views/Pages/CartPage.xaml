@@ -25,23 +25,25 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
+        <ComboBox Style="{StaticResource MaterialDesignOutlinedComboBox}"
                           MinWidth="200"
                           materialDesign:HintAssist.Hint="Пункты выдачи"
                           VerticalAlignment="Top"
                           FontFamily="{StaticResource mainFont}"
                           HorizontalAlignment="Left"
                           Grid.Column="0" 
-                          SelectedItem="{Binding SelectedPoint}"
+                          SelectedItem="{Binding SelectedPoint, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                           ItemsSource="{Binding PickupPoints}"
                           Margin="10,20,20,0">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
                         <TextBlock.Text>
-                            <MultiBinding>
-                                <Binding Source="{Binding City}"/>
-                                <Binding Source="{Binding Street}"/>
+                            <MultiBinding StringFormat="{}{0}, {1}, {2}, {3}">
+                                <Binding Path="{Binding PickupPoint}"/>
+                                <Binding Path="{Binding City}"/>
+                                <Binding Path="{Binding Street}"/>
+                                <Binding Path="{Binding House}"/>
                             </MultiBinding>
                         </TextBlock.Text>
                     </TextBlock>
@@ -98,7 +100,7 @@
                             MaxWidth="590"
                             MinWidth="570"
                             Width="610"
-                            Background="White"
+                            Background="{Binding ProductDiscountAmount, Converter={converters:IntToBrushConverter}, UpdateSourceTrigger=PropertyChanged}"
                             BorderBrush="{StaticResource additionalColor}">
                         <Grid Height="auto"
                                 VerticalAlignment="Center"

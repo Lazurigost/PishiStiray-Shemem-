@@ -146,7 +146,7 @@
                             MaxWidth="590"
                             MinWidth="570"
                             Width="610"
-                            Background="{Binding ProductDiscountAmount}"
+                            Background="{Binding ProductDiscountAmount, Converter = {converters:IntToBrushConverter}, UpdateSourceTrigger=PropertyChanged}"
                             BorderBrush="{StaticResource additionalColor}">
                         <Grid Height="auto"
                                 VerticalAlignment="Center"
