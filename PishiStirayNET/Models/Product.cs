@@ -3,7 +3,7 @@ using System.Windows.Media;
 
 namespace PishiStiray.Models
 {
-    public class Product
+    public class Product:ProductDB
     {
         public string? Article { get; set; }
         public string? Title { get; set; }

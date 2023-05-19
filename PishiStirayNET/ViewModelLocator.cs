@@ -19,6 +19,7 @@ namespace PishiStiray
             services.AddSingleton<UserService>();
             services.AddSingleton<PageService>();
             services.AddTransient<ProductService>();
+            services.AddSingleton<SaveFileDialogService>();
             #endregion
 
 

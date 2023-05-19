@@ -39,14 +39,21 @@ namespace PishiStiray.Services
                         ProductDescription = product.ProductDescription,
                         ProductPhoto = Path.GetFullPath(@$"Resources\{product.ProductPhoto}"),
                         ProductCost = product.ProductCost,
+                        ProductManufacturerNavigation = product.ProductManufacturerNavigation,
                         ProductManufacturer = product.ProductManufacturer,
-                        ProductName = product.ProductName
+                        ProductName = product.ProductName,
+                        ProductQuantityInStock = product.ProductQuantityInStock,
+                        ProductCategoryNavigation = product.ProductCategoryNavigation,
+                        ProductDelivery = product.ProductDelivery,
+                        ProductCurrentDiscount = product.ProductCurrentDiscount
                     });
                 }
             });
             return products;
             
         }
+        public async Task<List<Manufacturer>> GetManufacturersAsync() => await _context.ProductManufacturers.ToListAsync();
+        public async Task<List<ProductCategory>> GetCategoriesAsync() => await _context.ProductCategories.ToListAsync();
         
         public async Task<ObservableCollection<ProductDB>> GetCartItemsAsync(ObservableCollection<CartItem> cartItems)
         {
@@ -85,6 +92,5 @@ namespace PishiStiray.Services
                 _context.SaveChanges();
             }
         }
-        public async Task<List<ProductCategory>> GetCategoriesAsync() => await _context.ProductCategories.AsNoTracking().ToListAsync();
     }
 }
