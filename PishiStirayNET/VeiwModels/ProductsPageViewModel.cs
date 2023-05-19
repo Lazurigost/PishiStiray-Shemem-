@@ -96,6 +96,7 @@ namespace PishiStiray.VeiwModels
             //{
             //    IsAdmin = Visibility.Hidden;
             //}
+
             //Получение списка
             List<ProductDB> products = await _productService.GetProductsAsync();
             
