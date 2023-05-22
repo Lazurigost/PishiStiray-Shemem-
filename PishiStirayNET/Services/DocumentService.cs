@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PishiStiray.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,9 @@ namespace PishiStiray.Services
             _tradeContext = tradeContext;
         }
 
-        //public async void CreateDocument(Order order, string path)
+        public async void CreateDocument(Order order, string path)
+        {
+
+        }
     }
 }

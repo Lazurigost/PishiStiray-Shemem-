@@ -169,14 +169,11 @@ namespace PishiStiray.VeiwModels
                     {
                         product = SelectedProduct
                     });
-                    Debug.WriteLine("Продукт добавлен");
                 }
                 else
                 {
                     cartItem.Count++;
-                    Debug.WriteLine("Продукт не добавлен");
                 }
-                Debug.WriteLine("Продукт не добавлен");
             }
         }
 

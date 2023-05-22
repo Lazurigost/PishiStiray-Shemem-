@@ -29,7 +29,6 @@ namespace PishiStiray.Services
 
             await Task.Run(() =>
             {
-                Debug.WriteLine(productDBs.Count);
                 foreach (ProductDB product in productDBs)
                 {
                     products.Add(new ProductDB

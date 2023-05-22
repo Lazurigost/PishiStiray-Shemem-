@@ -21,6 +21,8 @@ namespace PishiStiray
             services.AddTransient<DeliveryService>();
             services.AddTransient<ProductService>();
             services.AddSingleton<SaveFileDialogService>();
+            services.AddTransient<OrderService>();
+            services.AddTransient<DocumentService>();
             #endregion
 
 
@@ -41,7 +43,8 @@ namespace PishiStiray
             {
                 string connectionString = ConfigurationManager.ConnectionStrings["TradeDatabase"].ConnectionString;
                 options.UseLazyLoadingProxies().UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
-            }, ServiceLifetime.Transient);
+            }, 
+            ServiceLifetime.Transient);
             #endregion
 
             _provider = services.BuildServiceProvider();

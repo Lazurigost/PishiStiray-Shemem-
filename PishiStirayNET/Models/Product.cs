@@ -39,7 +39,7 @@ namespace PishiStiray.Models
                 return Path.GetFullPath(@$"Resources\{Image}");
             }
         }
-        public float? NewPrice
+        public new float? NewPrice
         {
             get
             {
@@ -50,7 +50,7 @@ namespace PishiStiray.Models
                 return 0;
             }
         }
-        public bool HaveDiscount
+        public new bool HaveDiscount
         {
             get
             {

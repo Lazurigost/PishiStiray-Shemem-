@@ -51,11 +51,11 @@ namespace PishiStiray.VeiwModels
             pageService_ = pageService;
             productService_ = productService;
             deliveryService_ = deliveryService;
-            cartProductsList = Cart.CartProductList;
+            CartProductsList = Cart.CartProductList;
 
             Task.Run(async () =>
             {
-                pickupPoints = await deliveryService_.GetDeliveriesAsync();
+                PickupPoints = await deliveryService_.GetDeliveriesAsync();
             });
 
             UpdateCart();
@@ -64,7 +64,7 @@ namespace PishiStiray.VeiwModels
         //Обновление корзины
         public async void UpdateCart()
         {
-            CartItemsList = await productService_.GetCartItemsAsync(cartProductsList);
+            CartItemsList = await productService_.GetCartItemsAsync(CartProductsList);
 
             TotalPrice = 0;
             FinalPrice = 0;
@@ -81,7 +81,7 @@ namespace PishiStiray.VeiwModels
         [RelayCommand]
         private void RemoveFromCart()
         {
-            if (SelectedCartItem != null) 
+            if (SelectedCartItem != null)
             {
                 foreach (CartItem CItem in CartProductsList)
                 {
@@ -101,6 +101,12 @@ namespace PishiStiray.VeiwModels
         private void BackFromCart() 
         {
             pageService_.ChangePage(new ProductsPage());
+        }
+
+        [RelayCommand]
+        private void MakeOrder()
+        {
+
         }
         #endregion
     }

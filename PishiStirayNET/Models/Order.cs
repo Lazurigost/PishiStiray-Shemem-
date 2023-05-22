@@ -10,17 +10,21 @@ namespace PishiStiray.Models
 {
     public partial class Order : Orderuser
     {
-        //[ObservableProperty]
-        //private float fullPrice;
-        //[ObservableProperty]
-        //private float discount;
-        //public float? Price
-        //{
-        //    get => FullPrice - Discount;
-        //}
-        //[ObservableProperty]
-        //private List<int> productQuantities;
-        //[ObservableProperty]
-        //private List<ProductDB> products;
+        [ObservableProperty]
+        private float fullPrice;
+
+        [ObservableProperty]
+        private float discount;
+
+        public float? Price
+        {
+            get => FullPrice - Discount;
+        }
+
+        [ObservableProperty]
+        private List<int> productQuatities;
+
+        [ObservableProperty]
+        private List<CartItem> products;
     }
 }

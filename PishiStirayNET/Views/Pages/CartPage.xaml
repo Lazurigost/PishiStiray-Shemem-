@@ -40,10 +40,10 @@
                     <TextBlock>
                         <TextBlock.Text>
                             <MultiBinding StringFormat="{}{0}, {1}, {2}, {3}">
-                                <Binding Path="{Binding PickupPoint}"/>
-                                <Binding Path="{Binding City}"/>
-                                <Binding Path="{Binding Street}"/>
-                                <Binding Path="{Binding House}"/>
+                                <Binding Path="PickupPoint"/>
+                                <Binding Path="City"/>
+                                <Binding Path="Street"/>
+                                <Binding Path="House"/>
                             </MultiBinding>
                         </TextBlock.Text>
                     </TextBlock>
@@ -210,15 +210,27 @@
         </ListView>
         <Button Style="{StaticResource MaterialDesignFloatingActionSecondaryButton}"
                 Grid.Row="1"
-                Grid.Column="2"
+                Grid.Column="0"
                 BorderBrush="{StaticResource additionalColor}"
                 Background="{StaticResource additionalColor}"
-                HorizontalAlignment="Right"
+                HorizontalAlignment="Left"
                 Command="{Binding BackFromCartCommand}"
                 VerticalAlignment="Bottom" Margin="0,0,20,20"
                 Content="Вернуться"
                 FontSize="10"
                 FontFamily="{StaticResource mainFont}"
                 IsCancel="True"/>
+        <Button Style="{StaticResource MaterialDesignFloatingActionSecondaryButton}"
+                Grid.Row="1"
+                Grid.Column="2"
+                BorderBrush="{StaticResource additionalColor}"
+                Background="{StaticResource additionalColor}"
+                HorizontalAlignment="Right"
+                Command="{Binding MakeOrderCommand}"
+                VerticalAlignment="Bottom" Margin="0,0,20,20"
+                Content="Заказать"
+                FontSize="10"
+                FontFamily="{StaticResource mainFont}"
+                IsDefault="True"/>
     </Grid>
 </Page>

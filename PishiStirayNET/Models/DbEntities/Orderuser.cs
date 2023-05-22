@@ -1,9 +1,10 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System;
 using System.Collections.Generic;
 
 namespace PishiStiray.Models.DbEntities;
 
-public partial class Orderuser
+public partial class Orderuser : ObservableObject
 {
     public int OrderId { get; set; }
 
