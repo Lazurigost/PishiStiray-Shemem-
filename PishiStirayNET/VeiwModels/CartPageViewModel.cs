@@ -45,12 +45,14 @@ namespace PishiStiray.VeiwModels
         private readonly ProductService productService_;
         private readonly PageService pageService_;
         private readonly DeliveryService deliveryService_;
+        private readonly OrderService orderService_;
 
-        public CartPageViewModel(DeliveryService deliveryService,ProductService productService, PageService pageService)
+        public CartPageViewModel(DeliveryService deliveryService,ProductService productService, PageService pageService, OrderService orderService)
         {
             pageService_ = pageService;
             productService_ = productService;
             deliveryService_ = deliveryService;
+            orderService_ = orderService;
             CartProductsList = Cart.CartProductList;
 
             Task.Run(async () =>
@@ -98,14 +100,16 @@ namespace PishiStiray.VeiwModels
 
         //Возвращение по кнопке
         [RelayCommand]
-        private void BackFromCart() 
+        private void BackFromCart()
         {
             pageService_.ChangePage(new ProductsPage());
         }
 
         [RelayCommand]
-        private void MakeOrder()
+        private async void MakeOrder()
         {
+            Order order = await orderService_.CreateOrder(CartProductsList, SelectedPoint.IdpickupPoint);
+
 
         }
         #endregion

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using PishiStiray.Models.DbEntities;
 using PishiStiray.Models;
 using PishiStiray.Infrastructure;
+using System.Collections.ObjectModel;
 
 namespace PishiStiray.Services
 {
@@ -31,7 +32,7 @@ namespace PishiStiray.Services
             return deliveries;
         }
 
-        public async Task<Orderuser> CreateOrder(List<CartItem> cartItems, int deliveryId)
+        public async Task<Order> CreateOrder(ObservableCollection<CartItem> cartItems, int deliveryId)
         {
             int orderNumber = _tradeContext.Orderusers.Max(o => o.OrderId) + 1;
             int aquireCode = _tradeContext.Orderusers.Max(o => o.OrderAquireCode) + 1;
