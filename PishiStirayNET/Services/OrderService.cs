@@ -32,7 +32,7 @@ namespace PishiStiray.Services
             return deliveries;
         }
 
-        public async Task<Order> CreateOrder(ObservableCollection<CartItem> cartItems, int deliveryId)
+        public async Task<Order> CreateOrder(List<CartItem> cartItems, int deliveryId)
         {
             int orderNumber = _tradeContext.Orderusers.Max(o => o.OrderId) + 1;
             int aquireCode = _tradeContext.Orderusers.Max(o => o.OrderAquireCode) + 1;

@@ -54,12 +54,13 @@ namespace PishiStiray
                 _provider.GetRequiredService(service.ServiceType);
             }
         }
-
+        #region ViewModels
         public MainWindowViewModel MainWindowViewModel => _provider.GetRequiredService<MainWindowViewModel>();
         public SignInPageViewModel SignInPageViewModel => _provider.GetRequiredService<SignInPageViewModel>();
         public ProductsPageViewModel ProductsPageViewModel => _provider.GetRequiredService<ProductsPageViewModel>();
         public AuthorizedUserUserControlViewModel AuthorizedUserUserControlViewModel => _provider.GetRequiredService<AuthorizedUserUserControlViewModel>();
         public CartPageViewModel CartPageViewModel => _provider?.GetRequiredService<CartPageViewModel>();
         public EditProductPageViewModel EditProductPageViewModel => _provider.GetRequiredService<EditProductPageViewModel>();
+        #endregion
     }
 }

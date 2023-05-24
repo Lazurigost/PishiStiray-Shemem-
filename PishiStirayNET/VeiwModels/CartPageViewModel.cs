@@ -50,11 +50,32 @@ namespace PishiStiray.VeiwModels
         private decimal? finalPrice = 0;
         
         [ObservableProperty]
-        //[NotifyPropertyChangedFor(nameof(TotalPrice))]
+        [NotifyPropertyChangedFor(nameof(TotalPrice))]
         //[NotifyPropertyChangedFor(nameof(TotalCount))]
-        //[NotifyPropertyChangedFor(nameof(TotalDiscount))]
-        //[NotifyPropertyChangedFor(nameof(ResultCost))]
+        [NotifyPropertyChangedFor(nameof(TotalDiscount))]
+        [NotifyPropertyChangedFor(nameof(ResultCost))]
         private int? count;
+
+        //public int? TotalCount
+        //{
+        //    get => CartProductsList.Sum(item => item.Count);
+        //}
+
+
+        public float? TotalPrice
+        {
+            get => CartProductsList.Sum(item => item.Cost);
+        }
+
+        public float? TotalDiscount
+        {
+            get => CartProductsList.Sum(item => item.Discount);
+        }
+
+        public float? ResultCost
+        {
+            get => TotalPrice - TotalDiscount;
+        }
         #endregion
 
         private readonly ProductService productService_;
@@ -127,7 +148,7 @@ namespace PishiStiray.VeiwModels
         [RelayCommand(CanExecute = nameof(CanMakeOrder))]
         private async void MakeOrder()
         {
-            Order order = await orderService_.CreateOrder(CartProductsList, SelectedPickupPoint.IdpickupPoint);
+            Order order = await orderService_.CreateOrder(CartProductsList.ToList(), SelectedPickupPoint.IdpickupPoint);
 
             string selectedFolder = "";
             selectedFolder = saveFileDialogService_.PDFSaveFileDialog();
