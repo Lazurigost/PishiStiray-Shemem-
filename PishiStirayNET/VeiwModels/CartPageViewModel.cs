@@ -50,10 +50,10 @@ namespace PishiStiray.VeiwModels
         private decimal? finalPrice = 0;
         
         [ObservableProperty]
-        [NotifyPropertyChangedFor(nameof(TotalPrice))]
+        //[NotifyPropertyChangedFor(nameof(TotalPrice))]
         //[NotifyPropertyChangedFor(nameof(TotalCount))]
-        [NotifyPropertyChangedFor(nameof(TotalDiscount))]
-        [NotifyPropertyChangedFor(nameof(ResultCost))]
+        //[NotifyPropertyChangedFor(nameof(TotalDiscount))]
+        //[NotifyPropertyChangedFor(nameof(ResultCost))]
         private int? count;
 
         //public int? TotalCount
@@ -62,20 +62,20 @@ namespace PishiStiray.VeiwModels
         //}
 
 
-        public float? TotalPrice
-        {
-            get => CartProductsList.Sum(item => item.Cost);
-        }
+        //public float? TotalPrice
+        //{
+        //    get => CartProductsList.Sum(item => item.Cost);
+        //}
 
-        public float? TotalDiscount
-        {
-            get => CartProductsList.Sum(item => item.Discount);
-        }
+        //public float? TotalDiscount
+        //{
+        //    get => CartProductsList.Sum(item => item.Discount);
+        //}
 
-        public float? ResultCost
-        {
-            get => TotalPrice - TotalDiscount;
-        }
+        //public float? ResultCost
+        //{
+        //    get => TotalPrice - TotalDiscount;
+        //}
         #endregion
 
         private readonly ProductService productService_;
