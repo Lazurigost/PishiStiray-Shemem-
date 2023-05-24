@@ -21,13 +21,21 @@ namespace PishiStiray.VeiwModels
         private ObservableCollection<ProductDB> cartItemsList;
 
         [ObservableProperty]
+        //[NotifyPropertyChangedFor(nameof(TotalPrice))]
         private ObservableCollection<CartItem> cartProductsList;
 
         [ObservableProperty]
         private List<Delivery> pickupPoints;
+        
+        [ObservableProperty]
+        [NotifyCanExecuteChangedFor(nameof(MakeOrderCommand))]
+        private Delivery? selectedPickupPoint;
 
         [ObservableProperty]
+        [NotifyCanExecuteChangedFor(nameof(MakeOrderCommand))]
         private ProductDB selectedCartItem;
+
+        
 
         [ObservableProperty]
         private Delivery selectedPoint;
@@ -40,19 +48,30 @@ namespace PishiStiray.VeiwModels
 
         [ObservableProperty]
         private decimal? finalPrice = 0;
+        
+        [ObservableProperty]
+        //[NotifyPropertyChangedFor(nameof(TotalPrice))]
+        //[NotifyPropertyChangedFor(nameof(TotalCount))]
+        //[NotifyPropertyChangedFor(nameof(TotalDiscount))]
+        //[NotifyPropertyChangedFor(nameof(ResultCost))]
+        private int? count;
         #endregion
 
         private readonly ProductService productService_;
         private readonly PageService pageService_;
         private readonly DeliveryService deliveryService_;
         private readonly OrderService orderService_;
+        private readonly SaveFileDialogService saveFileDialogService_;
+        private readonly DocumentService documentService_;
 
-        public CartPageViewModel(DeliveryService deliveryService,ProductService productService, PageService pageService, OrderService orderService)
+        public CartPageViewModel(DeliveryService deliveryService,ProductService productService, PageService pageService, OrderService orderService, SaveFileDialogService saveFileDialogService, DocumentService documentService)
         {
             pageService_ = pageService;
             productService_ = productService;
             deliveryService_ = deliveryService;
             orderService_ = orderService;
+            saveFileDialogService_ = saveFileDialogService;
+            documentService_ = documentService;
             CartProductsList = Cart.CartProductList;
 
             Task.Run(async () =>
@@ -105,12 +124,28 @@ namespace PishiStiray.VeiwModels
             pageService_.ChangePage(new ProductsPage());
         }
 
-        [RelayCommand]
+        [RelayCommand(CanExecute = nameof(CanMakeOrder))]
         private async void MakeOrder()
         {
-            Order order = await orderService_.CreateOrder(CartProductsList, SelectedPoint.IdpickupPoint);
+            Order order = await orderService_.CreateOrder(CartProductsList, SelectedPickupPoint.IdpickupPoint);
 
+            string selectedFolder = "";
+            selectedFolder = saveFileDialogService_.PDFSaveFileDialog();
+            if (selectedFolder != "no folder")
+            {
+                documentService_.CreateDocument(order, selectedFolder);
+            }
+            CartProductsList.Clear();
+            pageService_.ChangePage(new ProductsPage());
+        }
 
+        private bool CanMakeOrder()
+        {
+            if(SelectedPickupPoint != null && cartProductsList.Count > 0) 
+            {
+                return true;
+            }
+            return false;
         }
         #endregion
     }

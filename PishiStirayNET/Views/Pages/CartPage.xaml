@@ -32,7 +32,7 @@
                           FontFamily="{StaticResource mainFont}"
                           HorizontalAlignment="Left"
                           Grid.Column="0" 
-                          SelectedItem="{Binding SelectedPoint, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                          SelectedItem="{Binding SelectedPickupPoint, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                           ItemsSource="{Binding PickupPoints}"
                           Margin="10,20,20,0">
             <ComboBox.ItemTemplate>

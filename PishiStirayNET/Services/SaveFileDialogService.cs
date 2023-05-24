@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Ookii.Dialogs.Wpf;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace PishiStiray.Services
     public class SaveFileDialogService
     {
         public string FilePath { get; set; }
-        public string SaveFileDialog()
+        public string ImageSaveFileDialog()
         {
             OpenFileDialog saveFileDialog = new();
             saveFileDialog.Filter = "Файлы изображений (*.bmp, *.jpg, *.png)|*.bmp;*.jpg;*.png";
@@ -46,6 +47,17 @@ namespace PishiStiray.Services
                 return FilePath;
             }
             return FilePath;
+        }
+        public string PDFSaveFileDialog()
+        {
+            VistaFolderBrowserDialog saveFileDialog = new();
+
+            var result = saveFileDialog.ShowDialog();
+            if(result == true)
+            {
+                return saveFileDialog.SelectedPath;
+            }
+            return "no folder";
         }
     }
 }

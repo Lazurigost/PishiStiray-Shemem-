@@ -1,8 +1,17 @@
-﻿namespace PishiStiray.Models
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+
+namespace PishiStiray.Models
 {
-    public class CartItem
+    public partial class CartItem : ObservableObject
     {
-        public ProductDB? product{ get; set; }
-        public int Count { get; set; }
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(Cost))]
+        public ProductDB? product;
+
+        [ObservableProperty]
+        private int count;
+
+        public float? Cost => (float?)(Product.ProductCost * Count);
+        public float? Discount => (float?)(Product.ProductCost * Count) - (float?)Product?.NewPrice * Count;
     }
 }
