@@ -96,7 +96,7 @@ namespace PishiStiray.Services
                 {
                     ProductArticleNumber = product.ProductArticleNumberNavigation.ProductArticleNumber,
                     ProductManufacturer = product.ProductArticleNumberNavigation.ProductManufacturer,
-                    ProductPhoto = product.ProductArticleNumberNavigation.ProductPhoto,
+                    Image = (product.ProductArticleNumberNavigation.ProductPhoto == null || string.IsNullOrWhiteSpace(product.ProductArticleNumberNavigation.ProductPhoto) == true) ? "picture.png" : product.ProductArticleNumberNavigation.ProductPhoto,
                     ProductDiscountAmount = product.ProductArticleNumberNavigation.ProductDiscountAmount,
                     ProductDelivery = product.ProductArticleNumberNavigation.ProductDelivery,
                     ProductCategory = product.ProductArticleNumberNavigation.ProductCategory,
@@ -108,7 +108,7 @@ namespace PishiStiray.Services
                     ProductManufacturerNavigation = product.ProductArticleNumberNavigation.ProductManufacturerNavigation,
                     ProductCategoryNavigation = product.ProductArticleNumberNavigation.ProductCategoryNavigation,
                 };
-
+                products.Add(cartItem);
                 cartItem.Count = products.Count();
             }
             return products;

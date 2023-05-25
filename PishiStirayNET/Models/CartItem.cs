@@ -6,7 +6,7 @@ namespace PishiStiray.Models
     {
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(Cost))]
-        public ProductDB? product;
+        public Product? product;
 
         [ObservableProperty]
         private int count;

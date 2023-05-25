@@ -22,13 +22,13 @@ namespace PishiStiray.Services
             {
                 string filepath = saveFileDialog.FileName;
 
-                string resourcepath = Path.GetFullPath("Resources");
+                string resourcepath = System.IO.Path.GetFullPath("Resources");
 
                 byte[] data = default(byte[]);
 
                 try
                 {
-                    using (FileStream fileStream = File.Create($"{resourcepath}/{Path.GetFileName(filepath)}")) { }
+                    using (FileStream fileStream = File.Create($"{resourcepath}/{System.IO.Path.GetFileName(filepath)}")) { }
                     using (var stream = File.Open(filepath, FileMode.Open))
                     {
                         var reader = new StreamReader(stream);
@@ -39,11 +39,11 @@ namespace PishiStiray.Services
                         }
                     }
 
-                    File.WriteAllBytes($"{resourcepath}/{Path.GetFileName(filepath)}", data);
+                    File.WriteAllBytes($"{resourcepath}/{System.IO.Path.GetFileName(filepath)}", data);
                 }
                 catch { }
 
-                FilePath = Path.GetFileName(filepath);
+                FilePath = System.IO.Path.GetFileName(filepath);
                 return FilePath;
             }
             return FilePath;

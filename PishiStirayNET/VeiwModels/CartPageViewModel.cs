@@ -18,7 +18,7 @@ namespace PishiStiray.VeiwModels
         #region Свойства
 
         [ObservableProperty]
-        private ObservableCollection<ProductDB> cartItemsList;
+        private ObservableCollection<Product> cartItemsList;
 
         [ObservableProperty]
         //[NotifyPropertyChangedFor(nameof(TotalPrice))]
@@ -33,7 +33,7 @@ namespace PishiStiray.VeiwModels
 
         [ObservableProperty]
         [NotifyCanExecuteChangedFor(nameof(MakeOrderCommand))]
-        private ProductDB selectedCartItem;
+        private Product selectedCartItem;
 
         
 
@@ -47,7 +47,7 @@ namespace PishiStiray.VeiwModels
         private decimal? totalPrice = 0;
 
         [ObservableProperty]
-        private decimal? finalPrice = 0;
+        private float? finalPrice = 0;
         
         [ObservableProperty]
         //[NotifyPropertyChangedFor(nameof(TotalPrice))]

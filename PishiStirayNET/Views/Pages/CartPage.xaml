@@ -114,7 +114,7 @@
                             <Image 
                                Width="130" 
                             Height="130"
-                            Source= "{Binding ProductPhoto}"
+                            Source= "{Binding ImageUrl}"
                             Grid.Column="0"
                          
                             HorizontalAlignment="Left"/>

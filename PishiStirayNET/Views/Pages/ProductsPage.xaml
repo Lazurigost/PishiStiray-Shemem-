@@ -158,11 +158,11 @@
                             </Grid.ColumnDefinitions>
 
                             <Image 
-                               Width="130"
-                            Height="130"
-                            Source= "{Binding ProductPhoto}"
-                            Grid.Column="0"
-                            HorizontalAlignment="Left"/>
+                                Width="130"
+                                Height="130"
+                                Source= "{Binding ImageUrl}"
+                                Grid.Column="0"
+                                HorizontalAlignment="Left"/>
 
                             <StackPanel
                                     Grid.Column="1"

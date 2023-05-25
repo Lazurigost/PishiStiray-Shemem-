@@ -6,14 +6,6 @@ using iText.Layout;
 using iText.Layout.Element;
 using PishiStiray.Models;
 using System;
-using Paragraph = iText.Layout.Element.Paragraph;
-using Table = iText.Layout.Element.Table;
-using Org.BouncyCastle.Asn1.Mozilla;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Automation.Text;
 
 namespace PishiStiray.Services
 {
@@ -70,7 +62,7 @@ namespace PishiStiray.Services
 
             foreach(var product in order.Products)
             {
-                table.AddCell(new Image(ImageDataFactory.Create(product.product.ProductPhoto)).SetHeight(200).SetWidth(200));
+                table.AddCell(new Image(ImageDataFactory.Create(product.product.ImageUrl)).SetHeight(100).SetWidth(100));
                 table.AddCell(product.product.ProductName);
                 table.AddCell(product.product.ProductDescription);
                 table.AddCell(product.product.ProductManufacturerNavigation.ManufacturerName);
@@ -95,7 +87,7 @@ namespace PishiStiray.Services
                 .SetFont(font)
                 .SetFontSize(14);
             document.Add(content);
-            content = new Paragraph($"Код получения: {order.OrderAquireCode} ₽")
+            content = new Paragraph($"Код получения: {order.OrderAquireCode}")
                 .SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER)
                 .SetFont(font)
                 .SetFontSize(14);

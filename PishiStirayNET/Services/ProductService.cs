@@ -20,9 +20,9 @@ namespace PishiStiray.Services
             _context = context;
         }
 
-        public async Task<List<ProductDB>> GetProductsAsync()
+        public async Task<List<Product>> GetProductsAsync()
         {
-            List<ProductDB> products = new();
+            List<Product> products = new();
             List<ProductDB> productDBs = await _context.Products.ToListAsync();
             await _context.ProductManufacturers.ToListAsync();
             await _context.Deliveries.AsNoTracking().ToListAsync();
@@ -31,12 +31,12 @@ namespace PishiStiray.Services
             {
                 foreach (ProductDB product in productDBs)
                 {
-                    products.Add(new ProductDB
+                    products.Add(new Product
                     {
                         ProductArticleNumber = product.ProductArticleNumber,
                         ProductDiscountAmount = product.ProductDiscountAmount,
                         ProductDescription = product.ProductDescription,
-                        ProductPhoto = Path.GetFullPath(@$"Resources\{product.ProductPhoto}"),
+                        Image = (product.ProductPhoto == null || string.IsNullOrWhiteSpace(product.ProductPhoto) == true) ? "picture.png" : product.ProductPhoto,
                         ProductCost = product.ProductCost,
                         ProductManufacturerNavigation = product.ProductManufacturerNavigation,
                         ProductManufacturer = product.ProductManufacturer,
@@ -54,9 +54,9 @@ namespace PishiStiray.Services
         public async Task<List<Manufacturer>> GetManufacturersAsync() => await _context.ProductManufacturers.ToListAsync();
         public async Task<List<ProductCategory>> GetCategoriesAsync() => await _context.ProductCategories.ToListAsync();
         
-        public async Task<ObservableCollection<ProductDB>> GetCartItemsAsync(ObservableCollection<CartItem> cartItems)
+        public async Task<ObservableCollection<Product>> GetCartItemsAsync(ObservableCollection<CartItem> cartItems)
         {
-            ObservableCollection<ProductDB> cartProducts = new();
+            ObservableCollection<Product> cartProducts = new();
             await Task.Run(() =>
             {
                 foreach (CartItem cartItem in cartItems)

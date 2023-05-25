@@ -5,34 +5,9 @@ namespace PishiStiray.Models
 {
     public class Product:ProductDB
     {
-        public string? Article { get; set; }
-        public string? Title { get; set; }
-        public string? Description { get; set; }
-        public string? Manufacturer { get; set; }
-        public float? Price { get; set; }
+        public string Image { get; set; }
 
-        public float? CurrentDiscount { get; set; }
-
-        private string _image;
-
-        public string Image 
-        {
-            get
-            {
-                return _image;
-            }
-            set
-            {
-                if (value == null || string.IsNullOrWhiteSpace(value))
-                {
-                    _image = "picture.png";
-                    return;
-                }
-                _image = value;
-            }
-        }
-
-        public string ImageUrl
+        public string ImageUrl 
         {
             get
             {
@@ -43,9 +18,9 @@ namespace PishiStiray.Models
         {
             get
             {
-                if (CurrentDiscount != 0)
+                if (ProductCurrentDiscount != 0)
                 {
-                    return Price - (Price * (CurrentDiscount / 100));
+                    return (float?)(ProductCost - (ProductCost * (ProductCurrentDiscount / 100)));
                 }
                 return 0;
             }

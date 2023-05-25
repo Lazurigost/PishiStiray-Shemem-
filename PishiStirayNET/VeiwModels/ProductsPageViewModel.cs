@@ -40,10 +40,10 @@ namespace PishiStiray.VeiwModels
         private int totalProductsCount;
 
         [ObservableProperty]
-        private List<ProductDB> productsList;
+        private List<Product> productsList;
 
         [ObservableProperty]
-        private ProductDB selectedProduct;
+        private Product selectedProduct;
         [ObservableProperty]
         private Visibility isAdmin;
         
@@ -98,7 +98,7 @@ namespace PishiStiray.VeiwModels
             //}
 
             //Получение списка
-            List<ProductDB> products = await _productService.GetProductsAsync();
+            List<Product> products = await _productService.GetProductsAsync();
             
             //Присваивание продукту фотографии
             foreach (var product in products)

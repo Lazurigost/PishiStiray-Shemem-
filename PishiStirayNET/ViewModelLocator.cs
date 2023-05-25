@@ -16,13 +16,13 @@ namespace PishiStiray
 
             #region Services
 
-            services.AddSingleton<UserService>();
-            services.AddSingleton<PageService>();
+            services.AddTransient<UserService>();
+            services.AddScoped<PageService>();
             services.AddTransient<DeliveryService>();
             services.AddTransient<ProductService>();
-            services.AddSingleton<SaveFileDialogService>();
+            services.AddTransient<SaveFileDialogService>();
             services.AddTransient<OrderService>();
-            services.AddTransient<DocumentService>();
+            services.AddSingleton<DocumentService>();
             #endregion
 
 
