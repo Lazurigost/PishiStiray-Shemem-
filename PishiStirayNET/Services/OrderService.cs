@@ -80,8 +80,8 @@ namespace PishiStiray.Services
                 OrdererFio = CurrentUser.User != null ? $"{CurrentUser.User.UserSurname} {CurrentUser.User.UserName} {CurrentUser.User.UserPatronymic}" : null,
                 OrderAquireCode = aquireCode,
                 Products = await GetProducts(orderproductList),
-                FullPrice = (float)orderproductList.Sum(i => i.ProductArticleNumberNavigation.ProductCost),
-                Discount = (float)orderproductList.Sum(i => i.ProductArticleNumberNavigation.ProductCurrentDiscount)
+                FullPrice = (float?)orderproductList.Sum(i => i.ProductArticleNumberNavigation.ProductCost),
+                Discount = (float?)orderproductList.Sum(i => i.ProductArticleNumberNavigation.ProductCurrentDiscount)
             };
         }
 
