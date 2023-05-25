@@ -113,5 +113,17 @@ namespace PishiStiray.Services
             }
             return products;
         }
+        public async void ChangeOrder(Order order)
+        {
+            Orderuser newOrder = await _tradeContext.Orderusers.Where(o => o.OrderId == order.OrderId).FirstOrDefaultAsync();
+
+            if (newOrder != null)
+            {
+                newOrder.OrderDeliveryDate = order.OrderDeliveryDate;
+                newOrder.OrderStatus = order.OrderStatus;
+
+                await _tradeContext.SaveChangesAsync();
+            }
+        }
     }
 }

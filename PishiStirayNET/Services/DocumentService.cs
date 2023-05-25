@@ -66,8 +66,8 @@ namespace PishiStiray.Services
                 table.AddCell(product.product.ProductName);
                 table.AddCell(product.product.ProductDescription);
                 table.AddCell(product.product.ProductManufacturerNavigation.ManufacturerName);
-                table.AddCell(product.product.ProductCost.ToString());
-                table.AddCell(product.product.ProductDiscountAmount.ToString());
+                table.AddCell(product.product.ProductCost.ToString() + "₽");
+                table.AddCell(product.product.ProductDiscountAmount.ToString() + "%");
             }
 
             document.Add(table);
