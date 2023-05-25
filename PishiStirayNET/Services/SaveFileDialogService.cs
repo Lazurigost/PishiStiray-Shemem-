@@ -1,11 +1,6 @@
 ﻿using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
 using System.IO;
 using Ookii.Dialogs.Wpf;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PishiStiray.Services
 {
@@ -22,13 +17,13 @@ namespace PishiStiray.Services
             {
                 string filepath = saveFileDialog.FileName;
 
-                string resourcepath = System.IO.Path.GetFullPath("Resources");
+                string resourcepath = Path.GetFullPath("Resources");
 
                 byte[] data = default(byte[]);
 
                 try
                 {
-                    using (FileStream fileStream = File.Create($"{resourcepath}/{System.IO.Path.GetFileName(filepath)}")) { }
+                    using (FileStream fileStream = File.Create($"{resourcepath}/{Path.GetFileName(filepath)}")) { }
                     using (var stream = File.Open(filepath, FileMode.Open))
                     {
                         var reader = new StreamReader(stream);
@@ -39,11 +34,11 @@ namespace PishiStiray.Services
                         }
                     }
 
-                    File.WriteAllBytes($"{resourcepath}/{System.IO.Path.GetFileName(filepath)}", data);
+                    File.WriteAllBytes($"{resourcepath}/{Path.GetFileName(filepath)}", data);
                 }
                 catch { }
 
-                FilePath = System.IO.Path.GetFileName(filepath);
+                FilePath = Path.GetFileName(filepath);
                 return FilePath;
             }
             return FilePath;

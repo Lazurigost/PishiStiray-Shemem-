@@ -169,6 +169,7 @@
                                 </StackPanel>
 
                             </StackPanel>
+                            
 
                             <TextBlock Text="{Binding ProductDiscountAmount,
                             StringFormat= 'Cкидка - {0}%'}"
@@ -191,6 +192,28 @@
                                     </Style>
                                 </TextBlock.Style>
                             </TextBlock>
+                            <StackPanel HorizontalAlignment="Right"
+                                    Orientation="Horizontal"
+                                    Grid.Column="1"
+                                        Margin="20,20,0,0">
+                                <Button Height="25"
+                                    Width="25"
+                                    Command="{Binding DataContext.DecreaseSelectedCartItemCountCommand ,RelativeSource={RelativeSource AncestorType=local:CartPage}}"
+                                    Content="-"
+                                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}"/>
+                                <TextBlock VerticalAlignment="Center"
+                                       FontSize="20"
+                                       Grid.Column="2"
+                                       HorizontalAlignment="Center"
+                                       Text="{Binding Count, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                                       Margin="10,0"/>
+
+                                <Button Height="25"
+                                    Width="25"
+                                    Command="{Binding DataContext.IncreaseSelectedCartItemCountCommand ,RelativeSource={RelativeSource AncestorType={x:Type local:CartPage}}}"
+                                    Content="+"
+                                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}"/>
+                            </StackPanel>
                         </Grid>
                     </Border>
 
