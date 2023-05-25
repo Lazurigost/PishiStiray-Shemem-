@@ -215,7 +215,7 @@
                 Background="{StaticResource additionalColor}"
                 HorizontalAlignment="Left"
                 Command="{Binding BackFromCartCommand}"
-                VerticalAlignment="Bottom" Margin="0,0,20,20"
+                VerticalAlignment="Bottom" Margin="20,0,0,20"
                 Content="Вернуться"
                 FontSize="10"
                 FontFamily="{StaticResource mainFont}"
