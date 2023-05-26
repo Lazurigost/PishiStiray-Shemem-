@@ -116,7 +116,7 @@ namespace PishiStiray.VeiwModels
         {
             cartProductsList = Global.CartProductList;
         }
-        #region Команды
+        #region Комманды
         //Увеличение кол-ва товара
         [RelayCommand]
         private void IncreaseSelectedCartItemCount()

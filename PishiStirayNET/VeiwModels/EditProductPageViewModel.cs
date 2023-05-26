@@ -16,6 +16,8 @@ namespace PishiStiray.VeiwModels
         private readonly PageService pageService_;
         private readonly SaveFileDialogService saveFileDialogService_;
         #endregion
+        
+        #region Свойства
         [ObservableProperty]
         private string? productImage;
         [ObservableProperty]
@@ -40,6 +42,8 @@ namespace PishiStiray.VeiwModels
         private List<Manufacturer> manufacturers;
         [ObservableProperty]
         private List<ProductCategory> productCategories;
+        #endregion
+
         public EditProductPageViewModel(ProductService productService,SaveFileDialogService saveFileDialogService ,PageService pageService)
         {
             pageService_ = pageService;
