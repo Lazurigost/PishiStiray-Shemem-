@@ -47,34 +47,36 @@ namespace PishiStiray.VeiwModels
         [NotifyPropertyChangedFor(nameof(TotalDiscount))]
         [NotifyPropertyChangedFor(nameof(ResultCost))]
         private int? count;
-
+        //Итоговое кол-во товаров в списке
         public int? TotalCount
         {
             get => CartProductsList.Sum(item => item.Count);
         }
-
+        //Общая цена всей корзины
         public float? TotalPrice
         {
             get => CartProductsList.Sum(item => item.Cost);
         }
-
+        //Сумма, сэкономленая с учётом скидок
         public float? TotalDiscount
         {
             get => CartProductsList.Sum(item => item.Discount);
         }
-
+        //Итоговая цена
         public float? ResultCost
         {
             get => TotalPrice - TotalDiscount;
         }
         #endregion
 
+        #region Services
         private readonly ProductService productService_;
         private readonly PageService pageService_;
         private readonly DeliveryService deliveryService_;
         private readonly OrderService orderService_;
         private readonly SaveFileDialogService saveFileDialogService_;
         private readonly DocumentService documentService_;
+        #endregion
 
         public CartPageViewModel(DeliveryService deliveryService, ProductService productService, PageService pageService, OrderService orderService, SaveFileDialogService saveFileDialogService, DocumentService documentService)
         {
@@ -93,7 +95,7 @@ namespace PishiStiray.VeiwModels
 
             UpdateCart();
         }
-
+        //Удаление при изменении кол-ва товара до 0
         partial void OnCountChanged(int? value)
         {
             if (Count == 0)
@@ -101,6 +103,7 @@ namespace PishiStiray.VeiwModels
                 CartProductsList.Remove(SelectedCartItem);
             }
         }
+        //Переключение выбранного итема
         partial void OnSelectedCartItemChanged(CartItem? value)
         {
             if (SelectedCartItem != null)
@@ -108,16 +111,13 @@ namespace PishiStiray.VeiwModels
                 Count = SelectedCartItem.Count;
             }
         }
-
-
-
         //Обновление корзины
         public async void UpdateCart()
         {
             cartProductsList = Global.CartProductList;
         }
         #region Команды
-
+        //Увеличение кол-ва товара
         [RelayCommand]
         private void IncreaseSelectedCartItemCount()
         {
@@ -127,6 +127,7 @@ namespace PishiStiray.VeiwModels
                 Count = SelectedCartItem.Count;
             }
         }
+        //Уменьшение кол-ва товара
         [RelayCommand]
         private void DecreaseSelectedCartItemCount()
         {
@@ -163,7 +164,7 @@ namespace PishiStiray.VeiwModels
         {
             pageService_.ChangePage(new ProductsPage());
         }
-
+        //Создание заказа и чека
         [RelayCommand(CanExecute = nameof(CanMakeOrder))]
         private async void MakeOrder()
         {
@@ -178,7 +179,7 @@ namespace PishiStiray.VeiwModels
             CartProductsList.Clear();
             pageService_.ChangePage(new ProductsPage());
         }
-
+        //Валидация заказа
         private bool CanMakeOrder()
         {
             if (SelectedPickupPoint != null && cartProductsList.Count > 0)
