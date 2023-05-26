@@ -17,7 +17,7 @@ namespace PishiStiray.Services
         {
             _tradeContext = tradeContext;
         }
-
+        //Функция создания и записи документа
         public async void CreateDocument(Order order, string path)
         {
             PdfWriter writer = new($"{path}//Товарный чек от {DateOnly.FromDateTime(DateTime.Now).ToString("D")}.pdf");

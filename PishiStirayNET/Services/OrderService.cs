@@ -19,7 +19,7 @@ namespace PishiStiray.Services
         {
             _tradeContext = tradeContext;
         }
-
+        //Получение всех точек доставки для последующих функций
         public async Task<List<Delivery>> GetDeliveriesAsync()
         {
             List<Delivery> deliveries = new List<Delivery>();
@@ -31,7 +31,7 @@ namespace PishiStiray.Services
 
             return deliveries;
         }
-
+        //Создание заказа и запись в бд
         public async Task<Order> CreateOrder(List<CartItem> cartItems, int deliveryId)
         {
             int orderNumber = _tradeContext.Orderusers.Max(o => o.OrderId) + 1;
@@ -84,7 +84,7 @@ namespace PishiStiray.Services
                 Discount = (float)orderproductList.Sum(i => i.ProductArticleNumberNavigation.ProductDiscountAmount)
             };
         }
-
+        //Получение продуктов для других функций
         private async Task<List<CartItem>> GetProducts(ICollection<Orderproduct> orderproducts) 
         {
             List<CartItem> products = new List<CartItem>();
@@ -113,6 +113,7 @@ namespace PishiStiray.Services
             }
             return products;
         }
+        //Функция изменения заказа
         public async void ChangeOrder(Order order)
         {
             Orderuser newOrder = await _tradeContext.Orderusers.Where(o => o.OrderId == order.OrderId).FirstOrDefaultAsync();

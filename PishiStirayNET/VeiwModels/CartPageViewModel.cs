@@ -101,6 +101,13 @@ namespace PishiStiray.VeiwModels
                 CartProductsList.Remove(SelectedCartItem);
             }
         }
+        partial void OnSelectedCartItemChanged(CartItem? value)
+        {
+            if (SelectedCartItem != null)
+            {
+                Count = SelectedCartItem.Count;
+            }
+        }
 
 
 

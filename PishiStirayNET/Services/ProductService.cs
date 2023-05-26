@@ -19,7 +19,7 @@ namespace PishiStiray.Services
         {
             _context = context;
         }
-
+        //Получение списка всех продуктов
         public async Task<List<Product>> GetProductsAsync()
         {
             List<Product> products = new();
@@ -68,7 +68,7 @@ namespace PishiStiray.Services
             });
             return cartProducts;
         }
-
+        //Изменение продукта
         public async void ChangeProduct(ProductDB productDB)
         {
             ProductDB? product = await _context.Products.Where(p => p.ProductArticleNumber == productDB.ProductArticleNumber).SingleOrDefaultAsync();
