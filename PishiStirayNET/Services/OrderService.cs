@@ -77,11 +77,11 @@ namespace PishiStiray.Services
                 OrderStatus = "Новый",
                 OrderDeliveryDate = DateOnly.FromDateTime(DateTime.Now),
                 OrderPickupPoint = deliveryId,
-                OrdererFio = CurrentUser.User != null ? $"{CurrentUser.User.UserSurname} {CurrentUser.User.UserName} {CurrentUser.User.UserPatronymic}" : null,
+                OrdererFio = CurrentUser.User != null ? $"{CurrentUser.User.UserSurname} {CurrentUser.User.UserName} {CurrentUser.User.UserPatronymic}" : "Гость",
                 OrderAquireCode = aquireCode,
                 Products = await GetProducts(orderproductList),
-                FullPrice = (float?)orderproductList.Sum(i => i.ProductArticleNumberNavigation.ProductCost),
-                Discount = (float?)orderproductList.Sum(i => i.ProductArticleNumberNavigation.ProductCurrentDiscount)
+                FullPrice = (float)orderproductList.Sum(i => i.ProductArticleNumberNavigation.ProductCost),
+                Discount = (float)orderproductList.Sum(i => i.ProductArticleNumberNavigation.ProductDiscountAmount)
             };
         }
 

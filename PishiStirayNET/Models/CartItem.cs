@@ -11,7 +11,7 @@ namespace PishiStiray.Models
         [ObservableProperty]
         private int count;
 
-        public float? Cost => (float?)(Product.ProductCost * Count);
-        public float? Discount => (float?)(Product.ProductCost * Count) - (float?)Product?.NewPrice * Count;
+        public float? Cost => (float?)(Product?.ProductCost * Count);
+        public float? Discount => (float?)(Product?.ProductCost * Count) - (float?)Product?.NewPrice * Count;
     }
 }

@@ -18,9 +18,9 @@ namespace PishiStiray.Models
         {
             get
             {
-                if (ProductCurrentDiscount != 0)
+                if (ProductDiscountAmount != 0)
                 {
-                    return (float?)(ProductCost - (ProductCost * (ProductCurrentDiscount / 100)));
+                    return (float?)(ProductCost - (ProductCost * (ProductDiscountAmount / 100)));
                 }
                 return 0;
             }

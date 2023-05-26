@@ -57,7 +57,7 @@
                     HorizontalAlignment="Center">
             <TextBlock Text="Цена без скидки:"
                    FontFamily="{StaticResource mainFont}"/>
-            <TextBlock Text="{Binding TotalPrice, StringFormat=' {0}₽ ',Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="{Binding TotalPrice, StringFormat=' {0}₽ ',Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal"
@@ -66,7 +66,7 @@
                     HorizontalAlignment="Center">
             <TextBlock Text="Цена со скидкой:"
                    FontFamily="{StaticResource mainFont}"/>
-            <TextBlock Text="{Binding FinalPrice, StringFormat=' {0}₽ '}"/>
+            <TextBlock Text="{Binding ResultCost, StringFormat=' {0}₽ ', Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
 
 
@@ -80,7 +80,7 @@
                   Margin="0,10,0,0"
                   HorizontalContentAlignment="Center"
                   SelectedItem="{Binding SelectedCartItem}"
-                  ItemsSource="{Binding CartItemsList}"
+                  ItemsSource="{Binding CartProductsList}"
                   SelectionMode="Single">
 
 
@@ -93,25 +93,34 @@
             </ListView.ItemsPanel>
 
             <ListView.ItemTemplate >
-                <DataTemplate >
-                    <Border Margin="10,10"
+                <DataTemplate>
+
+                    <Grid Background="White">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="9*"/>
+                            <ColumnDefinition Width="5*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Margin="10,10"
                             BorderThickness="3"
                             Padding="10,0"
                             MaxWidth="590"
                             MinWidth="570"
                             Width="610"
-                            Background="{Binding ProductDiscountAmount, Converter={converters:IntToBrushConverter}, UpdateSourceTrigger=PropertyChanged}"
+                                DataContext="{Binding Product}"
+                            Background="{Binding ProductDiscountAmount, Converter = {converters:IntToBrushConverter}, UpdateSourceTrigger=PropertyChanged}"
                             BorderBrush="{StaticResource additionalColor}">
-                        <Grid Height="auto"
+                            <Grid Height="auto"
                                 VerticalAlignment="Center"
                           HorizontalAlignment="Stretch" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1.3*"/>
-                                <ColumnDefinition Width="3*"/>
-                                <ColumnDefinition Width="0.7*"/>
-                            </Grid.ColumnDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.3*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="0.7*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <Image 
+                                <Image 
                                Width="130" 
                             Height="130"
                             Source= "{Binding ImageUrl}"
@@ -119,103 +128,108 @@
                          
                             HorizontalAlignment="Left"/>
 
-                            <StackPanel
+                                <StackPanel
                                     Grid.Column="1"
                             HorizontalAlignment="Left"
                          >
-                                <TextBlock FontWeight="Bold"
+                                    <TextBlock FontWeight="Bold"
                                        Margin="2,3"
                                        Text="{Binding ProductName}"/>
 
-                                <TextBlock Text="{Binding ProductDescription}"
+                                    <TextBlock Text="{Binding ProductDescription}"
                                        TextWrapping="Wrap"
                                          
                                        Margin="2,3,4,3"/>
 
-                                <TextBlock Text="{Binding ProductManufacturerNavigation.ManufacturerName, 
-                                StringFormat='Производитель - {0}'}"
+                                    <TextBlock DataContext="{Binding ProductManufacturerNavigation
+                                    , UpdateSourceTrigger=PropertyChanged}"
+                                    Text="{Binding ManufacturerName, 
+                                StringFormat='Производитель - {0}', UpdateSourceTrigger=PropertyChanged}"
                                             Margin="0,7"/>
 
 
-                                <StackPanel Orientation="Horizontal"
+                                    <StackPanel Orientation="Horizontal"
                                             Margin="0,7">
 
-                                    <TextBlock Text="Цена - "/>
+                                        <TextBlock Text="Цена - "/>
 
-                                    <TextBlock Text="{Binding ProductCost}"
+                                        <TextBlock Text="{Binding ProductCost,  StringFormat='{}{0} ₽'}"
                                           >
-                                        <TextBlock.Style>
-                                            <Style TargetType="{x:Type TextBlock}">
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding HaveDiscount}"
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding HaveDiscount}"
                                                                  Value="True">
-                                                        <Setter Property="TextDecorations" Value="Strikethrough"/>
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                                <Setter Property="FontFamily" 
-                                                        Value="{StaticResource mainFont}"/>
+                                                            <Setter Property="TextDecorations" Value="Strikethrough"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                    <Setter Property="FontFamily" 
+                                                        Value="Comic Sans MS"/>
 
-                                                <Setter Property="Foreground"
+                                                    <Setter Property="Foreground"
                                                  Value="{StaticResource accentColor}"/>
-                                            </Style>
-                                        </TextBlock.Style>
-                                    </TextBlock>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
 
-                                    <TextBlock 
+                                        <TextBlock 
                                         x:Name="newPriceTextBlock"
-                                        Text="{Binding NewPrice}"
+                                        Text="{Binding NewPrice,  StringFormat='{}{0} ₽'}"
                                            Margin="5,0"/>
+
+                                    </StackPanel>
 
                                 </StackPanel>
 
-                            </StackPanel>
-                            
-
-                            <TextBlock Text="{Binding ProductDiscountAmount,
+                                <TextBlock Text="{Binding ProductDiscountAmount,
                             StringFormat= 'Cкидка - {0}%'}"
                                    Grid.Column="2"
                                        VerticalAlignment="Center">
 
-                                <TextBlock.Style>
-                                    <Style TargetType="{x:Type TextBlock}">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding HaveDiscount}"
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding HaveDiscount}"
                                                                  Value="False">
-                                                <Setter Property="Visibility" Value="Hidden"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                        <Setter Property="FontFamily" 
+                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                            <Setter Property="FontFamily" 
                                                         Value="Comic Sans MS"/>
 
-                                        <Setter Property="Foreground"
+                                            <Setter Property="Foreground"
                                                  Value="{StaticResource accentColor}"/>
-                                    </Style>
-                                </TextBlock.Style>
-                            </TextBlock>
-                            <StackPanel HorizontalAlignment="Right"
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </Grid>
+                        </Border>
+
+                        <StackPanel HorizontalAlignment="Right"
                                     Orientation="Horizontal"
-                                    Grid.Column="1"
-                                        Margin="20,20,0,0">
-                                <Button Height="25"
+                                    Grid.Column="1">
+                            <Button Height="25"
                                     Width="25"
                                     Command="{Binding DataContext.DecreaseSelectedCartItemCountCommand ,RelativeSource={RelativeSource AncestorType=local:CartPage}}"
                                     Content="-"
                                     Style="{StaticResource MaterialDesignFloatingActionMiniButton}"/>
-                                <TextBlock VerticalAlignment="Center"
+                            <TextBlock VerticalAlignment="Center"
                                        FontSize="20"
-                                       Grid.Column="2"
+                                       Grid.Column="1"
                                        HorizontalAlignment="Center"
                                        Text="{Binding Count, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
                                        Margin="10,0"/>
 
-                                <Button Height="25"
+                            <Button Height="25"
                                     Width="25"
                                     Command="{Binding DataContext.IncreaseSelectedCartItemCountCommand ,RelativeSource={RelativeSource AncestorType={x:Type local:CartPage}}}"
                                     Content="+"
                                     Style="{StaticResource MaterialDesignFloatingActionMiniButton}"/>
-                            </StackPanel>
-                        </Grid>
-                    </Border>
+                        </StackPanel>
+
+                    </Grid>
+
+
 
                 </DataTemplate>
             </ListView.ItemTemplate>

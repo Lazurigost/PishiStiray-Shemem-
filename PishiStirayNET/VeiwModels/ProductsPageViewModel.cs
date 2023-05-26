@@ -162,17 +162,23 @@ namespace PishiStiray.VeiwModels
         {
             if (SelectedProduct != null)
             {
-                CartItem? cartItem = Cart.CartProductList.SingleOrDefault(p => p.product == SelectedProduct);
+                CartItem? cartItem = Global.CartProductList.SingleOrDefault(p => p.product.ProductArticleNumber == SelectedProduct.ProductArticleNumber);
                 if (cartItem == null)
                 {
-                    Cart.CartProductList.Add(new CartItem
+                    Global.CartProductList.Add(new CartItem
                     {
-                        product = SelectedProduct
+                        product = SelectedProduct,
+                        Count = 1
+                        
                     });
                 }
                 else
                 {
-                    cartItem.Count++;
+                    if (cartItem.Count < cartItem.product.ProductQuantityInStock) 
+                    {
+                        cartItem.Count++;
+                    }
+                    
                 }
             }
         }

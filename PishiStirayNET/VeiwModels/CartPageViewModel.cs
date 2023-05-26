@@ -19,61 +19,54 @@ namespace PishiStiray.VeiwModels
         private ObservableCollection<Product> cartItemsList;
 
         [ObservableProperty]
-        //[NotifyPropertyChangedFor(nameof(TotalPrice))]
+        [NotifyPropertyChangedFor(nameof(TotalPrice))]
         private ObservableCollection<CartItem> cartProductsList;
 
         [ObservableProperty]
         private List<Delivery> pickupPoints;
-        
+
         [ObservableProperty]
         [NotifyCanExecuteChangedFor(nameof(MakeOrderCommand))]
         private Delivery? selectedPickupPoint;
 
         [ObservableProperty]
         [NotifyCanExecuteChangedFor(nameof(MakeOrderCommand))]
-        private Product selectedCartItem;
+        private CartItem? selectedCartItem;
 
-        
+
 
         [ObservableProperty]
         private Delivery selectedPoint;
 
         [ObservableProperty]
         private CartItem selectedCart;
-        
-        [ObservableProperty]
-        private decimal? totalPrice = 0;
 
         [ObservableProperty]
-        private float? finalPrice = 0;
-        
-        [ObservableProperty]
-        //[NotifyPropertyChangedFor(nameof(TotalPrice))]
-        //[NotifyPropertyChangedFor(nameof(TotalCount))]
-        //[NotifyPropertyChangedFor(nameof(TotalDiscount))]
-        //[NotifyPropertyChangedFor(nameof(ResultCost))]
+        [NotifyPropertyChangedFor(nameof(TotalPrice))]
+        [NotifyPropertyChangedFor(nameof(TotalCount))]
+        [NotifyPropertyChangedFor(nameof(TotalDiscount))]
+        [NotifyPropertyChangedFor(nameof(ResultCost))]
         private int? count;
 
-        //public int? TotalCount
-        //{
-        //    get => CartProductsList.Sum(item => item.Count);
-        //}
+        public int? TotalCount
+        {
+            get => CartProductsList.Sum(item => item.Count);
+        }
 
+        public float? TotalPrice
+        {
+            get => CartProductsList.Sum(item => item.Cost);
+        }
 
-        //public float? TotalPrice
-        //{
-        //    get => CartProductsList.Sum(item => item.Cost);
-        //}
+        public float? TotalDiscount
+        {
+            get => CartProductsList.Sum(item => item.Discount);
+        }
 
-        //public float? TotalDiscount
-        //{
-        //    get => CartProductsList.Sum(item => item.Discount);
-        //}
-
-        //public float? ResultCost
-        //{
-        //    get => TotalPrice - TotalDiscount;
-        //}
+        public float? ResultCost
+        {
+            get => TotalPrice - TotalDiscount;
+        }
         #endregion
 
         private readonly ProductService productService_;
@@ -83,7 +76,7 @@ namespace PishiStiray.VeiwModels
         private readonly SaveFileDialogService saveFileDialogService_;
         private readonly DocumentService documentService_;
 
-        public CartPageViewModel(DeliveryService deliveryService,ProductService productService, PageService pageService, OrderService orderService, SaveFileDialogService saveFileDialogService, DocumentService documentService)
+        public CartPageViewModel(DeliveryService deliveryService, ProductService productService, PageService pageService, OrderService orderService, SaveFileDialogService saveFileDialogService, DocumentService documentService)
         {
             pageService_ = pageService;
             productService_ = productService;
@@ -101,21 +94,41 @@ namespace PishiStiray.VeiwModels
             UpdateCart();
         }
 
+        partial void OnCountChanged(int? value)
+        {
+            if (Count == 0)
+            {
+                CartProductsList.Remove(SelectedCartItem);
+            }
+        }
+
+
+
         //Обновление корзины
         public async void UpdateCart()
         {
-            CartItemsList = await productService_.GetCartItemsAsync(CartProductsList);
-
-            TotalPrice = 0;
-            FinalPrice = 0;
-
-            foreach (var cartItem in CartProductsList)
-            {
-                TotalPrice += cartItem.product.ProductCost;
-                FinalPrice += cartItem.product.NewPrice;
-            }
+            cartProductsList = Global.CartProductList;
         }
         #region Команды
+
+        [RelayCommand]
+        private void IncreaseSelectedCartItemCount()
+        {
+            if (SelectedCartItem != null && SelectedCartItem.Count > 0 && Count < SelectedCartItem.product.ProductQuantityInStock)
+            {
+                SelectedCartItem.Count++;
+                Count = SelectedCartItem.Count;
+            }
+        }
+        [RelayCommand]
+        private void DecreaseSelectedCartItemCount()
+        {
+            if (SelectedCartItem != null && SelectedCartItem.Count > 0)
+            {
+                --SelectedCartItem.Count;
+                Count = SelectedCartItem.Count;
+            }
+        }
 
         //Удаление из корзины
         [RelayCommand]
@@ -125,13 +138,14 @@ namespace PishiStiray.VeiwModels
             {
                 foreach (CartItem CItem in CartProductsList)
                 {
-                    if (SelectedCartItem == CItem.product)
+                    if (SelectedCartItem == CItem)
                     {
+                        CItem.Count = 0;
+                        Global.CartProductList.Remove(CItem);
                         CartProductsList.Remove(CItem);
                         break;
                     }
                 }
-                CartItemsList.Remove(SelectedCartItem);
                 UpdateCart();
             }
         }
@@ -160,7 +174,7 @@ namespace PishiStiray.VeiwModels
 
         private bool CanMakeOrder()
         {
-            if(SelectedPickupPoint != null && cartProductsList.Count > 0) 
+            if (SelectedPickupPoint != null && cartProductsList.Count > 0)
             {
                 return true;
             }
