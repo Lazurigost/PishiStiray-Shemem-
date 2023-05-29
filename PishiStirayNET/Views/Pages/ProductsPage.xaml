@@ -252,6 +252,14 @@
                               FontSize="12"
                               Visibility="{Binding IsAdmin}"
                               Command="{Binding EditProductProceedCommand}"/>
+                    <MenuItem Header="Добавить товар"
+                              FontSize="12"
+                              Visibility="{Binding IsAdmin}"
+                              Command="{Binding AddProductProceedCommand}"/>
+                    <MenuItem Header="Удалить товар"
+                              FontSize="12"
+                              Visibility="{Binding IsAdmin}"
+                              Command="{Binding DeleteProductCommand}"/>
                 </ContextMenu>
             </ListView.ContextMenu>
             

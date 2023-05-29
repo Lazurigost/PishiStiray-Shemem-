@@ -200,5 +200,15 @@ namespace PishiStiray.VeiwModels
             }
            
         }
+        [RelayCommand]
+        private void AddProductProceed()
+        {
+            
+        }
+        [RelayCommand]
+        private void RemoveProduct() 
+        {
+            
+        }
     }
 }

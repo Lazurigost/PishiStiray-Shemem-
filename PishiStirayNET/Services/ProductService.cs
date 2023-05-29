@@ -73,7 +73,7 @@ namespace PishiStiray.Services
         {
             ProductDB? product = await _context.Products.Where(p => p.ProductArticleNumber == productDB.ProductArticleNumber).SingleOrDefaultAsync();
 
-            if (product != null) 
+            if (product != null)
             {
                 product.ProductManufacturer = productDB.ProductManufacturer;
                 product.ProductPhoto = productDB.ProductPhoto;
@@ -87,6 +87,16 @@ namespace PishiStiray.Services
                 product.ProductQuantityInStock = productDB.ProductQuantityInStock;
 
                 _context.SaveChanges();
+            }
+        }
+        public async void DeleteProduct(Product productDB)
+        {
+            ProductDB? product = await _context.Products.Where(p => p.ProductArticleNumber == productDB.ProductArticleNumber).SingleOrDefaultAsync();
+
+            if (product != null )
+            {
+                _context.Remove(product);
+                _context.SaveChangesAsync();
             }
         }
     }
