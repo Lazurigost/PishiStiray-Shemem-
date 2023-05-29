@@ -4,11 +4,191 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PishiStiray.Views.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AddProductPage">
+      Title="AddProductPage"
+      DataContext="{Binding AddProductPageViewModel, Source = {StaticResource ViewModelLocator}}">
 
-    <Grid>
-        
+    <Grid Margin="20,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+
+        </Grid.RowDefinitions>
+
+
+        <Grid Grid.ColumnSpan="2">
+            <Button Content="Назад"
+                    Width="70"
+                    HorizontalAlignment="Left"
+                    Margin="10 0 0 0"
+                    Command="{Binding GoBackPageCommand}"/>
+            <TextBlock Text="Добавить новый продукт" TextAlignment="Center"
+                  FontSize="30"
+                       Margin="90 0 0 0"/>
+        </Grid>
+
+
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    Margin="0,10">
+
+            <Image Source="{Binding ImagePath}" 
+                   MaxHeight="120"
+                   Margin="0,0,10,0"/>
+            <Button Grid.Row="1" 
+                    Content="Выбрать изображение"
+                    Margin="20,0"
+                    Width="200"
+                    Command="{Binding AddPhotoCommand}"/>
+
+        </StackPanel>
+
+
+        <Grid Grid.Row="2"
+              Margin="0 5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 Grid.Column="0"
+                  Text="{Binding Title, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                 materialDesign:HintAssist.Hint="Название продукта"
+               
+                 Margin="0 0"/>
+
+            <ComboBox Style="{StaticResource MaterialDesignComboBox}"
+                  Grid.Column="1"
+                  SelectedItem="{Binding SelectedCategory, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                  ItemsSource="{Binding ProductCategories}"
+                  VerticalAlignment="Bottom"
+                   materialDesign:HintAssist.Hint="Категория продукта">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding CategoryName}">
+
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
+
+
+        <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 Grid.Row="3"
+                 materialDesign:HintAssist.Hint="Описание продукта"
+                Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 Margin="0,5"/>
+
+
+
+
+        <Grid Grid.Row="5"
+              Margin="0 5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <ComboBox Style="{StaticResource MaterialDesignComboBox}"
+                  Grid.Column="0"
+                  Margin="0,0"
+                      SelectedItem="{Binding SelectedManufacturer, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                  VerticalAlignment="Bottom"
+                  ItemsSource="{Binding Manufacturers}"
+                  materialDesign:HintAssist.Hint="Производитель">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ManufacturerName}">
+
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <ComboBox Style="{StaticResource MaterialDesignComboBox}"
+                    Grid.Column="1"
+                  Margin="0,0"
+                   SelectedItem="{Binding SelectedDelivery, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                  ItemsSource="{Binding Deliveries}"
+                  VerticalAlignment="Bottom"
+                  materialDesign:HintAssist.Hint="Поставщик">
+                
+            </ComboBox>
+        </Grid>
+
+
+        <Grid Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            materialDesign:HintAssist.Hint="Цена за 1 ед."
+              Text="{Binding Price, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+               Grid.Column="0"
+                   Margin="0,0">
+            </TextBox>
+            <ComboBox Style="{StaticResource MaterialDesignComboBox}"
+                  Grid.Column="1"
+                      ItemsSource="{Binding Units}"
+                    Margin="0,0"
+                      SelectedItem="{Binding SelectedUnit, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                              VerticalAlignment="Bottom"
+                  materialDesign:HintAssist.Hint="Единица измерения">
+                
+            </ComboBox>
+        </Grid>
+
+
+        <Grid Grid.Row="7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox materialDesign:HintAssist.Hint="Скидка"
+                Grid.Column="0"
+                 Text="{Binding CurrentDiscount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                   Margin="0,5"
+                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+
+        </Grid>
+
+
+
+        <Grid Grid.Row="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox materialDesign:HintAssist.Hint="На складе"
+                 Grid.Column="0"
+                     Grid.ColumnSpan="2"
+                 Margin="0,5"
+                     Text="{Binding MaxCount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+        </Grid>
+
+        <Button Grid.Row="9" Height="60"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Margin="0,10"
+                Width="200"
+                Content="Добавить продукт"
+                Command="{Binding AddNewProductCommand, IsAsync=True}" Cursor="Hand"/>
     </Grid>
 </Page>

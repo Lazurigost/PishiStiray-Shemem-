@@ -178,6 +178,10 @@ namespace PishiStiray.VeiwModels
                     {
                         cartItem.Count++;
                     }
+                    else
+                    {
+                        MessageBox.Show("Товар закончился");
+                    }
                     
                 }
             }
@@ -203,7 +207,7 @@ namespace PishiStiray.VeiwModels
         [RelayCommand]
         private void AddProductProceed()
         {
-            
+            _pageService.ChangePage(new AddProductPage());
         }
         [RelayCommand]
         private void RemoveProduct() 

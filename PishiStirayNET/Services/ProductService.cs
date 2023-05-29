@@ -99,5 +99,41 @@ namespace PishiStiray.Services
                 _context.SaveChangesAsync();
             }
         }
+        public async Task<string> GenerateArticle()
+        {
+            string article = "";
+            List<ProductDB> articles = await _context.Products.ToListAsync();
+
+            await Task.Run(() =>
+            {
+                string[] symbolsArray = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Z" };
+
+                bool isArticle = false;
+
+                while (isArticle = false)
+                {
+                    Random rnd = new();
+                    for (int i = 0; i < 5; i++)
+                    {
+                        article = article + symbolsArray[rnd.Next(0, symbolsArray.Length)];
+                    }
+                    if (articles.All(a => a.ProductArticleNumber != article))
+                    {
+                        isArticle = true;
+                    }
+                }
+            });
+
+            return article;
+        }
+        public async Task<List<ProductCategory>> GetProductCategoriesAsync()
+        {
+            return await _context.ProductCategories.ToListAsync();
+        }
+        public async void AddNewProduct(ProductDB product)
+        {
+            await _context.Products.AddAsync(product);
+            await _context.SaveChangesAsync();
+        }
     }
 }
