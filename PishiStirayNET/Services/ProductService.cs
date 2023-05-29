@@ -110,7 +110,7 @@ namespace PishiStiray.Services
 
                 bool isArticle = false;
 
-                while (isArticle = false)
+                while (isArticle == false)
                 {
                     Random rnd = new();
                     for (int i = 0; i < 5; i++)
