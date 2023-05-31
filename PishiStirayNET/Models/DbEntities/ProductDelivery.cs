@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PishiStiray.Models.DbEntities;
+namespace PishiStiray;
 
-public partial class Unit
+public partial class ProductDelivery
 {
     public int IdproductDeliveries { get; set; }
 

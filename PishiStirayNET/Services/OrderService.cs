@@ -84,6 +84,46 @@ namespace PishiStiray.Services
                 Discount = (float)orderproductList.Sum(i => i.ProductArticleNumberNavigation.ProductDiscountAmount)
             };
         }
+        private List<int> GetProductsQuatities(ICollection<Orderproduct> orderproducts)
+        {
+            List<int> quantities = new List<int>();
+
+            foreach (var product in orderproducts.ToList())
+            {
+                quantities.Add(product.ProductArticleNumberNavigation.ProductQuantityInStock);
+            }
+
+            return quantities;
+        }
+        public async Task<List<Order>> GetAllOrdersAsync()
+        {
+            List<Orderuser> order1s = await _tradeContext.Orderusers.ToListAsync();
+            List<Order> orders = new List<Order>();
+            foreach (Orderuser order1 in order1s)
+            {
+
+                orders.Add(new Order
+                {
+                    OrderId = order1.OrderId,
+                    OrderAquireCode = order1.OrderAquireCode,
+                    OrdererFio = order1.OrdererFio,
+                    OrderDeliveryDate = order1.OrderDeliveryDate,
+                    OrderPickupPoint = order1.OrderPickupPoint,
+                    OrderPickupPointNavigation = order1.OrderPickupPointNavigation,
+                    OrderStatus = order1.OrderStatus,
+                    FullPrice = (float)order1.Orderproducts.ToList().Sum(op => op.ProductAmount * op.ProductArticleNumberNavigation.ProductCost),
+                    Discount = (float)order1.Orderproducts.ToList().Sum(op => op.ProductAmount * (op.ProductArticleNumberNavigation.ProductCost / Convert.ToDecimal(100) * op.ProductArticleNumberNavigation.ProductDiscountAmount)),
+                    ProductQuatities = GetProductsQuatities(order1.Orderproducts),
+                    Products = await GetProducts(order1.Orderproducts)
+
+                });
+
+            }
+
+
+
+            return orders;
+        }
         //Получение продуктов для других функций
         private async Task<List<CartItem>> GetProducts(ICollection<Orderproduct> orderproducts) 
         {

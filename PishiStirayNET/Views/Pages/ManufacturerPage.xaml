@@ -26,9 +26,10 @@
                     HorizontalAlignment="Left"
                     Margin="10 0 0 0"
                     Command="{Binding GoBackPageCommand}"/>
-            <TextBlock Text="Производители" 
+            <TextBlock Text="Производители"
                    TextAlignment="Center"
                    Grid.ColumnSpan="2"
+                   FontFamily="{StaticResource mainFont}"
                    FontSize="30"
                    Margin="90 0 0 0"/>
         </Grid>

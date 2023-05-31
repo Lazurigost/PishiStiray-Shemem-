@@ -29,7 +29,7 @@ namespace PishiStiray.VeiwModels
         {
             _pageService = pageService;
             _pageService.OnPageChanged += (page) => PageSource = page;
-            _pageService.ChangePage(new ManufacturerPage());
+            _pageService.ChangePage(new OrdersPage());
         }
 
     }

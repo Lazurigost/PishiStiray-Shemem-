@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using PishiStiray.Models.DbEntities;
 
 namespace PishiStiray;
 

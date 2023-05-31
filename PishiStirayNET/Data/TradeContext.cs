@@ -26,7 +26,7 @@ public partial class TradeContext : DbContext
 
     public virtual DbSet<ProductCategory> ProductCategories { get; set; }
 
-    public virtual DbSet<Unit> ProductDeliveries { get; set; }
+    public virtual DbSet<ProductDelivery> ProductDeliveries { get; set; }
 
     public virtual DbSet<Manufacturer> ProductManufacturers { get; set; }
 
@@ -163,7 +163,7 @@ public partial class TradeContext : DbContext
                 .HasColumnName("category_name");
         });
 
-        modelBuilder.Entity<Unit>(entity =>
+        modelBuilder.Entity<ProductDelivery>(entity =>
         {
             entity.HasKey(e => e.IdproductDeliveries).HasName("PRIMARY");
 

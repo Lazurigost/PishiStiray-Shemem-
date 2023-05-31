@@ -35,7 +35,7 @@ public partial class ProductDB
 
     public virtual ProductCategory ProductCategoryNavigation { get; set; } = null!;
 
-    public virtual Unit? ProductDeliveryNavigation { get; set; }
+    public virtual ProductDelivery? ProductDeliveryNavigation { get; set; }
 
     public virtual Manufacturer ProductManufacturerNavigation { get; set; } = null!;
     public decimal? NewPrice

@@ -13,252 +13,118 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*" />
+            <RowDefinition Height="50"/>
+            <RowDefinition />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
 
-        <Grid Margin="30,0,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="8*"/>
-                <ColumnDefinition Width="2*"/>
-            </Grid.ColumnDefinitions>
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="0.9*"></RowDefinition>
-                <RowDefinition></RowDefinition>
-            </Grid.RowDefinitions>
-
-            <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                 BorderBrush="{StaticResource additionalColor}"
-                 Grid.Column="0"
-                 Grid.Row="0"
-                 Text="{Binding SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                 Margin="0,5,0,5"/>
-            <usercontrols:AuthorizedUserUserControl Grid.Column="1"
-                                                    Margin="5,10,5,5"
-                                                    Grid.RowSpan="2"/>
-
-
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="6*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-
-                <StackPanel Orientation="Horizontal">
-                    <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
-                          materialDesign:HintAssist.Hint="Сортировка по цене"
-                          MinWidth="200"
-                          FontFamily="{StaticResource mainFont}"
-                          HorizontalAlignment="Left"
-                          Grid.Column="0"
-                          SelectedItem="{Binding SelectedOrder}"
-                          ItemsSource="{Binding OrderList}"
-                          Margin="0,0,20,0">
-
-                    </ComboBox>
-
-                    <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
-                          HorizontalAlignment="Left"
-                          MinWidth="200"
-                          SelectedItem="{Binding SelectedFilter}"
-                          ItemsSource="{Binding FiltersList}"
-                          FontFamily="{StaticResource mainFont}"
-                          Grid.Column="0"
-                          materialDesign:HintAssist.Hint="Фильтрация по скидке">
-
-                    </ComboBox>
-                </StackPanel>
-
-
-                <StackPanel Orientation="Vertical"
-                   Grid.Column="2"
-                    HorizontalAlignment="Right">
-                    <TextBlock Grid.Row="1"
-                   Grid.Column="2"
-                   Text="Кол-во товаров"
-                   FontSize="13"
+        <Grid Grid.ColumnSpan="2">
+            <Button Content="Назад"
+                    Width="70"
+                    HorizontalAlignment="Left"
+                    Margin="10 0 0 0"
+                    Command="{Binding GoBackPageCommand}"/>
+            <TextBlock Text="Поставщики" 
+                   TextAlignment="Center"
+                   Grid.ColumnSpan="2"
+                   FontSize="30"
                    FontFamily="{StaticResource mainFont}"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Top"
-                   Margin="0,0,0,0"/>
-
-                    <StackPanel Orientation="Horizontal"
-                    
-                    HorizontalAlignment="Center"
-                    >
-
-                        <TextBlock 
-                    Text="{Binding CurrentProductsCount}"
-                   FontSize="14"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Bottom"
-                   Margin="0,0,5,0"
-                />
-
-                        <TextBlock 
-                   Text="/"
-                   FontSize="14"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Bottom"
-                   Margin="0,0,0,0"/>
-
-                        <TextBlock Grid.Row="0"
-                   Grid.Column="2"
-                   Text="{Binding TotalProductsCount}"
-                   FontSize="14"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Bottom"
-                   Margin="5,0,0,0"/>
-                    </StackPanel>
-                </StackPanel>
-            </Grid>
+                   Margin="90 0 0 0"/>
         </Grid>
 
-        <ListView Grid.Row="1"
-                  Grid.Column="0"
-                  VerticalAlignment="Top"
-                  x:Name="mainListView"
-                  Grid.ColumnSpan="2"
-                  Margin="0,10,0,0"
-                  HorizontalContentAlignment="Center"
-                  SelectedItem="{Binding SelectedProduct}"
-                  ItemsSource="{Binding ProductsList}"
-                  SelectionMode="Single">
 
+        <ListView Grid.Column="0"
+                  Grid.Row="1"
+                  ItemsSource="{Binding DeliveriesList}"
+                  SelectedItem="{Binding SelectedDelivery}"
+                  HorizontalContentAlignment="Center">
 
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Horizontal"
-                               MaxWidth="{Binding ActualWidth, ElementName=ProductPage, Mode=OneWay}"/>
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-
-            <ListView.ItemTemplate >
-                <DataTemplate >
+            <ListView.ItemTemplate>
+                <DataTemplate>
                     <Border Margin="10,10"
                             BorderThickness="3"
                             Padding="10,0"
-                            MaxWidth="590"
-                            MinWidth="570"
+                            MaxWidth="300"
+                            MinWidth="260"
+                            MinHeight="80"
+                            Height="auto"
+                            CornerRadius="6"
                             Width="610"
-                            BorderBrush="{StaticResource additionalColor}">
-                        <Grid Height="auto"
-                                VerticalAlignment="Center"
-                          HorizontalAlignment="Stretch" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1.3*"/>
-                                <ColumnDefinition Width="3*"/>
-                                <ColumnDefinition Width="0.7*"/>
-                            </Grid.ColumnDefinitions>
+                            Background="White"
+                            BorderBrush="{StaticResource additionalColor}"
+                            HorizontalAlignment="Center">
 
-                            <Image 
-                                Width="130"
-                                Height="130"
-                                Source= "{Binding ImageUrl}"
-                                Grid.Column="0"
-                                HorizontalAlignment="Left"/>
+                        <TextBlock VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Text="{Binding DeliveryName}"/>
 
-                            <StackPanel
-                                    Grid.Column="1"
-                            HorizontalAlignment="Left"
-                         >
-                                <TextBlock FontWeight="Bold"
-                                       Margin="2,3"
-                                       Text="{Binding ProductName}"/>
-
-                                <TextBlock Text="{Binding ProductDescription}"
-                                       TextWrapping="Wrap"
-                                       Margin="2,3,4,3"/>
-
-                                <TextBlock Text="{Binding ProductManufacturerNavigation.ManufacturerName, 
-                                StringFormat='Производитель - {0}'}"
-                                            Margin="0,7"/>
-
-
-                                <StackPanel Orientation="Horizontal"
-                                            Margin="0,7">
-
-                                    <TextBlock Text="Цена - "/>
-
-                                    <TextBlock Text="{Binding ProductCost}"
-                                          >
-                                        <TextBlock.Style>
-                                            <Style TargetType="{x:Type TextBlock}">
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding HaveDiscount}"
-                                                                 Value="True">
-                                                        <Setter Property="TextDecorations" Value="Strikethrough"/>
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                                <Setter Property="FontFamily" 
-                                                        Value="Comic Sans MS"/>
-
-                                                <Setter Property="Foreground"
-                                                 Value="{StaticResource accentColor}"/>
-                                            </Style>
-                                        </TextBlock.Style>
-                                    </TextBlock>
-
-                                    <TextBlock 
-                                        x:Name="newPriceTextBlock"
-                                        Text="{Binding NewPrice}"
-                                        FontFamily="{StaticResource mainFont}"
-                                        Margin="5,0"/>
-
-                                </StackPanel>
-
-                            </StackPanel>
-
-                            <TextBlock Text="{Binding ProductDiscountAmount,
-                            StringFormat= 'Cкидка - {0}%'}"
-                                   Grid.Column="2"
-                                       VerticalAlignment="Center">
-
-                                <TextBlock.Style>
-                                    <Style TargetType="{x:Type TextBlock}">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding HaveDiscount}"
-                                                                 Value="False">
-                                                <Setter Property="Visibility" Value="Hidden"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                        <Setter Property="FontFamily" 
-                                                        Value="Comic Sans MS"/>
-
-                                        <Setter Property="Foreground"
-                                                 Value="{StaticResource accentColor}"/>
-                                    </Style>
-                                </TextBlock.Style>
-                            </TextBlock>
-                        </Grid>
                     </Border>
-
                 </DataTemplate>
             </ListView.ItemTemplate>
 
-
             <ListView.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Добавить в корзину"
-                              FontSize="12"
-                              Command="{Binding AddProductToCartCommand}"/>
-                    <MenuItem Header="Изменить товар"
-                              FontSize="12"
-                              Visibility="{Binding IsAdmin}"
-                              Command="{Binding EditProductProceedCommand}"/>
-                    <MenuItem Header="Добавить товар"
-                              FontSize="12"
-                              Visibility="{Binding IsAdmin}"
-                              Command="{Binding AddProductProceedCommand}"/>
-                    <MenuItem Header="Удалить товар"
-                              FontSize="12"
-                              Visibility="{Binding IsAdmin}"
-                              Command="{Binding DeleteProductCommand}"/>
+                    <MenuItem Header="Изменить" Command="{Binding ChangeDeliveryCommand}"/>
                 </ContextMenu>
             </ListView.ContextMenu>
 
-
+            <ListView.Style>
+                <Style TargetType="{x:Type ListView}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=IsChanged}" Value="True">
+                            <Setter Property="IsEnabled" Value="False"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=IsChanged}" Value="False">
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.Style>
         </ListView>
+
+        <Grid Grid.Column="1"
+              Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     Margin="40 100 40 0"
+                     materialDesign:HintAssist.Hint="Название поставщика"
+                     Text="{Binding Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+
+            <Button Grid.Row="1"
+                    Margin="70 50"
+                    Height="60"
+                    Content="Сохранить"
+                    Command="{Binding  SaveDeliveryCommand, IsAsync=True}"/>
+
+            <Button Grid.Row="2"
+                    Margin="70 0"
+                    Height="60"
+                    Command="{Binding CancelChangeCommand}"
+                    Background="White"
+                    Content="Отменить">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignRaisedLightButton}">
+                        <Setter Property="BorderBrush" Value="{StaticResource additionalColor}"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=IsChanged}" Value="True">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=IsChanged}" Value="False">
+                                <Setter Property="Visibility" Value="Hidden"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Grid>
     </Grid>
 </Page>

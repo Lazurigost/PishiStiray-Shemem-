@@ -24,6 +24,7 @@ namespace PishiStiray
             services.AddTransient<OrderService>();
             services.AddSingleton<DocumentService>();
             services.AddTransient<ManufacturerService>();
+            services.AddTransient<ProductDeliveriesService>();
             #endregion
 
 
