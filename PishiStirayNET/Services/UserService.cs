@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PishiStiray.Services
 {
-    internal class UserService
+    public class UserService
     {
         private readonly TradeContext _trade;
 
@@ -39,6 +39,15 @@ namespace PishiStiray.Services
                 }
                 return false;
             
+        }
+        public async void SignUp(UserDB user)
+        {
+            UserDB userDB = user;
+            userDB.UserId = _trade.Users.Max(u => u.UserId) + 1;
+            userDB.UserRole = 2;
+
+            await _trade.Users.AddAsync(userDB);
+            await _trade.SaveChangesAsync();
         }
     }
 }

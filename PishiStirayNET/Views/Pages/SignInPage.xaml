@@ -71,7 +71,8 @@
                 <Button Foreground="Black"
                                 Style="{StaticResource ButtonToText}"
                                 FontFamily="{StaticResource mainFont}"
-                                Cursor="Hand">
+                                Cursor="Hand"
+                                Command="{Binding SignUpCommand}">
                     <Underline>Зарегистрироваться</Underline>
                 </Button>
                 <TextBlock Foreground="Black"

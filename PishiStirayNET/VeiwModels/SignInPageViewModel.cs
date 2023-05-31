@@ -72,7 +72,9 @@ namespace PishiStiray.VeiwModels
         //Переход на страницу продуктов
         [RelayCommand]
         private void GoToProductsPage() => _pageService.ChangePage(new ProductsPage());
-
+        
+        [RelayCommand]
+        private void SignUp() => _pageService.ChangePage(new SignUpPage());
 
         #endregion
     }

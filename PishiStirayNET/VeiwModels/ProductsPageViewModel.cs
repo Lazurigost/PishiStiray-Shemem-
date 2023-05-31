@@ -212,7 +212,7 @@ namespace PishiStiray.VeiwModels
         [RelayCommand]
         private void RemoveProduct() 
         {
-            
+               
         }
     }
 }
