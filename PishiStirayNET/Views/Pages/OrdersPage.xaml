@@ -242,11 +242,8 @@
 
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <UniformGrid
-                        Columns="1"
-                                                       MaxWidth="{Binding ActualWidth, ElementName=OrderPage, Mode=OneWay}"
-                    >
-
+                            <UniformGrid    Columns="1"
+                                            MaxWidth="{Binding ActualWidth, ElementName=OrderPage, Mode=OneWay}">
                             </UniformGrid>
                         </ItemsPanelTemplate>
                     </ListView.ItemsPanel>
@@ -257,12 +254,10 @@
                             BorderThickness="3"
                             Padding="10,0"
                             MaxWidth="590"
-                            
                             MinWidth="570"
                             Width="610"
                             Background="{Binding ProductQuatities, Converter= {converters:ProductsToColorConverter}}"
                             BorderBrush="{StaticResource additionalColor}">
-
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="7*"/>

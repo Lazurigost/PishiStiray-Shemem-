@@ -7,6 +7,7 @@ using PishiStiray.Views.Pages;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace PishiStiray.VeiwModels
@@ -44,8 +45,12 @@ namespace PishiStiray.VeiwModels
 
         [ObservableProperty]
         private Product selectedProduct;
+        
         [ObservableProperty]
         private Visibility isAdmin;
+
+        [ObservableProperty]
+        private Visibility isManager;
         
         
         #endregion
@@ -80,22 +85,29 @@ namespace PishiStiray.VeiwModels
 
         public async void UpdateProductsList()
         {
-            //if (CurrentUser.User != null)
-            //{
-            //    if (CurrentUser.User.UserRole != 1)
-            //    {
-            //        IsAdmin = Visibility.Hidden;
-            //    }
-            //    else
-            //    {
-            //        IsAdmin = Visibility.Visible;
-            //    }
-
-            //}
-            //else
-            //{
-            //    IsAdmin = Visibility.Hidden;
-            //}
+            if (CurrentUser.User != null)
+            {
+                if (CurrentUser.User.UserRole == 1)
+                {
+                    IsAdmin = Visibility.Visible;
+                    IsManager = Visibility.Visible;
+                }
+                else if(CurrentUser.User.UserRole == 3)
+                {
+                    IsAdmin = Visibility.Collapsed;
+                    IsManager = Visibility.Visible;
+                }
+                else
+                {
+                    IsAdmin = Visibility.Collapsed;
+                    IsManager = Visibility.Collapsed;
+                }
+            }
+            else
+            {
+                IsAdmin = Visibility.Collapsed;
+                IsManager = Visibility.Collapsed;
+            }
 
             //Получение списка
             List<Product> products = await _productService.GetProductsAsync();
@@ -210,9 +222,23 @@ namespace PishiStiray.VeiwModels
             _pageService.ChangePage(new AddProductPage());
         }
         [RelayCommand]
-        private void RemoveProduct() 
+        private async void RemoveProduct()
         {
-               
+            if (SelectedProduct != null)
+            {
+                _productService.DeleteProduct(SelectedProduct);
+                await Task.Delay(90);
+                UpdateProductsList();
+            }
         }
+        [RelayCommand]
+        private void GoToOrders()
+        {
+            _pageService.ChangePage(new OrdersPage());
+        }
+        [RelayCommand]
+        private void GoToManufacturers() => _pageService.ChangePage(new ManufacturerPage());
+        [RelayCommand]
+        private void GoToDeliveries() => _pageService.ChangePage(new ManufacturerPage());
     }
 }

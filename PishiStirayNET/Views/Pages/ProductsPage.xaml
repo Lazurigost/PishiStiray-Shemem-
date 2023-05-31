@@ -259,12 +259,34 @@
                     <MenuItem Header="Удалить товар"
                               FontSize="12"
                               Visibility="{Binding IsAdmin}"
-                              Command="{Binding DeleteProductCommand}"/>
+                              Command="{Binding RemoveProductCommand}"/>
+                    <MenuItem Header="Перейти к производителям"
+                              FontSize="12"
+                              Visibility="{Binding IsAdmin}"
+                              Command="{Binding GoToManufacturersCommand}"/>
+                    <MenuItem Header="Перейти к поставщикам"
+                              FontSize="12"
+                              Visibility="{Binding IsAdmin}"
+                              Command="{Binding GoToDeliveriesCommand}"/>
                 </ContextMenu>
             </ListView.ContextMenu>
             
             
         </ListView>
+
+        <Button Style="{StaticResource MaterialDesignFloatingActionSecondaryButton}"
+                Grid.Row="1"
+                
+                BorderBrush="{StaticResource additionalColor}"
+               Background="{StaticResource additionalColor}"
+                HorizontalAlignment="Right"
+                  Visibility="{Binding IsManager}"
+                              Command="{Binding GoToOrdersCommand}"
+                VerticalAlignment="Bottom" Margin="0,0,30,145" Cursor="">
+        <Button.Content >
+                <TextBlock>Заказы</TextBlock>
+        </Button.Content>
+        </Button>
 
         <Button Style="{StaticResource MaterialDesignFloatingActionSecondaryButton}"
                 Grid.Row="1"

@@ -117,8 +117,8 @@ namespace PishiStiray.VeiwModels
                 };
                 Units = new List<string>
                 {
-                    "уп",
-                    "шт"
+                    "уп.",
+                    "шт."
                 };
 
                 if (Global.Product != null)
