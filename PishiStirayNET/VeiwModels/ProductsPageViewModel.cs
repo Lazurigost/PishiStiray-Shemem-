@@ -168,6 +168,8 @@ namespace PishiStiray.VeiwModels
             CurrentProductsCount = products.Count;
         }
 
+        #region Команды
+
         //Добавление в корзину
         [RelayCommand]
         private void AddProductToCart()
@@ -201,10 +203,7 @@ namespace PishiStiray.VeiwModels
 
         //Переход в корзину
         [RelayCommand]
-        private void GoToCart()
-        {
-            _pageService.ChangePage(new CartPage());
-        }
+        private void GoToCart() => _pageService.ChangePage(new CartPage());
         //Переход на страницу изменения продукта
         [RelayCommand]
         private void EditProductProceed()
@@ -217,10 +216,7 @@ namespace PishiStiray.VeiwModels
            
         }
         [RelayCommand]
-        private void AddProductProceed()
-        {
-            _pageService.ChangePage(new AddProductPage());
-        }
+        private void AddProductProceed() => _pageService.ChangePage(new AddProductPage());
         [RelayCommand]
         private async void RemoveProduct()
         {
@@ -240,5 +236,6 @@ namespace PishiStiray.VeiwModels
         private void GoToManufacturers() => _pageService.ChangePage(new ManufacturerPage());
         [RelayCommand]
         private void GoToDeliveries() => _pageService.ChangePage(new ManufacturerPage());
+        #endregion
     }
 }
