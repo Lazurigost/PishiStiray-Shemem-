@@ -57,7 +57,7 @@
                     HorizontalAlignment="Center">
             <TextBlock Text="Цена без скидки:"
                    FontFamily="{StaticResource mainFont}"/>
-            <TextBlock Text="{Binding TotalPrice, StringFormat=' {0}₽ ',Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="{Binding TotalPrice, StringFormat=' {0} ₽ ',Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal"
