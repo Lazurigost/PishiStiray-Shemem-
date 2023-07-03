@@ -115,7 +115,7 @@ namespace PishiStiray.VeiwModels
             if (SelectedOrder != null)
             {
                 Global.Order = SelectedOrder;
-                //_pageService.ChangePage(new ChangeOrderPage());
+                _pageService.ChangePage(new ChangeOrderPage());
             }
         }
     }

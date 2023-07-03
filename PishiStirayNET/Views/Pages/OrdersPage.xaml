@@ -50,7 +50,7 @@
 
                 <StackPanel Orientation="Horizontal" Grid.Column="1">
                     <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
-                      materialDesign:HintAssist.Hint="Сорртировка по цене"
+                      materialDesign:HintAssist.Hint="Сортировка по цене"
                           MinWidth="200"
                               Height="50"
                           HorizontalAlignment="Left"
@@ -98,8 +98,7 @@
                 <ListView ItemsSource="{Binding SelectedOrder.Products}"
                       Grid.Column="1"
                       VerticalAlignment="Top"
-                      Height="{Binding ActualHeight, ElementName=OrderPage, Mode=OneWay, Converter={converters:SubtractConverter Value=100}}"
->
+                      Height="{Binding ActualHeight, ElementName=OrderPage, Mode=OneWay, Converter={converters:SubtractConverter Value=100}}">
 
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -223,11 +222,9 @@
 
 
 
-            <StackPanel Grid.Column="0"
-                        Orientation="Vertical"
-                        >
 
-                <ListView
+
+            <ListView
                   Grid.Column="0"
                   VerticalAlignment="Top"
                   x:Name="mainListView"
@@ -240,17 +237,17 @@
 
 
 
-                    <ListView.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <UniformGrid    Columns="1"
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid    Columns="1"
                                             MaxWidth="{Binding ActualWidth, ElementName=OrderPage, Mode=OneWay}">
-                            </UniformGrid>
-                        </ItemsPanelTemplate>
-                    </ListView.ItemsPanel>
+                        </UniformGrid>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
 
-                    <ListView.ItemTemplate >
-                        <DataTemplate >
-                            <Border Margin="10,10"
+                <ListView.ItemTemplate >
+                    <DataTemplate >
+                        <Border Margin="10,10"
                             BorderThickness="3"
                             Padding="10,0"
                             MaxWidth="590"
@@ -258,49 +255,49 @@
                             Width="610"
                             Background="{Binding ProductQuatities, Converter= {converters:ProductsToColorConverter}}"
                             BorderBrush="{StaticResource additionalColor}">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="7*"/>
-                                        <ColumnDefinition Width="3*"/>
-                                    </Grid.ColumnDefinitions>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="7*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
 
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
 
 
-                                    <TextBlock Grid.Row="0" 
+                                <TextBlock Grid.Row="0" 
                                        Grid.Column="0"
                                        Text="{Binding OrderId, StringFormat='Номер заказа - {0}'}"/>
-                                    <TextBlock Grid.Row="1" 
+                                <TextBlock Grid.Row="1" 
                                        Grid.Column="0"
                                        Text="{Binding OrderDeliveryDate, StringFormat='Дата заказа - {0:dd.MM.yyyy}'}"/>
-                                    <TextBlock Grid.Row="3" 
+                                <TextBlock Grid.Row="3" 
                                        Grid.Column="0"
                                        Text="{Binding OrdererFio, StringFormat='ФИО клиента - {0}'}"/>
-                                    <TextBlock Grid.Row="4" 
+                                <TextBlock Grid.Row="4" 
                                        Grid.Column="0"
                                        Text="{Binding OrderStatus, StringFormat='Статус заказа - {0}'}"/>
 
-                                    <TextBlock Grid.Row="0" 
+                                <TextBlock Grid.Row="0" 
                                        Grid.Column="1"
                                        Text="{Binding FullPrice, StringFormat='Стоимость заказа - {0:f2} ₽'}"/>
 
-                                    <TextBlock Grid.Row="1" 
+                                <TextBlock Grid.Row="1" 
                                        Grid.Column="1"
                                        Text="{Binding Discount, StringFormat='Скидка - {0:f2} ₽'}"/>
 
-                                    <TextBlock Grid.Row="2" 
+                                <TextBlock Grid.Row="2" 
                                        Grid.Column="1"
                                        Text="{Binding Price, StringFormat='Итоговая цена - {0:f2} ₽'}"/>
 
-                                    <Border Height="auto" 
+                                <Border Height="auto" 
                                     Grid.Row="5"
                                     Margin="0 5 0 0"
                                       Grid.Column="0"
@@ -308,24 +305,23 @@
                                     CornerRadius="3"
                                     BorderThickness="0">
 
-                                    </Border>
+                                </Border>
 
 
-                                </Grid>
+                            </Grid>
 
-                            </Border>
+                        </Border>
 
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
 
-                    <ListView.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem Header="Изменить" Command="{Binding GoToChangePageCommand}"/>
-                        </ContextMenu>
-                    </ListView.ContextMenu>
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Изменить" Command="{Binding GoToChangePageCommand}"/>
+                    </ContextMenu>
+                </ListView.ContextMenu>
 
-                </ListView>
-            </StackPanel>
+            </ListView>
         </Grid>
     </Grid>
 </Page>
